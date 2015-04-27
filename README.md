@@ -3,4 +3,5 @@ Universal ultraportable C++ library for embedded systems
 
 (c) Dmitry Ponyatov <dponyatov@gmail.com>, GNU LGPL
 
-https://github.com/ponyatov/emCpp
+git: https://github.com/ponyatov/emCpp
+pdf: https://github.com/ponyatov/emCpp/raw/master/doc/emCpp.pdf
