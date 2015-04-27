@@ -2,12 +2,14 @@
 #define _H_UART
 
 class UART {
-	unsigned int baud;
+	int baud;
 	HANDLE PortHandle;
+	static const int TIMEOUT;
 public:
 	const char *SymName;
-	UART(const char *SymName,unsigned int baud);
+	UART(const char *SymName,int baud);
 	~UART();
+	bool send(char *buf,unsigned int size);
 };
 
 #endif // _H_UART

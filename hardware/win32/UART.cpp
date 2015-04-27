@@ -6,13 +6,15 @@
 #include <assert.h>
 #include "emCpp/UART.h"
 
-UART::UART(const char *_SymName, unsigned int _baud) {
+const int UART::TIMEOUT = 1000;
+
+UART::UART(const char *_SymName, int _baud) {
 	baud = _baud;
 	SymName = _SymName;
 
 	// open port
 	PortHandle = CreateFile(SymName, // lpFileName
-			GENERIC_WRITE, // dwDesiredAccess
+			GENERIC_READ | GENERIC_WRITE, // dwDesiredAccess
 			0, // dwShareMode
 			NULL, // lpSecurityAttributes
 			OPEN_EXISTING, // dwCreationDistribution
@@ -21,17 +23,47 @@ UART::UART(const char *_SymName, unsigned int _baud) {
 			);
 	assert(PortHandle != INVALID_HANDLE_VALUE);
 
-	// set mode
-	//	_DCB dcb; // data control block
-	//	dcb.BaudRate=baud; // 4800
-	//	dcb.ByteSize=8; // 8
-	//	dcb.fParity=false; // N
-	//	dcb.StopBits=1; // 1
-	//	dcb.fBinary=true;
-	//	dcb.DCBlength=sizeof(dcb);
+	// set timeouts
+	COMMTIMEOUTS CommTimeOuts;
+	CommTimeOuts.ReadIntervalTimeout = 0xFFFFFFFF;
+	CommTimeOuts.ReadTotalTimeoutMultiplier = 0;
+	CommTimeOuts.ReadTotalTimeoutConstant = TIMEOUT;
+	CommTimeOuts.WriteTotalTimeoutMultiplier = 0;
+	CommTimeOuts.WriteTotalTimeoutConstant = TIMEOUT;
+	SetCommTimeouts(PortHandle, &CommTimeOuts);
+
+	// set mode 8N1
+	_DCB dcb; // data control block
+	memset(&dcb,0,sizeof(dcb)); dcb.DCBlength = sizeof(dcb);
+	//// main params
+	dcb.BaudRate = baud; // 4800
+	dcb.ByteSize = 8; // 8
+	dcb.fParity = NOPARITY; // N
+	dcb.StopBits = ONESTOPBIT; // 1
+	dcb.fBinary = true;
+	//// misc params
+	dcb.fAbortOnError = TRUE;
+	dcb.fDtrControl = DTR_CONTROL_DISABLE;
+	dcb.fRtsControl = RTS_CONTROL_DISABLE;
+	dcb.fInX = FALSE;
+	dcb.fOutX = FALSE;
+	dcb.XonChar = 0;
+	dcb.XoffChar = (unsigned char) 0xFF;
+	dcb.fErrorChar = FALSE;
+	dcb.fNull = FALSE;
+	dcb.fOutxCtsFlow = FALSE;
+	dcb.fOutxDsrFlow = FALSE;
+	dcb.XonLim = 128;
+	dcb.XoffLim = 128;
+	SetCommState(PortHandle, &dcb);
 
 }
 
 UART::~UART() {
 	CloseHandle(PortHandle);
+}
+
+bool UART::send(char *buf,unsigned int size) {
+	DWORD feedback;
+	return WriteFile(PortHandle,buf,size,&feedback,0) || feedback != size;
 }
