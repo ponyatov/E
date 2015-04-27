@@ -30,7 +30,7 @@ UART::UART(const char *_SymName, int _baud) {
 	CommTimeOuts.ReadTotalTimeoutConstant = TIMEOUT;
 	CommTimeOuts.WriteTotalTimeoutMultiplier = 0;
 	CommTimeOuts.WriteTotalTimeoutConstant = TIMEOUT;
-	SetCommTimeouts(PortHandle, &CommTimeOuts);
+	//SetCommTimeouts(PortHandle, &CommTimeOuts);
 
 	// set mode 8N1
 	_DCB dcb; // data control block
@@ -41,10 +41,10 @@ UART::UART(const char *_SymName, int _baud) {
 	dcb.fParity = NOPARITY; // N
 	dcb.StopBits = ONESTOPBIT; // 1
 	dcb.fBinary = true;
-	//// misc params
-	dcb.fAbortOnError = TRUE;
 	dcb.fDtrControl = DTR_CONTROL_DISABLE;
 	dcb.fRtsControl = RTS_CONTROL_DISABLE;
+	//// misc params
+	dcb.fAbortOnError = TRUE;
 	dcb.fInX = FALSE;
 	dcb.fOutX = FALSE;
 	dcb.XonChar = 0;
