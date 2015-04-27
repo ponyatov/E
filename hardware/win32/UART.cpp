@@ -23,14 +23,14 @@ UART::UART(const char *_SymName, int _baud) {
 			);
 	assert(PortHandle != INVALID_HANDLE_VALUE);
 
-	// set timeouts
-	COMMTIMEOUTS CommTimeOuts;
-	CommTimeOuts.ReadIntervalTimeout = 0xFFFFFFFF;
-	CommTimeOuts.ReadTotalTimeoutMultiplier = 0;
-	CommTimeOuts.ReadTotalTimeoutConstant = TIMEOUT;
-	CommTimeOuts.WriteTotalTimeoutMultiplier = 0;
-	CommTimeOuts.WriteTotalTimeoutConstant = TIMEOUT;
-	//SetCommTimeouts(PortHandle, &CommTimeOuts);
+//	// set timeouts
+//	COMMTIMEOUTS CommTimeOuts;
+//	CommTimeOuts.ReadIntervalTimeout = 0xFFFFFFFF;
+//	CommTimeOuts.ReadTotalTimeoutMultiplier = 0;
+//	CommTimeOuts.ReadTotalTimeoutConstant = TIMEOUT;
+//	CommTimeOuts.WriteTotalTimeoutMultiplier = 0;
+//	CommTimeOuts.WriteTotalTimeoutConstant = TIMEOUT;
+//	SetCommTimeouts(PortHandle, &CommTimeOuts);
 
 	// set mode 8N1
 	_DCB dcb; // data control block
