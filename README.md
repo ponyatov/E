@@ -1,3 +1,3 @@
 # ALYEH platform
-## ALYEH:E embedded C++ library
+## ALYEH:Embedded C++ library
 Универсальная объектная C++ библиотека для встраиваемых систем
