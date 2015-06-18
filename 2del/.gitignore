@@ -3,3 +3,4 @@
 *.o
 doc/emCpp.synctex.gz
 
+/doc/
