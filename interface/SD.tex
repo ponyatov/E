@@ -239,6 +239,10 @@ is showin in right image and there are three data tokens. Stop Tran token is to
 terminate a multiple block write transaction, it is used as single byte packet
 without data block and CRC.
 
+\bigskip
+\noindent\includegraphics[height=0.5\textheight]{E/interface/SD_data.png}
+\bigskip
+
 \secrel{Single Block Read}
 
 The argument specifies the location to start to read in unit of byte or block.
@@ -249,6 +253,9 @@ receives following data field and CRC. The CRC bytes must be received even if it
 is not needed. If any error occured during the read operation, an error token
 will be returned instead of data packet.
 
+\bigskip
+\noindent\includegraphics[height=0.2\textheight]{E/interface/SD_SBR.png}
+\bigskip
 
 \secrel{Multiple Block Read}
 
@@ -260,6 +267,124 @@ if number of transfer blocks has been sepecified by CMD23 prior to CMD18, the
 read transaction is initiated as a pre-defined multiple block transfer and the
 read operation is terminated at last block transfer.
 
+\bigskip
+\noindent\includegraphics[height=0.2\textheight]{E/interface/SD_MBR.png}
+\bigskip
+
+\secrel{Single Block Write}
+
+The Single Block Write writes a block to the card. After a CMD24 is accepted,
+the host controller sends a data packet to the card. The packet format is same
+as block read operations. Most cards cannot change write block size and it is
+fixed to 512. The CRC field can have any fixed value unless the CRC function is
+enabled. The card responds a Data Response immediataly following the data packet
+from the host. The Data Response trails a busy flag and host controller must
+wait until the card goes ready.
+
+In principle of the SPI mode, the CS signal must be kept asserted during a
+transaction. However there is an exception to this rule. When the card is busy,
+the host controller can deassert CS to release SPI bus for any other SPI
+devices. The card will drive DO low again when reselected during internal
+process is in progress. Therefore a preceding busy check, check if card is busy
+prior to each command and data packet, instead of post wait can eliminate waste
+wait time. In addition the internal write process is initiated a byte after the
+data response, this means eight clocks are required to initiate internal write
+operation. The state of CS signal during the eight clocks can be either low or
+high, so that it can be done by bus release process described below.
+
+\bigskip
+\noindent\includegraphics[height=0.2\textheight]{E/interface/SD_SBW.png}
+\bigskip
+
+\secrel{Multiple Block Write}
+
+The Multiple Block Read command writes multiple blocks in sequense from the
+specified location. After a CMD25 is accepted, the host controller sends one or
+more data packets to the card. The packet format is same as block read
+operations except for Data Token. The write operation continues until terminated
+with a Stop Tran token. The busy flag will output after each data block and Stop
+Tran token. For MMC, the number of blocks to write can be pre-defined by CMD23
+prior to CMD25 and the write transaction is terminated at last data block. For
+SDC, number of sectors to pre-erased at start of write transaction can be
+specified by ACMD23 prior to CMD25. A Stop Tran token is always required to
+treminate the write transaction. It can also be terminated at smaller or larger
+than pre-erased blocks but the content of the pre-erased and not transferred
+blocks are undefined.
+
+\bigskip
+\noindent\includegraphics[height=0.2\textheight]{E/interface/SD_MBW.png}
+\bigskip
+
+\secrel{Reading CSD and CID}
+
+These are same as Single Block Read except for the data block length. The CSD
+and CID are sent to the host as 16 byte data block. For details of the CMD, CID
+and OCR, please refer to the MMC/SDC specs.
+
 \secup
+
+\secrel{Cosideration to Bus Floating and Hot Insertion}
+
+Any signals that can be floated should be pulled low or high properly via a
+resister. This is a generic design rule on MOS devices. Because DI and DO are
+normally high, they should be pulled-up. According to SDC/MMC specs, from 50k to
+100k ohms is recommended to the value of pull-up registers. However the clock
+signal is not mentioned in the SDC/MMC specs because it is always driven by host
+controller. When there is a possibility of floating, it should be pulled to the
+normal state, low.
+
+\bigskip
+\noindent\includegraphics[height=0.7\textheight]{E/interface/SD_bus.png}
+\bigskip
+
+The MMC/SDC can hot insertion/removal but some considerations to the host
+circuit are needed to avoid an incorrect operation. For example, if the system
+power supply (Vcc) is tied to the card socket directly, the Vcc will dip at the
+instant of contact closed due to a charge current to the capacitor that built in
+the card. 'A' in the right image is the scope view and it shows that occureing a
+voltage dip of about 600 millivolts. This is a sufficient level to trigger a
+brown out detector. 'B' in the right image shows that an inductor is inserted to
+block the surge current, the voltage dip is reduced to 200 millivoits. A low ESR
+capacitor, such as OS-CON, can eliminate the voltage dip dratiscally like shown
+in 'C'. However the low ESR capacitor can cause an oscillation of LDO regulator.
+
+\secrel{Cosideration on Multi-slave Configuration}
+
+In the SPI bus, each slave device is selected with separated CS signals, and
+plural devices can be attached to an SPI bus. Generic SPI slave device
+drives/releases its DO signal by CS signal asynchronously to share an SPI bus.
+However MMC/SDC drives/releases DO signal in synchronising to the SCLK. This
+means there is a posibility of bus conflict with MMC/SDC and any other SPI
+slaves that attached to an SPI bus. Right image shows the drive/release timing
+of the MMC/SDC (the DO signal is pulled to 1/2 vcc to see the bus state).
+Therefore to make MMC/SDC release DO signal, the master device must send a byte
+after CS signal is deasserted.
+
+\bigskip
+\noindent\includegraphics[height=0.5\textheight]{E/interface/SD_muslave.png}
+\bigskip
+
+\secrel{How Fast SPI Mode Can Work?}
+
+MMC/SDC can work at the clock frequency upto 20/25 MHz. Of course all native
+interfaces guarantee to work at the maximum clock frequency. However generic SPI
+interface integrated in the microcontrollers may not work at high clock
+frequency due to a timing issue. Right image shows the timing diagram of the SPI
+interface. In SPI mode 0/3, the data is shifted out by falling edge of the SCLK
+and latched by next rising edge. td is the SCLK to DO propagation delay at the
+SDC, 14ns maximum. tsu is the minimum setup time of the MISO input. Therefore
+the maximum allowable SCLK frequency can be calculated by:
+
+\begin{equation}
+F_{SCLK}(max) = 0.5 / (t_{d} + t_{su})
+\end{equation}
+
+Some microcontrollers I have used are limited the allowable SCLK frequency
+around 10 MHz by the timing specs.
+
+\bigskip
+\noindent\includegraphics[height=0.5\textheight]{E/interface/SD_timing.png}
+\bigskip
+
 
 \secup
