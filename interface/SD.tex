@@ -23,7 +23,7 @@ aware, on using MMC/SDC with small embedded system. I believe that this
 information must be a useful getting started notes for the people who is going
 to use MMC/SDC on the electronics handiwork projects.
 
-\secrel{Pinout}
+\secrel{Раскопытка}
 
 Photo shows the contact surface of the SDC/MMC. The MMC has seven contact
 pads. The SDC has nine contact pads that two additional contacts to the MMC. The
@@ -43,7 +43,7 @@ volts to the card, or the card is damaged instantly. The current consumption on
 write operation can reach up to some ten miliamperes, so that the host system
 should consider to supply 100 miliamperes to tha card.
 
-\secrel{SPI Mode}\secdown
+\secrel{Режим SPI}\secdown
 
 This document describes the SPI mode to control the MMC/SDCs. The SPI mode is an
 alternative operating mode that defined to use the MMC/SDCs without native host
@@ -62,7 +62,7 @@ also works as well in most case.
 \includegraphics[height=0.3\textheight]{E/interface/SD_conn.png}
 \bigskip
 
-\secrel{Command and Response}
+\secrel{Команда и ответ}
 
 In SPI mode, the data direction on the signal lines are fixed and the data is
 transferred in byte oriented serial communication. The command frame from host
@@ -83,7 +83,7 @@ command frame is not checked by the card.
 \noindent\includegraphics[width=0.95\textwidth]{E/interface/SD_cmd.png}
 \bigskip
 
-\secrel{SPI Command Set}
+\secrel{Набор команд SD SPI}
 
 Each command is expressed in abbreviation like \verb|GO_IDLE_STATE| or CMD<n>,
 <n> is the number of the command index and the value can be 0 to 63. Following table
@@ -138,7 +138,7 @@ CMD58&	None(0)&	R3&	No&	READ\_OCR&	Read OCR.\\
 }
 \clearpage
 
-\secrel{SPI Response}
+\secrel{Ответ по SPI}
 
 There are some command response formats, R1, R2, R3 and R7, depends on the
 command index. A byte of response, R1, is returned for most commands. The bit
@@ -158,19 +158,19 @@ goes high (a 0xFF is received).
 
 \secup
 
-\secrel{Initialization Procedure for SPI Mode}\secdown
+\secrel{Процедура инициализации}\secdown
 
 After power on reset, MMC/SDC enters its native operating mode. To put it SPI
 mode, follwing procedure must be performed like this flow.
 
-\secrel{Power ON or card insersion}
+\secrel{Подача питания или вставка карты в держатель}
 
 After supply voltage reached 2.2 volts, wait for one millisecond at least. Set
 SPI clock rate between 100 kHz and 400 kHz. Set DI and CS high and apply 74 or
 more clock pulses to SCLK. The card will enter its native operating mode and go
 ready to accept native command.
 
-\secrel{Software reset}
+\secrel{Программный сброс}
 
 Send a CMD0 with CS low to reset the card. The card samples CS signal on a CMD0
 is received successfully. If the CS signal is low, the card enters SPI mode and
@@ -181,7 +181,7 @@ that command transmission routine can be written with the hardcorded CRC value
 that valid for only CMD0 and CMD8 with the argument of zero. The CRC feature can
 also be switched with CMD59.
 
-\secrel{Initialization}
+\secrel{Инициализация}
 
 In idle state, the card accepts only CMD0, CMD1, ACMD41,CMD58 and CMD59. Any
 other commands will be rejected. In this time, read OCR register and check
@@ -211,7 +211,7 @@ The initial read/write block length can be set 1024 on 2GB cards, so that the
 block size should be re-initialized to 512 with CMD16 to work with FAT file
 system.
 
-\secrel{Initializing high-capacity cards}
+\secrel{Инициализация SDHC карт}
 
 After the card enters idle state with a CMD0, send a CMD8 with argument of
 0x000001AA and correct CRC prior to initialization process. If the CMD8 is
@@ -386,5 +386,89 @@ around 10 MHz by the timing specs.
 \noindent\includegraphics[height=0.5\textheight]{E/interface/SD_timing.png}
 \bigskip
 
+\secrel{File System}
+
+The file system used on the MMC/SDC is FAT. The MMC/SDC specifications define
+the FAT type as: FAT12 for 64MB or smaller cards, FAT16 for 128MB to 2GB cards,
+FAT32 for 4GB to 32GB cards and exFAT for 64GB to 2TB cards. Only an FAT volume
+can be exist on the card with FDISK partitioning rule and no patition table like
+floppy disk is not allowed. Of course different file system other than the
+MMC/SDC specifications define will able to be used as generic storage media for
+PCs. However such the illigal format cards can not be recognized with home
+equipments.
+
+\secrel{Optimization of Write Performance}\secdown
+
+Most MMC/SDC employs NAND Flash Memory as a memory array. The NAND flash memory
+is cost effective and it can read/write large data fast, but on the other hand,
+there is a disadvantage that rewriting a part of data is inefficient. Generally
+the flash memory requires to erase existing data before write a new data, and
+minimum unit of erase operation (called erase block) is larger than write block
+size. The typical NAND flash memory has a block size of 512/16K bytes for
+write/erase operation, and recent monster card employs large block chip
+(2K/128K). This means that rewriting entire data in the erase block is done in
+the card even if write only a sector (512 bytes).
+
+\secrel{Benchmark}
+
+I examined the read/write performance of some MMC/SDC with a cheap 8 bit MCU
+(ATmega64 @9.2MHz) on the assumption that an embedded system with limited memory
+size. For reason of memory size, write() and read() ware performed in 2048 bytes
+at a time. The result is: Write: 77kB/sec, Read: 328kB/sec on the 128MB SDC,
+Write: 28kB/sec, Read: 234kB/sec on the 512MB SDC and Write: 182kB/sec, Read:
+312kB/sec on the 128MB MMC.
+
+Therefor the write performance of the 512MB SDC was very poor that one third
+value of 128MB SDC. Generally the read/write performance of the mass storage
+device increases proportional to its recording density, however it sometimes
+appears a tendency of opposite on the memory card. As for the MMC, it seems to
+be several times faster than SDC, it is not bad performance. After that time, I
+examined some SDCs supplied from different makers, and I found that PQI's SDC
+was as fast as Hitachi's MMC but Panasonic's and Toshiba's one was very poor
+performances.
+
+\secrel{Erase Block Size}
+
+To analys detail of write operation, busy time (number of polling cycles) after
+sent a write data is typed out to console in the low level disk write function.
+Multiple numbers on a line indicates data blocks and a Stop Tran token that
+issued by a multiple block write transaction.
+
+In resulut of the analysis, there is a different of internal process between
+128MB SDC and 512MB SDC. The 128MB SDC rewrites erase block at end of the
+mutiple block write transaction. The 512MB SDC seems have 4K bytes data buffer
+and it rewrites erase block every 4K bytes boundary. Therefor it cannot compared
+directly but the processing time of rewriting an erase block can be read 3800
+for 128MB SDC and the 512MB SDC taeks 30000 that 8 times longer than 128MB SDC.
+Judging from this resulut, it seems the 128MB SDC uses a small block chip and
+the 512MB SDC uses a large block or MLC chip. Ofcourse the larger block size
+decreases the performance on pertial block rewriting. In 512MB SDC, only an area
+that 512K bytes from top of the memory is relatively fast. This can be read from
+write time in close(). It might any special processing is applied to this area
+for fast FAT accsess.
+
+\secrel{Improving Write Performance}
+
+To avoid this bottleneck and increase the write performance, number of blocks
+per write transaction must be large as possible. Of course all layers between
+the application and the media must support multiple sector write feature. For
+low level SDC/MMC write function, it should inform number of write sectors to
+the card prior to the write transaction for efficient internal write process.
+This method called `pre-defined multiple block write'. The pre-definition
+command is not the same between MMC (CMD23) and SDC (ACMD23).
+
+\bigskip
+\noindent\includegraphics[height=0.3\textheight]{E/interface/SD_perf.png}
+\bigskip
+
+The memory cards are initially patitioned and formatted to align the allocation
+unit to the erase block. When re-patition or re-format the memory card with a
+device that not compliant to MMC/SDC (this is just a PC) with no care, the
+optimization will be broken and the write performance might be lost. I tried to
+re-format 512MB SDC in FAT32 with a PC, the write performance measured in file
+copy was lowerd to one several. Therefore the re-formatting the card should be
+done with MMC/SDC compliant equipments rather than PC.
+
+\secup
 
 \secup
