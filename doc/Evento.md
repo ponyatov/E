@@ -27,19 +27,16 @@ https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 
 ![[E/concept]]
 ![[E/paradigm|paradigm]]
-## **1. Lexical Structure**
-## **2. Syntax (Grammar)**
-![[flow variable]]
-![[pipe operator]]
-## **3. Type System**
-## **4. Semantics**
-## **5. Error Handling**
-## **6. Standard Library**
-## **7. Interoperability**
-![[E/target language selection]]
-## **8. Tooling Directives**
-## **9. Formal Verification (Optional)**
-## **10. Appendix: Examples & Edge Cases**
+![[Lexical Structure]]
+![[E/Syntax]]
+![[E/Type System]]
+![[E/Semantics]]
+![[E/Error Handling]]
+![[E/Standard Library]]
+![[E/Interoperability]]
+![[Tooling Directives]]
+![[Formal Verification]]
+![[Examples and Edge Cases]]
 
 ### **Prioritization for Evento**
 
