@@ -29,3 +29,4 @@ https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 ![[E/paradigm|paradigm]]
 ![[flow variable]]
 ![[E/target language selection]]
+![[pipe operator]]
