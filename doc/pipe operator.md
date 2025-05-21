@@ -1,29 +1,30 @@
 # pipe operator
 
-```rust
-// Distributed temperature monitor with pipe operators
-actor SensorNode {
-    let sensor      = TempSensor(PIN0);
-    let server_addr = 0x42;
+![[pipe sample code]]
 
-    on init() {
-        loop {
-            sensor.read()
-                |> scale_to_celsius()      // Preprocess
-                |> round_to_decimal(1)    // Transform
-                |> send!(server_addr);    // Action
-            
-            sleep!(1s);
-        }
-    }
-}
-```
+`a |> func(b,..)` replaces `func(a,b,..)`
+
+## Key Changes:
+
+1. **Pipeline Stages**  
+    Each transformation becomes a clear step:
+
 ```rust
-actor ServerNode {
-    on receive(data: f32) {
-        data 
-            |> format!("Temp: {:.1}C")    // Formatting
-            |> print!();                 // Side effect
-    }
-}
+read() |> preprocess() |> send!()
 ```
+    
+2. **Emphasized Dataflow**  
+    The `|>` operator visually chains operations left-to-right.
+    
+3. **Retained Actor Semantics**  
+    Side-effecting operations (`send!`, `print!`) remain at the end of pipelines.
+
+## Benefits for Embedded Systems:
+
+- **Explicit data transformation path** (helps optimize memory usage)
+    
+- **No intermediate variables** (reduces stack usage)
+    
+- **Readable sequencing** (critical for distributed logic)
+
+![[Error handling in pipelines]]
