@@ -1,0 +1,9 @@
+[package]
+name        = "evento"
+version     = "0.0.1"
+description = "programming language prototype"
+authors     = ["Dmitry Ponyatov <dponyatov@gmail.com>","DeepSeek"]
+license     = "MIT"
+edition     = "2024"
+
+[dependencies]
