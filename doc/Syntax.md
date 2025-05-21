@@ -1,7 +1,6 @@
 # **2. Syntax (Grammar)**
 
-![[Whitespace and Comments]]
-![[E/Tokens]]
-![[Operators]]
+![[E/Concrete Syntax]]
+![[E/Abstract Syntax]]
 
 ![[flow variable]]
