@@ -17,14 +17,15 @@ Here’s a breakdown of the ideal paradigm and features:
 ## **1. Primary Paradigm: Actor Model + Imperative**
 - **Why?**  
   - **Actor Model**: Embeds *message-passing concurrency* natively, ideal for distributed systems (no shared memory, avoids locks).  
-    - Example: Erlang/Elixir (but optimized for microcontrollers).  
+    - Example: [[Erlang]]/[[Elixir]] (but optimized for microcontrollers).  
   - **Imperative Core**: Close-to-hardware control (needed for registers, interrupts, and memory-mapped I/O).  
-	  - no FFI: seamless interop with native C/C++ code as the most code and libs C-only
+	  - no FFI: the most code and libs C-only, so we must use
+	  - seamless interop with native C/C++ by C (Rust?) code generation
 
 - **Implementation**:  
-  - Each "actor" is a lightweight process/task running independently.  
+  - Each "[[Actor]]" is a lightweight process/task running independently.  
   - Messages are passed asynchronously (non-blocking).  
-  - Built-in scheduler for cooperative multitasking (no RTOS needed).  
+  - Built-in scheduler for cooperative multitasking (no [[RTOS/RTOS|RTOS]] needed).  
 
 ---
 
@@ -59,7 +60,8 @@ Here’s a breakdown of the ideal paradigm and features:
 // hops: numbers of resends in mesh network
 send!(data, node_id, ttl=100ms, hops=4);
 ```
-- **Built-in network stack** (LoRa, BLE, CAN bus abstractions).  
+- **Built-in network stack** (LoRa, BLE, CAN bus abstractions). 
+	- mesh networking
 
 #### **D. Fault Tolerance**  
 - **Supervision trees** (restart failed tasks, like Erlang).  
@@ -77,15 +79,21 @@ send!(data, node_id, ttl=100ms, hops=4);
 
 ### **4. Example Language Syntax (Hypothetical)**  
 ```rust
-// Distributed temperature monitor on microcontrollers
-actor SensorNode {
-    let sensor: TempSensor = TempSensor(PIN0);
-    let server_addr: NodeId = 0x42;
+// Distributed temperature monitor with pipe operators
+
+const SERVER = MeshId(0x42)
+
+actor SensorNode<S:TempSensor,P:Protocol> {
+    let sensor      = S(P(PIN0));
+    let server_addr = SERVER;
 
     on init() {
         loop {
-            let temp = sensor.read();
-            send!(server_addr, temp);
+            sensor.read()
+                |> scale_to_celsius()     // Preprocess
+                |> round_to_decimal(1)    // Transform
+                |> send!(server_addr);    // Action
+            
             sleep!(1s);
         }
     }
@@ -93,7 +101,9 @@ actor SensorNode {
 
 actor ServerNode {
     on receive(data: f32) {
-        print!("Temp: {}", data);
+        data 
+            |> format!("Temp: {:.1}C")   // Formatting
+            |> print!();                 // Side effect
     }
 }
 ```
@@ -101,17 +111,30 @@ actor ServerNode {
 ---
 
 ### **5. Existing Languages to Borrow From**  
-- **Rust** (memory safety, no GC, embedded-friendly).  
-- **Erlang/Elixir** (actor model, fault tolerance).  
-- **C** (low-level control, but lacks modern safety).  
-- **Zig** (compile-time checks, manual memory).  
+- **Rust**
+	- [[memory safety]]
+	- no [[gc/gc|gc]]
+	- embedded-friendly
+	- **aggressive type checking**
+- **Erlang/Elixir**
+	- **[[actor model]]**
+	- fault tolerance
+- **C**
+	- **low-level control**
+	- but lacks modern safety
+- **Zig**
+	- compile-time checks
+	- manual memory
 
 ---
 
 ### **6. Toolchain Requirements**  
-- **Cross-compilation** (e.g., `arm-none-eabi-gcc` backend).  
+- **[[cross-compilation]] in the first place**
+	- (e.g., [[arm-none-eabi]] backend).
+	- on-host compilation is a degenerate case with `HOST=TARGET`
 - **Hardware-in-the-loop testing**.  
-- **Small runtime** (if any).  
+- **Small runtime** (if any)
+- [[FuSA]]
 
 ---
 

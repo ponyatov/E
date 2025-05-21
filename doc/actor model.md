@@ -1,0 +1,2 @@
+# actor model
+![[Actor]]
