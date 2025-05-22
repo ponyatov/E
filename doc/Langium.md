@@ -15,8 +15,25 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 	- [[Chevrotain]] (JS-like)
 
 
-## 0. [[Node.js#install]]
-## 1. [[Yeoman#install]]
+## install
+
+### 0. [[Node.js#install]]
+### 1. [[Yeoman#install]]
 ```shell
 npm i yo generator-langium
 ```
+### 2. Scaffold a Langium project
+
+```shell
+./node_modules/.bin/yo langium
+```
+- [[vscode/extensions|extensions]] name: evento
+- Your language name: Evento
+- File extensions: .e
+- Include VSCode extension? Y
+- Include CLI? Y
+	- add REPL
+- Include Web worker? y
+	- You can run the language server in your web browser.
+- Include language tests? Yes
+	- You can add the setup for language tests using [[Vitest]].
