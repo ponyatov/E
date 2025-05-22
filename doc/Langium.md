@@ -21,8 +21,9 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 
 ### 0. [[Node.js#install]]
 ### 1. [[Yeoman#install]]
+![[js/setenv]]
 ```shell
-npm i -u yo generator-langium
+npm i -g yo generator-langium
 ```
 ### 2. Scaffold a Langium project
 
