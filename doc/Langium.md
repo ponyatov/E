@@ -5,6 +5,7 @@ https://langium.org/
 
 - https://www.youtube.com/playlist?list=PLmmNK7CRoSWuUejGnfoY5_w7C-AbNU-mk
 	- [install](https://youtu.be/PtCUafeZi1E?si=-Wu8dNSkzyFxzKXf)
+	- [write grammar](https://youtu.be/bNoRO-DLvAA?si=QgDBJqwBMO-E3Sds)
 - @pluralia_pluralia (Magenta)
 	- https://t.me/LanguageDev/211902
 	- https://youtu.be/mwqE29LBNjI
