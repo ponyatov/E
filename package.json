@@ -22,6 +22,7 @@
     "homepage": "https://github.com/ponyatov/E#readme",
     "dependencies": {
         "generator-langium": "^3.5.0",
+        "tsc": "^2.0.4",
         "yo": "^5.1.0"
     }
 }
