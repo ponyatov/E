@@ -1,6 +1,8 @@
 grammar Evento
 
-entry Model: ( names+=ID | numbers+=INT )*;
+entry Program:
+    'program' name=ID ';'
+    ( words+=ID | numbers+=INT )*;
 
 hidden terminal WS: /\s+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
