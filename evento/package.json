@@ -1,6 +1,6 @@
 {
     "name": "evento",
-    "description": "Please enter a brief description here",
+    "description": "programming language prototype",
     "version": "0.0.1",
     "files": [
         "bin",
