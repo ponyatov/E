@@ -5,5 +5,5 @@
 *.exe
 *.log
 /target/
+/node_modules/
 !.gitignore
-
