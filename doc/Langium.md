@@ -15,6 +15,9 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 ## install
 
 ### 0. [[Node.js#install]]
+```shell
+sudo apt install npm nodejs
+```
 ### 1. [[Yeoman#install]]
 ![[js/setenv]]
 ```shell
@@ -67,16 +70,15 @@ also we should ignore all whitespace characters:
 hidden terminal WS: /\s+/;
 ```
 
-([[syntax/terminal|terminal]] means minimal language element mostly defines as literal value or [[syntax/regular expression|regular expression]])
+- grammar [[syntax/terminal|terminals]] means minimal language elements mostly defined as literal values or [[syntax/regular expression|regular expressions]]
 
 Finally, we need to see two the most required language elements:
 - alphanumeric identifiers
+	- `\w` metacharacter matches word characters: `[a-zA-Z0-9_]`
+	- so, anything starts with `_` or latin letter can point something with name
+
 ```ts
 terminal ID: /[_a-zA-Z][\w_]*/;
-```
-- `\w` metacharacter matches word characters: `[a-zA-Z0-9_]`
-- so, anything starts with `_` or latin letter can point something
-```ts
 ```
 - and simple integer numbers (we'll limit number types a while, WASM spec says `int` is enought for everything)
 ```ts
@@ -91,8 +93,26 @@ Resulting grammar surprisingly looks like the first page of any book about the F
 	- can do something is case the system known what action bound to this name (word exists in a vocabulary)
 - besides signed integers numbers that looks like integers numbers
 
-So, there is nothing else, besides maybe C-style comments to let us mark some code as ignored, and write some cool comments (as syntax so primitive and unreadable that we can't understand our FORTH code even after fews days later).
+So, there is nothing else, besides maybe C-style comments to let us mark some code as ignored, and write some cool comments (as syntax so primitive and unreadable that we can't understand our FORTH code even after few days later).
 
+![[E/comment]]
+
+If you still want FORTH, the parentheses for stack effects can be used:
 ```ts
-hidden terminal LINE_COMMENT: /\/\/[^\n\r]*/;
+hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;
+```
+
+Time to check:
+```shell
+npm run langium:generate
+```
+```
+> evento@0.0.1 langium:generate
+> langium generate
+
+Reading config from /home/dponyatov/E/evento/langium-config.json
+Writing generated files to /home/dponyatov/E/evento/src/language/generated
+Writing textmate grammar to /home/dponyatov/E/evento/syntaxes/evento.tmLanguage.json
+Writing monarch grammar to /home/dponyatov/E/evento/src/syntaxes/evento.monarch.ts
+[23:45:32] Langium generator finished successfully in 545ms
 ```
