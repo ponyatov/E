@@ -28,6 +28,7 @@ npm i yo generator-langium
 ./node_modules/.bin/yo langium
 ```
 - [[vscode/extensions|extensions]] name: evento
+	- Will be used as the folder name of your extension and its `package.json`
 - Your language name: Evento
 - File extensions: .e
 - Include VSCode extension? Y
@@ -37,3 +38,12 @@ npm i yo generator-langium
 	- You can run the language server in your web browser.
 - Include language tests? Yes
 	- You can add the setup for language tests using [[Vitest]].
+
+## build
+
+```shell
+tsc -b tsconfig.src.json && node esbuild.mjs
+```
+
+[[ts/TypeScript]]
+[[ts/minimal project]]

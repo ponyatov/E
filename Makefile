@@ -9,5 +9,6 @@ include mk/all.mk
 include mk/format.mk
 include mk/rule.mk
 include mk/doc.mk
+include mk/ts.mk
 include mk/install.mk
 include mk/merge.mk
