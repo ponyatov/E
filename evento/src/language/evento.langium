@@ -2,14 +2,16 @@ grammar Evento
 
 entry Program:
     'program' name=ID ';'
-    ( words+=ID | numbers+=Int | consts+=ConstDef )*;
+    ( words+=ID | numbers+=Num | consts+=ConstDef )*;
 
 ConstDef:
-    'const' id=ID '=' n=Int ';';
+    'const' id=ID '=' n=Num ';';
 
-Int returns number: INT | HEX | OCT | BIN ;
+Num returns number: INT | HEX | OCT | BIN | FLOAT ;
 
 hidden terminal WS: /\s+/;
+
+terminal FLOAT returns number: /[+\-]?[0-9]+\.[0-9]+([eE][+\-]?[0-9]+)?/;
 terminal HEX returns number: /0x[0-9a-fA-F]+/;
 terminal OCT returns number: /0o[0-7]+/;
 terminal BIN returns number: /0b[01]+/;
