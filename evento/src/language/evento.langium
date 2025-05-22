@@ -1,18 +1,17 @@
 grammar Evento
 
-entry Model:
-    (persons+=Person | greetings+=Greeting | numbers+=INT)*;
+entry Program: ( names+=ID | numbers+=INT )*;
 
-Person:
-    'person' name=ID;
+// Person:
+//     'person' name=ID;
 
-Greeting:
-    'Hello' person=[Person:ID] '!';
+// Greeting:
+//     'Hello' person=[Person:ID] '!';
 
 hidden terminal WS: /\s+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
 terminal INT returns number: /[+\-]?[0-9]+/;
-terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
+// terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
-hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
-hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
+hidden terminal LINE_COMMENT: /\/\/[^\n\r]*/;
+// hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
