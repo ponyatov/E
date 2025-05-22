@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/evento"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceFolder}/evento/out/**/*.js"
+            ]
+        },
+        {
+            "name": "Attach to Language Server",
+            "type": "node",
+            "port": 6009,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceFolder}/evento/out/**/*.js",
+                "${workspaceFolder}/evento/node_modules/langium"
+            ]
+        },
+        {
+            "name"         : "cmake:linux",
+            "type"         : "cppdbg",
+            "request"      : "launch",
+            "program"      : "${command:cmake.launchTargetPath}",
+            "preLaunchTask": "CMake: build",
+            "cwd"          : "${workspaceFolder}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {"text": "-enable-pretty-printing", "ignoreFailures": true}
+            ],
+            "args": ["${workspaceFolder}/lib/${workspaceFolderBasename}.ini"],
+            "externalConsole": false,
+            "stopAtEntry": true,
+        }
+    ]
+}
