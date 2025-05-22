@@ -3,7 +3,7 @@
     "languages": [{
         "id": "evento",
         "grammar": "src/language/evento.langium",
-        "fileExtensions": [".e"],
+        "fileExtensions": [".e",".evt",".evento"],
         "textMate": {
             "out": "syntaxes/evento.tmLanguage.json"
         },
