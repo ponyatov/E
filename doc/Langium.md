@@ -3,6 +3,8 @@
 
 https://langium.org/
 
+- https://www.youtube.com/playlist?list=PLmmNK7CRoSWuUejGnfoY5_w7C-AbNU-mk
+	- [install](https://youtu.be/PtCUafeZi1E?si=-Wu8dNSkzyFxzKXf)
 - @pluralia_pluralia (Magenta)
 	- https://t.me/LanguageDev/211902
 	- https://youtu.be/mwqE29LBNjI
@@ -20,7 +22,7 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 ### 0. [[Node.js#install]]
 ### 1. [[Yeoman#install]]
 ```shell
-npm i yo generator-langium
+npm i -u yo generator-langium
 ```
 ### 2. Scaffold a Langium project
 
