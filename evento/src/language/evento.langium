@@ -1,7 +1,7 @@
 grammar Evento
 
 entry Model:
-    (persons+=Person | greetings+=Greeting)*;
+    (persons+=Person | greetings+=Greeting | numbers+=INT)*;
 
 Person:
     'person' name=ID;
@@ -11,7 +11,7 @@ Greeting:
 
 hidden terminal WS: /\s+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
-terminal INT returns number: /[0-9]+/;
+terminal INT returns number: /[+\-]?[0-9]+/;
 terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
