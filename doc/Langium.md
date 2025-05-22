@@ -28,7 +28,7 @@ npm i -g yo generator-langium
 ### 2. Scaffold a Langium project
 
 ```shell
-./node_modules/.bin/yo langium
+yo langium
 ```
 - [[vscode/extensions|extensions]] name: evento
 - Your language name: Evento
