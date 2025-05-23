@@ -11,8 +11,7 @@ Member:
     Handler;
 
 Handler:
-    'on' event=ID '(' ')' ';';
-// '{' statements+=Stmt* '}';
+    'on' event=ID '()' '{' statements+=ID* '}';
 
 ConstDef:
     'const' id=ID '=' n=Num ';';
@@ -31,4 +30,4 @@ terminal ID: /[_a-zA-Z][\w_]*/;
 
 hidden terminal  LINE_COMMENT: /\/\/[^\n\r]*/;
 hidden terminal BLOCK_COMMENT: /\/\*[\s\S]*?\*\//;
-hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;
+// hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;
