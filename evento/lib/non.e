@@ -1,4 +1,4 @@
-#!/home/user/E/bin/evento
+#!/usr/bin/env evento
 // empty file
 
 program None
@@ -16,7 +16,8 @@ const PI = 3.1415926535
 const AVOGADRO = 6.02214076e23
 
 actor Actor {
-    on init(){}
+    const ShowMustGoOn = true
+    on init()
     on halt(){}
 }
 

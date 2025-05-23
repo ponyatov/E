@@ -1,20 +1,25 @@
 grammar Evento
 
 entry Program:
+    SHEBANG?
     'program' name=ID
-    ( words+=ID | numbers+=Num | strs+=STR | consts+=ConstDef | actors+=Actor)*;
+    ( words+=ID | numbers+=Num | strs+=STR | stmt+=Stmt | actors+=Actor )*;
+
+Stmt:
+    ConstDef;
 
 Actor:
-    'actor' name=ID '{' members+=Member* '}';
+    'actor' name=ID (':' parent=ID)? '{' members+=Member* '}';
 
 Member:
-    Handler;
+    ConstDef
+    | Handler;
 
 Handler:
     'on' event=ID '()' '{' statements+=ID* '}';
 
 ConstDef:
-    'const' id=ID '=' (n=Num|s=STR);
+    'const' id=ID '=' (n=Num|s=STR|b=BOOL);
 
 Num returns number: INT | HEX | OCT | BIN | FLOAT ;
 
@@ -27,9 +32,10 @@ terminal BIN returns number: /0b[01]+/;
 terminal INT returns number: /[+\-]?[0-9]+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
 terminal STR: /"[^"]*"|'[^']*'/;
+terminal BOOL returns boolean: ('true'|'false');
 // terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
+       terminal       SHEBANG: /#![^\r\n]+/;
 hidden terminal  LINE_COMMENT: /\/\/[^\n\r]*/;
 hidden terminal BLOCK_COMMENT: /\/\*[\s\S]*?\*\//;
-hidden terminal       SHEBANG: /#![^\r\n]+/;
 // hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;
