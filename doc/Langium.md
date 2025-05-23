@@ -17,6 +17,8 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 
 ## install
 
+![[js/setenv]]
+
 ### 0. [[Node.js#install]]
 ### 1. [[Yeoman#install]]
 ```shell
