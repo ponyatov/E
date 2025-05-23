@@ -2,7 +2,17 @@ grammar Evento
 
 entry Program:
     'program' name=ID ';'
-    ( words+=ID | numbers+=Num | consts+=ConstDef )*;
+    ( words+=ID | numbers+=Num | consts+=ConstDef | actors+=Actor)*;
+
+Actor:
+    'actor' name=ID '{' members+=Member* '}';
+
+Member:
+    Handler;
+
+Handler:
+    'on' event=ID '(' ')' ';';
+// '{' statements+=Stmt* '}';
 
 ConstDef:
     'const' id=ID '=' n=Num ';';
