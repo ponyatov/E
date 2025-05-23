@@ -1,4 +1,16 @@
 {
+    // files
+    "files.exclude": {
+        "doc/html": true,
+        "*/node_modules": true,
+    },
+    "files.watcherExclude": {
+        "ref/**": true, "target/**": true, "obj/**": true,
+    },
+    "files.associations": {
+        "*.mk": "makefile",
+    },
+
     // editor
     "files.eol": "\n",
     "files.insertFinalNewline": true,
@@ -13,4 +25,26 @@
     "explorer.autoReveal": false,
     "git.enabled": false,
     "terminal.integrated.copyOnSelection": true,
+
+    // JavaScript
+    "prettier.configPath"         : ".prettierrc",
+    "prettier.requireConfig"      :  true,
+    "json.format.enable"          :  true,
+
+    // clang-format
+    "clang-format.executable"     : "clang-format",
+    "clang-format.fallbackStyle"  : "Google",
+    "clang-format.style"          : "file",
+
+    // C++
+    "[c]": {
+        "editor.defaultFormatter" : "xaver.clang-format",
+        "editor.formatOnSave"     :  false
+    },
+    "[cpp]": {
+        "editor.defaultFormatter" : "xaver.clang-format",
+        "editor.formatOnSave"     :  false
+    },
+    // "C_Cpp.intelliSenseEngine": "Tag Parser",
+    // "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 }

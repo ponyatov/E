@@ -1,18 +1,24 @@
 grammar Evento
 
-entry Model:
-    (persons+=Person | greetings+=Greeting)*;
+entry Program:
+    'program' name=ID ';'
+    ( words+=ID | numbers+=Num | consts+=ConstDef )*;
 
-Person:
-    'person' name=ID;
+ConstDef:
+    'const' id=ID '=' n=Num ';';
 
-Greeting:
-    'Hello' person=[Person:ID] '!';
+Num returns number: INT | HEX | OCT | BIN | FLOAT ;
 
 hidden terminal WS: /\s+/;
-terminal ID: /[_a-zA-Z][\w_]*/;
-terminal INT returns number: /[0-9]+/;
-terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
-hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
-hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
+terminal FLOAT returns number: /[+\-]?[0-9]+\.[0-9]+([eE][+\-]?[0-9]+)?/;
+terminal HEX returns number: /0x[0-9a-fA-F]+/;
+terminal OCT returns number: /0o[0-7]+/;
+terminal BIN returns number: /0b[01]+/;
+terminal INT returns number: /[+\-]?[0-9]+/;
+terminal ID: /[_a-zA-Z][\w_]*/;
+// terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
+
+hidden terminal  LINE_COMMENT: /\/\/[^\n\r]*/;
+hidden terminal BLOCK_COMMENT: /\/\*[\s\S]*?\*\//;
+hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;

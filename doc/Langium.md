@@ -1,8 +1,6 @@
 # Langium
 ## [[Language Workbench]]
 
-https://langium.org/
-
 - @pluralia_pluralia (Magenta)
 	- https://t.me/LanguageDev/211902
 	- https://youtu.be/mwqE29LBNjI
@@ -14,20 +12,23 @@ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 - Grammar Syntax
 	- [[Chevrotain]] (JS-like)
 
-
 ## install
 
 ![[js/setenv]]
 
 ### 0. [[Node.js#install]]
-### 1. [[Yeoman#install]]
 ```shell
-npm i yo generator-langium
+sudo apt install npm nodejs
+```
+### 1. [[Yeoman#install]]
+![[js/setenv]]
+```shell
+npm i -g yo generator-langium
 ```
 ### 2. Scaffold a Langium project
 
 ```shell
-./node_modules/.bin/yo langium
+yo langium
 ```
 - [[vscode/extensions|extensions]] name: evento
 	- Will be used as the folder name of your extension and its `package.json`
@@ -51,3 +52,5 @@ tsc -b tsconfig.src.json && node esbuild.mjs
 [[ts/minimal project]]
 
 ## [[lang/Indentation-sensitive languages]]
+
+## [[Langium-powered specification]]
