@@ -6,4 +6,7 @@
 *.log
 /target/
 /node_modules/
+/out/
+src/language/generated/
+syntaxes/
 !.gitignore

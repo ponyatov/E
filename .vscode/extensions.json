@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "stkb.rewrap",
-        // "ryuta46.multi-command",
         "ms-vscode.makefile-tools",
         "IBM.output-colorizer",
         // formatters
@@ -34,7 +33,7 @@
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
-        // langium
+        // Langium
         "langium.langium-vscode",
         "vitest.explorer",
         "kingwl.vscode-vitest-runner"
