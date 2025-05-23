@@ -1,8 +1,8 @@
 grammar Evento
 
 entry Program:
-    'program' name=ID ';'
-    ( words+=ID | numbers+=Num | consts+=ConstDef | actors+=Actor)*;
+    'program' name=ID
+    ( words+=ID | numbers+=Num | strs+=STR | consts+=ConstDef | actors+=Actor)*;
 
 Actor:
     'actor' name=ID '{' members+=Member* '}';
@@ -14,7 +14,7 @@ Handler:
     'on' event=ID '()' '{' statements+=ID* '}';
 
 ConstDef:
-    'const' id=ID '=' n=Num ';';
+    'const' id=ID '=' (n=Num|s=STR);
 
 Num returns number: INT | HEX | OCT | BIN | FLOAT ;
 
@@ -26,8 +26,10 @@ terminal OCT returns number: /0o[0-7]+/;
 terminal BIN returns number: /0b[01]+/;
 terminal INT returns number: /[+\-]?[0-9]+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
+terminal STR: /"[^"]*"|'[^']*'/;
 // terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 hidden terminal  LINE_COMMENT: /\/\/[^\n\r]*/;
 hidden terminal BLOCK_COMMENT: /\/\*[\s\S]*?\*\//;
+hidden terminal       SHEBANG: /#![^\r\n]+/;
 // hidden terminal FORTH_COMMENT: /\([\s\S]*\)/;
