@@ -18,7 +18,7 @@ actor ADC {
 	let mode = StartStop
 	mut delta = 0.0
 
-	on data(change) {
+	on signal(change) {
 	    if change > 0.1 | delta > 0.2
 	    {
 		    read sensor |> scale celsius |> send! SERVER
