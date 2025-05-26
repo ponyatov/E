@@ -8,7 +8,7 @@
         {
             "name": "Run Extension",
             "type": "extensionHost",
-            "preLaunchTask": "Build evento",
+            "preLaunchTask": "langium:build",
             "request": "launch",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"

@@ -4,11 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build evento",
+            "label": "langium:build",
             "command": "npm run langium:generate && npm run build",
             "type": "shell",
             "group": {"kind": "build","isDefault": true},
-            "detail": "Langium: Generate grammar and build the evento language",
             "icon": {"color": "terminal.ansiGreen","id": "server-process"}
         },
         {
@@ -18,6 +17,14 @@
             "presentation"   : {"focus": true},
             "problemMatcher" : [],
             "group"          : {"kind": "build","isDefault": true},
+        },
+        {
+            "label": "python:run",
+            "command": "python3 ../src/evento/evento.py ../lib/evento.e",
+            "type": "shell",
+            "group": {"kind": "build","isDefault": true},
+            "icon": {"color": "terminal.ansiMagenta","id": "python"},
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false}
         },
     ]
 }

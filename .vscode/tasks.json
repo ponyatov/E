@@ -71,5 +71,21 @@
             "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent"},
             "group"          : {"kind": "build", "isDefault": true}
         },
+        {
+            "label": "langium:build",
+            "command": "npm run langium:generate && npm run build",
+            "type": "shell",
+            "group": {"kind": "build","isDefault": true},
+            "detail": "Langium: Generate grammar and build the evento language",
+            "icon": {"color": "terminal.ansiGreen","id": "server-process"}
+        },
+        {
+            "label"          : "langium:generate",
+            "type"           : "shell",
+            "command"        : "npm run langium:generate",
+            "presentation"   : {"focus": true},
+            "problemMatcher" : [],
+            "group"          : {"kind": "build","isDefault": true},
+        },
     ]
 }

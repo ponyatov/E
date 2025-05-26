@@ -9,7 +9,7 @@ export function registerValidationChecks(services: EventoServices) {
     const registry = services.validation.ValidationRegistry;
     const validator = services.validation.EventoValidator;
     const checks: ValidationChecks<EventoAstType> = {
-        ConstDef: validator.checkPositive
+        // ConstDef: validator.checkPositive
         // Person: validator.checkPersonStartsWithCapital
     };
     registry.register(checks, validator);
@@ -30,12 +30,12 @@ export class EventoValidator {
     }
 
     checkPersonStartsWithCapital(program: Program, accept: ValidationAcceptor): void {
-        if (program.name) {
-            const firstChar = program.name.substring(0, 1);
-            if (firstChar.toUpperCase() !== firstChar) {
-                accept('warning', 'program name should start with a capital.', { node: program, property: 'name' });
-            }
-        }
+        // if (program.name) {
+        //     const firstChar = program.name.substring(0, 1);
+        //     if (firstChar.toUpperCase() !== firstChar) {
+        //         accept('warning', 'program name should start with a capital.', { node: program, property: 'name' });
+        //     }
+        // }
     }
 
 }
