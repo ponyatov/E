@@ -51,6 +51,6 @@ tsc -b tsconfig.src.json && node esbuild.mjs
 [[ts/TypeScript]]
 [[ts/minimal project]]
 
-## [[Indentation-sensitive languages]]
+![[Indentation-sensitive languages]]
 
-## [[Langium-powered specification]]
+![[Langium-powered specification]]
