@@ -27,3 +27,22 @@ actor ADC:
 	- **Issue**: Programmatic code generation, refactoring, or diffing is harder with indentation-based syntax. *Tools must preserve exact indentation levels,* complicating scripts that manipulate Python code.
 	- **Example**: A refactoring tool moving a function must adjust all indentation, whereas braces provide clear block boundaries.
 	- **Criticism**: This increases complexity for build tools, linters, or CI/CD pipelines, which [[Evento]] aims to simplify (per our goal of replacing Python for automation).
+
+However, curly syntax can look acceptable, and has no problems with parser libs and generators:
+
+```evento
+actor SensorNode {
+    let sensor = TempSensor PIN14
+    on init = loop {
+        sensor read |> scale_to_celsius |> send! SERVER
+        sleep! 1s
+    }
+}
+
+let fetch_config url 
+	fetch! url |> parse json |> get_field "version"
+
+actor BuildScript {
+    on init = run! "corgy wild" |> print "Done"
+}
+```

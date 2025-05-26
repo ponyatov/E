@@ -5,3 +5,7 @@
 ![[E/Tokens]]
 ![[Operators]]
 ![[E/Functions]]
+![[E/if]]
+![[E/pattern match]]
+![[E/for]]
+![[E/collection|collection]]
