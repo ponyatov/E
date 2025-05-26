@@ -17,3 +17,31 @@ For example, you can fetch some configuration from database, that changes betwee
 - So, **we justifiably abandon the following restrictions** in CTFE functions:
 	- **No I/O or hardware access**: we sometimes need to do some network discovery, or query local IoT devices for its capabilities, in case we want to add new device into a group, and rebuild optimized firmware without unneeded options
 	- **No dynamic memory allocation** and [[no_std]] mode: *it is required for target cross-compiled code, but in CTFE we want to make more or less complex things* that required dynamic size data structures, and unlimited i/o and using host system capabilities.
+
+```evento
+#!/usr/bin/env evento
+
+const fn query_device() -> str {
+    fetch!("http://iot-device:8080/capabilities")
+        |> parse_json!()
+        |> get_field!("firmware_options")
+}
+
+const fn optimize_config(options: str) -> str {
+    if options.contains("sensor") {
+        "enable_sensor: true"
+    } else {
+        "enable_sensor: false"
+    }
+}
+
+const DEVICE_CONFIG = query_device() |> optimize_config();
+const FIRMWARE_VERSION = "1.0.3";
+
+actor BuildScript {
+    on init() {
+        run!("cargo build --features " + DEVICE_CONFIG);
+        print!("Built firmware v{}", FIRMWARE_VERSION);
+    }
+}
+```

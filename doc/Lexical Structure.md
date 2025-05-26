@@ -4,3 +4,4 @@
 ![[Whitespace and Comments]]
 ![[E/Tokens]]
 ![[Operators]]
+![[E/Functions]]
