@@ -6,6 +6,10 @@
 	- and async `|>` pipe operator for more complex dataflow computing
 - [[Elixir]] function polymorphism with guards
 
+Benefits for [[Evento]]:
+- **Conciseness**: Omitting parentheses reduces visual clutter, aligning with Evento’s Python-like usability goal.
+- **Readability**: Space-separated arguments and pipelining make dataflow explicit, ideal for event-driven and distributed systems.
+
 ## Function Definitions
 
 Use [[E/let|let]] for functions
