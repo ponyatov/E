@@ -9,4 +9,5 @@
 /out/
 src/language/generated/
 syntaxes/
+*.pyc
 !.gitignore

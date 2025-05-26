@@ -92,6 +92,7 @@
         "editor.defaultFormatter"  : "ms-python.autopep8",
         "editor.formatOnSave"      :  false
     },
+    "python.autoComplete.extraPaths": ["src/${workspaceFolderBasename}"],
 
     // Rust
     "rust-analyzer.checkOnSave"     : false,
