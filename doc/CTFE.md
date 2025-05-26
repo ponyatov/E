@@ -16,4 +16,4 @@ For example, you can fetch some configuration from database, that changes betwee
 	- On the other hand, extra calls during compiler execution can reduce its speed to an unacceptable level, especially if you use blocking I/O. So, it is still necessary to adhere to the recommendations for using pure functions.
 - So, **we justifiably abandon the following restrictions** in CTFE functions:
 	- **No I/O or hardware access**: we sometimes need to do some network discovery, or query local IoT devices for its capabilities, in case we want to add new device into a group, and rebuild optimized firmware without unneeded options
-	- 
+	- **No dynamic memory allocation** and [[no_std]] mode: *it is required for target cross-compiled code, but in CTFE we want to make more or less complex things* that required dynamic size data structures, and unlimited i/o and using host system capabilities.
