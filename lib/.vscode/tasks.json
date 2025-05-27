@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label"          :  "evento:parse",
+            "type"           :  "shell",
+            "command"        :  "python3",
+            "args"           : ["evento/evento.py","evento.e"],
+            "options"        : {"cwd": "${workspaceFolder}"},
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent"},
+            "group"          : {"kind": "build", "isDefault": true}
+        },
+    ]
+}
