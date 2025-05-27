@@ -18,22 +18,16 @@ MutDef:
     'mut' id=ID '=' Expr;
 
 Expr:
-    (n=Num|s=STR|b=BOOL);
+    (n=Int|f=Float|s=STR|b=BOOL|s=SYM);
 
 // Actor:
-//     'actor' name=ID (':' parent=ID)? '{' members+=Member* '}';
-
-// Member:
-//     ConstDef
-//     | Handler;
+//     'actor' name=ID (':' parent=ID)? '{' handlers+=Handler* '}';
 
 // Handler:
-//     'on' event=ID '()' '{' statements+=ID* '}';
+//     'on' event=ID '=' (expr+=Expr)+ ;
 
-Num returns number:
-    INT | HEX | OCT | BIN
-    | FLOAT ;
-
+Int returns number: INT | HEX | OCT | BIN;
+Float returns number: FLOAT;
 
 terminal fragment Intuffix : /\`[ui](8|16|32|64)/;
 terminal fragment Flotuffix: /\`f{16|32|64}/;

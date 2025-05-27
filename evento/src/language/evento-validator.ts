@@ -1,4 +1,5 @@
-import type { ValidationAcceptor, ValidationChecks } from 'langium';
+import type {  ValidationChecks } from 'langium';
+// ValidationAcceptor
 import { type EventoAstType } from './generated/ast.js';
 import type { EventoServices } from './evento-module.js';
 
@@ -29,13 +30,13 @@ export class EventoValidator {
     //     }
     // }
 
-    checkPersonStartsWithCapital(program: Program, accept: ValidationAcceptor): void {
-        // if (program.name) {
-        //     const firstChar = program.name.substring(0, 1);
-        //     if (firstChar.toUpperCase() !== firstChar) {
-        //         accept('warning', 'program name should start with a capital.', { node: program, property: 'name' });
-        //     }
-        // }
-    }
+    // checkPersonStartsWithCapital(program: Program, accept: ValidationAcceptor): void {
+    //     // if (program.name) {
+    //     //     const firstChar = program.name.substring(0, 1);
+    //     //     if (firstChar.toUpperCase() !== firstChar) {
+    //     //         accept('warning', 'program name should start with a capital.', { node: program, property: 'name' });
+    //     //     }
+    //     // }
+    // }
 
 }
