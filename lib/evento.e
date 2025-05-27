@@ -17,4 +17,5 @@ const TAB = 0x09`u8
 const PI = 3.1415926535
 const AVOGADRO = 6.02214076e23
 
+let some = 42
 mut compile = false

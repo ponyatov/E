@@ -6,10 +6,19 @@ entry Program:
 //     ( words+=ID | numbers+=Num | strs+=STR | stmt+=Stmt | actors+=Actor )*;
 
 Def:
-    ConstDef;
+    ConstDef|LetDef|MutDef;
 
 ConstDef:
-    'const' id=ID '=' (n=Num|s=STR|b=BOOL);
+    'const' id=ID '=' Expr;
+
+LetDef:
+    'let' id=ID '=' Expr;
+
+MutDef:
+    'mut' id=ID '=' Expr;
+
+Expr:
+    (n=Num|s=STR|b=BOOL);
 
 // Actor:
 //     'actor' name=ID (':' parent=ID)? '{' members+=Member* '}';
@@ -37,6 +46,7 @@ terminal INT returns number: /[+\-]?[0-9]+/   Intuffix?;
 terminal STR: /"[^"]*"|'[^']*'/;
 terminal BOOL returns boolean: ('true'|'false');
 terminal ID: /[_a-zA-Z][_a-zA-Z0-9]*/;
+terminal SYM: '#' ID;
 
        terminal       SHEBANG: /#![^\r\n]+/;
 hidden terminal  LINE_COMMENT: /\/\/[^\n\r]*/;

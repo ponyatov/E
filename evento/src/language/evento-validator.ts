@@ -1,5 +1,5 @@
 import type { ValidationAcceptor, ValidationChecks } from 'langium';
-import { type ConstDef, type EventoAstType, type Program } from './generated/ast.js';
+import { type EventoAstType } from './generated/ast.js';
 import type { EventoServices } from './evento-module.js';
 
 /**
@@ -9,8 +9,8 @@ export function registerValidationChecks(services: EventoServices) {
     const registry = services.validation.ValidationRegistry;
     const validator = services.validation.EventoValidator;
     const checks: ValidationChecks<EventoAstType> = {
-        // ConstDef: validator.checkPositive
-        // Person: validator.checkPersonStartsWithCapital
+    //     // ConstDef: validator.checkPositive
+    //     // Person: validator.checkPersonStartsWithCapital
     };
     registry.register(checks, validator);
 }
@@ -20,14 +20,14 @@ export function registerValidationChecks(services: EventoServices) {
  */
 export class EventoValidator {
 
-    checkPositive(cdef: ConstDef, accept: ValidationAcceptor): void {
-        if (cdef.n) {
-            if (cdef.n<=0)
-                accept('warning', 'value must be positive.', { node: cdef, property: 'n' });
-            if (cdef.n==0b1101)
-                accept('error', 'bin ok', { node: cdef, property: 'n' });
-        }
-    }
+    // checkPositive(cdef: ConstDef, accept: ValidationAcceptor): void {
+    //     if (cdef.n) {
+    //         if (cdef.n<=0)
+    //             accept('warning', 'value must be positive.', { node: cdef, property: 'n' });
+    //         if (cdef.n==0b1101)
+    //             accept('error', 'bin ok', { node: cdef, property: 'n' });
+    //     }
+    // }
 
     checkPersonStartsWithCapital(program: Program, accept: ValidationAcceptor): void {
         // if (program.name) {

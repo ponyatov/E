@@ -1,4 +1,5 @@
-# Floats
+# `float`
+## floating point numbers
 
 ```langio
 terminal fragment Flotuffix: /`f{16|32|64}/;

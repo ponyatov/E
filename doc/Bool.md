@@ -1,4 +1,4 @@
-# Booleans
+# `bool`
 
 ```evento
 terminal BOOL returns boolean: ('true'|'false');

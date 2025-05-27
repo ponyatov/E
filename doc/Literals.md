@@ -1,6 +1,6 @@
 # Literals
 
-![[E/Int]]
+![[E/Integer]]
 ![[E/Float]]
 ![[E/Bool]]
 ![[E/String]]
