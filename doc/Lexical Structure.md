@@ -1,8 +1,10 @@
 ## **1. Lexical Structure**
 
-![[Langium#Langium-powered specification]]
+![[Langium-powered specification]]
+
+![[E/Tokens|Tokens]]
+
 ![[Whitespace and Comments]]
-![[E/Tokens]]
 ![[Operators]]
 ![[E/Functions]]
 ![[E/if]]

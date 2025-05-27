@@ -54,7 +54,7 @@ Resulting grammar surprisingly looks like the first page of any book about the F
 
 So, there is nothing else, besides maybe C-style comments to let us mark some code as ignored, and write some cool comments (as syntax so primitive and unreadable that we can't understand our FORTH code even after few days later).
 
-![[E/comment]]
+##### See [[E/Comments|Comments]] as a sample
 
 If you still want FORTH, the parentheses for stack effects can be used:
 ```ts

@@ -48,6 +48,6 @@ https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 
 ### **Prioritization for Evento**
 
-1. **Must Have**: Lex, syntax, type system, actor semantics, error handling.
+1. **Must Have**: OOP-friendly type system, actor semantics, error handling.
 2. **Nice to Have**: Formal verification, advanced FFI.
-3. **Embedded-Critical**: Memory model, hardware APIs.
+3. **Embedded-Critical**: Memory model, hardware APIs, **native C code generation**
