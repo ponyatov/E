@@ -6,7 +6,7 @@ for literals use `value'type` syntax
 
 allow F#-like functions and methods without parentheses
 
-deny direct access to object fields, use field name for calling getter
+deny direct access to object and actor fields, use field name for calling getter
 
 https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 
