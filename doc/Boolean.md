@@ -1,8 +1,7 @@
 # Booleans
 
 ```evento
-
+terminal BOOL returns boolean: ('true'|'false');
 ```
 
-- **Booleans**: `true'bool`, `false'bool`
-
+- `true'bool`, `false'bool`
