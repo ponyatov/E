@@ -1,4 +1,5 @@
-# Integer
+# `int`
+## integer number variants
 
 ```langio
 terminal fragment Intuffix : /`[ui](8|16|32|64)/;

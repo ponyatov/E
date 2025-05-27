@@ -1,7 +1,7 @@
 # Literals
 
-![[E/Integer]]
+![[E/Int]]
 ![[E/Float]]
-![[E/Boolean]]
+![[E/Bool]]
 ![[E/String]]
 ![[E/Symbol]]
