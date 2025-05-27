@@ -11,3 +11,4 @@
 ![[E/pattern match]]
 ![[E/for]]
 ![[E/collection|collection]]
+![[E/Actor]]
