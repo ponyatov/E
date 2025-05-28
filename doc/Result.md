@@ -1,6 +1,8 @@
 # Result
 ## [[E/enum|enum]]
 
+type wraps I/O with possible errors
+
 ```
 enum Error {}
 

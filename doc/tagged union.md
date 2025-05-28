@@ -14,5 +14,20 @@ enum SensorData {
 - binds type name with tuple-like data groups
 - data shares the same [[E/Sized|Sized]] memory region
 
+[[E/pattern matching|pattern matching]]:
+
+```
+fn handle_data (data: SensorData) -> u8 {
+  match data {
+    Temperature   t         => t.round() |> u8
+    Accelerometer (x, y, z) => (x + y + z).abs() |> u8
+    Error(code)             => code
+  }
+}
+```
+
+![[E/State Machine|State Machine]]:
+
+
 ![[E/Option|Option]]
 ![[E/Result|Result]]
