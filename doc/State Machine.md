@@ -21,4 +21,3 @@ impl Machine for State {
 
 Machine.run State::Reading(0x42, 1000);
 ```
-
