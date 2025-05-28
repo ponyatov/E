@@ -1,4 +1,6 @@
-# pattern match
+# [[lang/pattern matching|pattern matching]]
+
+
 
 [[lang/pattern matching|Pattern matching]] is the most powerful language feature in modern programming languages oriented on complex data structure processing.
 
