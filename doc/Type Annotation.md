@@ -1,9 +1,16 @@
 # Type Annotation
 
+- down-right tick ` char placed on a separate keyboard key
+	- type annotation is the most used syntax construct so having special hardware key is a good feature
+- visual compactness gives less syntax noise even without code coloring
+
+![[E/Variable#Declarations]]
+![[E/Function#Signature]]
+
+Actor Fields:
+
 ```evento
-let x`i32 = 42          // Explicit 32-bit integer
-let buffer`[u8; 256]    // Fixed-size array
-let sensor`TempSensor   // Custom type
+actor Sensor {
+  let calibration`f32 = 1.0  // Field type
+}
 ```
-- down-right tick ` char placed on a separate key
-	- type annotation is the most used syntax construct

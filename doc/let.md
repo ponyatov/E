@@ -1,2 +1,2 @@
 # let
-## [[E/Functions#Function Definitions]]
+## [[E/Function#Function Definitions]]
