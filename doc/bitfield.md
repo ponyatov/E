@@ -1,16 +1,18 @@
 # bitfield
 
+`b1..64`
+
 ```evento
-bitfields Name`type [little|big] {
+struct Name`type [little|big] {
   _: 1      // padding
-  name: 2   // bits 15..13
-  mode: 3   // bits 2..0
+  name`b2   // bits 15..13
+  mode`b3   // bits 2..0
 }
 ```
-- special keyword
+- special type for [[E/struct|struct]]
 - `type` = **unsigned** [[E/Integer|Integer]]
 	- type hint used for binding to one of unsigned types as container
-- optional endianness
+- optional [[E/endianness]]
 - `name:n` defines n-bit field
 	- order from higher bits as it drawn in most datasheets
 - default @[[packed]] [[E/attribute|attribute]]
