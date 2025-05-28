@@ -3,7 +3,7 @@
 ```evento
 // No commas, F#-style
 struct Point [little|big] {
-  name`type [= default_value ]
+  name`type [ = default_value ]
 ```
 - [[E/endianness|endianness]]
 - field
