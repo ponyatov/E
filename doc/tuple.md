@@ -2,13 +2,16 @@
 
 ```evento
 // Comma-separated, parentheses-optional
-let coords = (x: 1.0, y: 2.0, z: 0.0)  // Named fields
+let coords = x: 1.0, y: 2.0, z: 0.0    // Named fields
 let pair = (42, "answer")              // Unnamed, heterogeneous
 let unit = (,)                         // Empty tuple
 ```
-- group of heterogeneous types data elements
+- group data elements of heterogeneous types
 - comma-separated
-- optional parens
+	- optional parens
+- usage
+	- return multiple values from [[E/Function|Function]]
+	- visually distinct `extern C` calling
 
 ```evento
 // Explicit type hints
@@ -24,5 +27,10 @@ Access Patterns
 |**Named**|`coords.x` (→ `1.0`)|Requires field names|
 |**Destructuring**|`let (x, y) = coords`|Pattern matching|
 
-- return mutiple values from [[E/Function|Function]]
-- [[E/Copy|Copy]] semantics
+
+## vs [[E/struct|struct]]
+
+- unnamed
+- [[E/Copy|Copy]] semantics (stack-allocated)
+- positional access
+- no Memory layout control
