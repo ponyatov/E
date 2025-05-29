@@ -1,4 +1,4 @@
-# pipe operator
+# pipe [[Operators]]
 
 ![[pipe sample code]]
 

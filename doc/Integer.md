@@ -2,11 +2,16 @@
 ## integer number variants
 
 - `i` [[Cpp/signed|signed]] integer
+	- `int` signed integer with CPU-native bit size
 	- `i8` Sensors, small counters
 	- `i32` Default signed integer
 - `u` [[Cpp/unsigned|unsigned]] integer
-	- `u8` = byte
 	- [[E/bitfield|bitfield]] container & status flags
+		- bitfields must be packed into unsigned CPU register to apply bit commands for accessing and modifing
+	- `uint` unsigned integer with CPU-native bit size
+		- default [[E/array|array]] index
+	- `u8` = byte
+		- arrays with short indexing (optimized for data rings & queue buffers)
 	- `u32` Timers, large counters
 	- `u64` Timestamps
 - 8, 16, 32, 64 bits
