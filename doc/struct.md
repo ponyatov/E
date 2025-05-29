@@ -9,7 +9,7 @@ struct Point [little|big] {
 - field
 	- types also include [[E/bitfield|bitfield]] arbitrary
 	- default values: optional
-- [[E/attribute|attributes]]
+- [[Attributes|attributes]]
 	- [[packed]]
 	- [[aligned]]
 - Comma-free cleaner syntax

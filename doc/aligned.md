@@ -1,5 +1,5 @@
 # align
-## [[E/attribute|attribute]]
+## [[Attributes|Attributes]]
 
 ```event
 @aligned(u8)

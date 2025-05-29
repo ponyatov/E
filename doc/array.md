@@ -57,7 +57,30 @@ actor Sensor {
 ## Hardware Register Access
 
 ```evento
-let gpio` [u32; 16] @volatile @addr(0x4002_0000) // STM32F4 GPIO regs
+let gpio` [u32; 16] @volatile @addr(0x4002_0000) // GPIO regs pool
+
+enum Mode {
+	Input
+	Output
+	HiZ
+	ADC
+	PWM
+}
+
+enum Output {
+	PushPull
+	OpenDrain
+}
+
+type GPIO_CR = register
+
+let ctrl = GPIO_CR ( &gpio[0] }
+
+ctrl.mode   = Mode:Output
+ctrl.clock  = 10MHz
+ctrl.output = Output:PushPull
+
+ctrl = 1 << BSSR;
 ```
-- [[E/attribute|attribute]]
+- [[Attributes|Attributes]]
 	- [[E/addr]]

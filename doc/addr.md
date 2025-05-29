@@ -1,2 +1,2 @@
 # @addr
-## [[E/attribute|attribute]]
+## [[Attributes|Attributes]]

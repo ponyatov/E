@@ -11,6 +11,8 @@
 	- `u64` Timestamps
 - 8, 16, 32, 64 bits
 - hex, oct & bin bases with 0x prefixes
+- `_` allowed to split digit groups
+	- `@addr(0x4002_0000)` `123_456_789`
 
 ```langio
 terminal fragment Intuffix : /`[ui](8|16|32|64)/;
