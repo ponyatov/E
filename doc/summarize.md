@@ -3,7 +3,7 @@
 
 > - for distributed programs 
 > - for embedded systems ([[hw/microcontroller|microcontroller]]s)
-> - mixes Rust, Exlixir and F#
+> - mixes Rust, Elixir and F#
 
 1. Distributed & Event-Driven by Default
 
@@ -32,6 +32,7 @@
 		- Supervision trees
 	- Rust inspired
 		- variable immutability (let & mut)
+
 5. **Cross-Compile to Bare Metal**
 	- Tier 1: **ARM Cortex-M0/M4**, **RISC-V** (ESP32, GD32).
 	- Tier 2: **Embedded Linux** (RPi, i386 SBCs, x86_64 desktops & servers).
