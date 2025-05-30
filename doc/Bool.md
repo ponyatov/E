@@ -6,15 +6,31 @@ terminal BOOL returns boolean: ('true'|'false');
 
 - `true'bool`, `false'bool`
 
+## implicit conversion
+
+- *Python-like conversion can be used in
+	- [[E/if|if]]-like and
+	- [[E/filter|filter]] constructs, and 
+	- [[conditional loop]]s*
+
+| -> | true | false
+|-|-|-
+| true | v |
+| false || v
+| int | != 0 | == 0
+| float | >= $\pm \epsilon$ | < $\pm \epsilon$ |
+| [[E/array]] | size > 0 & some element == true | [ ] \| all elements == false
+| [[E/vector]] | size > 0 & some element == true | [ ] \| all elements == false
+
 ## logic operators
 
-### Boolean `bool bool -> bool`
+logic operators works the same for integers and [[E/Bool|Bool]] type so we don't need to make separate groups for logic and bitwize operations
 
 |Operator|Meaning|Example|Notes|
 |---|---|---|---|
-|`&&`|Logical AND|`if (x > 0) && (y < 10)`|Short-circuits (evaluates left-first)|
+|`&&`|logical & bitwize AND|`if (x > 0) && (y < 10)`|Short-circuits (evaluates left-first)|
 |`\|`|Logical OR|`if (err) \| (timeout)`|Short-circuits|
-|`!`|Logical NOT|`if !ready`|Unary operator|
+|`!`|Logical NOT|`if !ready`|Unary NOT operator|
 
 - **No implicit conversions**: Operands must be `bool` (unlike C).
 - **Strict typing**: `1 && true` → Compile error (mix `i32` and `bool`).
