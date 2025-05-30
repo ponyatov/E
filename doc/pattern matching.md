@@ -1,5 +1,7 @@
 # [[lang/pattern matching|pattern matching]]
 
+![[match operator]]
+
 ```evento
 match value
 | pattern1 -> expr1
