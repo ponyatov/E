@@ -6,4 +6,3 @@ For consistency with embedded/dataflow focus the classical C/C++ style comment w
 
 ![[E/Comments]]
 ![[shebang]]
-![[E/Documenting#docstring]]

@@ -4,6 +4,8 @@
 - @pluralia_pluralia (Magenta)
 	- https://t.me/LanguageDev/211902
 	- https://youtu.be/mwqE29LBNjI
+- Irina
+	- https://youtu.be/UWkCchTC24M?si=TodIfKS8HsZ64s9N
 
 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/
 

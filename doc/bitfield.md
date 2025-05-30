@@ -11,3 +11,4 @@ struct Name`type [little|big] {
 ```
 - special type for [[E/struct|struct]]
 - analog to [[E/Integer|Integers]] with arbitrary bits count
+
