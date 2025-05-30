@@ -40,3 +40,8 @@ non-byte aligned integers
 - `u12` match common 12-bit ADCs
 - `u16` 16-bit ADC
 - `u24` RTC timers, DSP
+
+## operators
+
+bitwize operators see: [[E/Bool#operators]]
+
