@@ -1,5 +1,7 @@
 # Evento
 
+[[E/summarize]]
+
 add f16 16-bit floats
 
 for literals use `value'type` syntax
@@ -12,7 +14,7 @@ https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 
 > [[lang/programming language|programming language]] prototype 
 > - for distributed programs 
-> - on embedded systems ([[hw/microcontroller|microcontroller]]s)
+> - for embedded systems ([[hw/microcontroller|microcontroller]]s)
 
 - **[[Actor]] Model**:
 	- Embeds *pure async message-passing concurrency* natively,
