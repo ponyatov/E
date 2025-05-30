@@ -1,4 +1,4 @@
-# **6. Standard Library**
+# Standard Library
 
 ![[E/Built-ins]]
 ![[E/Hardware APIs]]

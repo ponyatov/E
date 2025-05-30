@@ -1,5 +1,12 @@
 ## **1. Lexical Structure**
 
+- [[E/Comments|Comments]] (line, block, doc comments)
+- [[E/Literals|Literals]] (numbers, strings, binaries)
+- [[E/Identifiers|Identifiers]] (naming rules)
+- [[E/Keywords|Keywords]] (`actor`, `mut`, `async`, `match`)
+
+###
+
 ![[Langium-powered specification]]
 
 ![[Whitespace and Comments]]

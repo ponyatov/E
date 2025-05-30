@@ -56,62 +56,62 @@
 - Core paradigms (actor model, functional, ownership)
 - Target platforms (bare-metal, embedded Linux)
 
-### **2. Lexical Structure**
+### **2. [[E/Lexical Structure]]**
 
 - Comments (line, block, doc comments)
 - Literals (numbers, strings, binaries)
 - Identifiers (naming rules)
 - Keywords (`actor`, `mut`, `async`, `match`)
 
-### **3. Data Types**
+### **3. [[E/Data Types]]**
 
 - Primitives (`i32`, `f32`, `bool`, `u8`)
 - Compound types (tuples, arrays, slices)
 - Special types (`Result<T,E>`, `Option<T>`)
 - Hardware types (`GPIO`, `I2C`, `PWM`)
 
-### **4. Memory Model**
+### **4. [[E/Memory Model]]**
 
 - Ownership system (simplified Rust)
 - Borrowing rules (immutable/mutable)
 - Static allocation (`@section` syntax)
 - Optional RTGC constraints
 
-### **5. Concurrency Model**
+### **5. [[E/Concurrency Model]]**
 
 - Actor declaration syntax
 - Message passing patterns
 - Built-in supervision trees
 - Priority-based scheduling
 
-### **6. Error Handling**
+### **6. [[E/Error Handling]]**
 
 - `Result` type semantics
 - Error propagation (`?` operator)
 - Panic behavior (configurable handlers)
 
-### **7. Hardware Interaction**
+### **7. [[E/Hardware Interaction]]**
 
 - Peripheral access syntax
 - Volatile operations
 - Interrupt handlers
 - DMA safety annotations
 
-### **8. Compilation Model**
+### **8. [[E/Compilation Model]]**
 
 - Transpilation to C rules
 - Target-specific behaviors
 - `no_std` requirements
 - Linker script integration
 
-### **9. Standard Library**
+### **9. [[E/Standard Library]]**
 
 - Core modules (`io`, `net`, `time`)
 - Hardware abstraction layer
 - Distributed primitives
 - Minimal runtime services
 
-### **10. Safety & Compliance**
+### **10. [[E/Safety]] & Compliance**
 
 - MISRA-C mapping
 - ISO 26262 traceability
