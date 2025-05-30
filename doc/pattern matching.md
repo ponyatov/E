@@ -1,6 +1,11 @@
 # [[lang/pattern matching|pattern matching]]
 
-
+```evento
+match value
+| pattern1 -> expr1
+| pattern2 | pattern3 -> expr2
+| _ -> default_expr
+```
 
 [[lang/pattern matching|Pattern matching]] is the most powerful language feature in modern programming languages oriented on complex data structure processing.
 

@@ -44,3 +44,5 @@ let result = add 5 3 // Returns 8
 ![[Why Python’s Tabbed Syntax Is Considered Harmful]]?
 
 ![[CTFE]]
+
+![[E/isr|isr]]
