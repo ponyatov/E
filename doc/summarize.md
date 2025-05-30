@@ -48,7 +48,7 @@
 	- direct interaction with Ethernet, WiFi and Bluetooth (raw packets and cross-mesh forwarding)
 	- generic IP stack with optional `lwip` integration
 
-## **Evento Language Specification (Minimal Set)**
+## **Evento Language Specification**
 
 ### **1. Language Overview**
 
