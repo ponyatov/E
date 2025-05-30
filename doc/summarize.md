@@ -7,13 +7,14 @@
 
 1. Distributed & Event-Driven by Default
 
-	- **Actor model** (like Elixir/Erlang) for concurrency.
-	- **Message-passing** between lightweight processes.
+	- Erlang-style **actor model** with green thread processes.
+	- **Message-passing** (using shared memory for local messages).
 	- Built-in **pub/sub** and **RPC** for distributed systems.
 
 2. Memory-Safe & Hard RealTime
-	- **Ownership model** (but simpler than Rust) without gc
+	- **Simplified Rust-like ownership** (no GC by default).
 	- optional Real-Time Garbage Collection (RTGC) for circular data structures
+	- **No heap fragmentation** (region-based allocation).
 
 3. Portable
 	- source-to-source translator into high-lelvel C code for **bare-metal** targets (ARM , RISC-V, embedded Linux)
