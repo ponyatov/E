@@ -8,3 +8,11 @@ terminal FLOAT returns number: /[+\-]?[0-9]+\.[0-9]+([eE][+\-]?[0-9]+)?/ Flotuff
 ```
 
 - Examples: `3.14'f32`, `1.5e-10'f64`
+
+## functions
+
+![[Basic Arithmetic]]
+![[Trigonometry]]
+![[Rounding]]
+![[Constraints]]
+![[Hardware Intrinsics#float]]
