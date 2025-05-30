@@ -10,7 +10,7 @@ terminal BOOL returns boolean: ('true'|'false');
 
 - *Python-like Implicit conversion* to [[E/Bool|Bool]] must be used in
 	- [[E/if|if]]-like and [[E/filter|filter]] constructs, and 
-	- [[conditional loop]]s*
+	- [[Conditional Loop]]s*
 - use `-Wimplicit-conversion` compiler check flag for strict projects
 
 |Type|Falsy Values|Truthy Values|

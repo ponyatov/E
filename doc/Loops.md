@@ -1,4 +1,7 @@
 # Loops
 
-![[E/loop]]
-![[conditional loop]]
+![[Infinite Loop]]
+![[wait]]
+![[Conditional Loop]]
+![[Iteration]]
+![[Loops Control Flow]]
