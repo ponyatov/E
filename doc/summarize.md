@@ -16,26 +16,31 @@
 	- optional Real-Time Garbage Collection (RTGC) for circular data structures
 	- **No heap fragmentation** (region-based allocation).
 
-3. Portable
-	- source-to-source translator into high-lelvel C code for **bare-metal** targets (ARM , RISC-V, embedded Linux)
-	- no FFI: translated code can be compiler with any C/C++ compiler
+3. **Portable via native C Transpilation**
+	- **Source-to-source translation to human-readable ANSI C** (no FFI hell).
+	- Works with **any C/C++ toolchain** (GCC, Clang, IAR, Keil).
+	- targets for **bare-metal** cross-compile (ARM , RISC-V, embedded Linux)
+	- transpiler without IR layers (generates C code for target selected by project config and compiler options)
+	- MISRA-C and ISO 26262/SIL4 compliant output
 
-4. Clean and easy readable syntax
+4. Clean and easy-readable syntax
 	- F# inspired
 		- functions without parens
-	- Elixir inspiered
+	- Elixir inspired
 		- pattern matching and functions with guards
 		- `|>` pipe operators
+		- Supervision trees
 	- Rust inspired
 		- variable immutability (let & mut)
-5. Cross-compile first for microcontrollers
-	- ARM Cortex-M (Cortex-M0, Cortex-M1, Cortex-M4)
-	- RiscV
-	- embedded Linux (multiple hardware platforms, including x86_64 & Raspberry Pi)
+5. **Cross-Compile to Bare Metal**
+	- Tier 1: **ARM Cortex-M0/M4**, **RISC-V** (ESP32, GD32).
+	- Tier 2: **Embedded Linux** (RPi, i386 SBCs, x86_64 desktops & servers).
 
-6. No runtime: `no_std` environment
-	 - Hardware access (GPIO, I2C, etc.) as first-class
-	 - async non-blocking I/O
+6. **Zero-Runtime (`no_std`) with hard RTOS features**
+	 - Typed hardware access for all popular peripherals and interfaces (MCU & PC)
+	 - preemptive multitasking with priorities
+	 - RTOS syncronization (green threads on Linux targets)
+	 - non-blocking I/O
 
 7. Networking
 	- heterogeneous cluster over wireless mesh networks
