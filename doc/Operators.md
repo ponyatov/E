@@ -4,3 +4,4 @@
 
 ![[E/compare]]
 ![[E/pipe]]
+![[E/Bool#operators]]

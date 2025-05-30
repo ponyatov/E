@@ -5,6 +5,7 @@
 ![[Whitespace and Comments]]
 ![[E/Type System|Type System]]
 ![[Operators]]
+![[E/Loops]]
 ![[E/Function]]
 ![[E/if]]
 ![[E/pattern matching]]

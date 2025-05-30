@@ -11,6 +11,7 @@ terminal BOOL returns boolean: ('true'|'false');
 - *Python-like Implicit conversion* to [[E/Bool|Bool]] must be used in
 	- [[E/if|if]]-like and [[E/filter|filter]] constructs, and 
 	- [[conditional loop]]s*
+- use `-Wimplicit-conversion` compiler check flag for strict projects
 
 |Type|Falsy Values|Truthy Values|
 |---|---|---|
@@ -27,18 +28,38 @@ if x { ... }  // true (non-zero)
 
 ## operators
 
-_(Same symbols for logical/bitwise, context-dependent)_
+### Logical Operators (Short-circuiting)
 
-|Operator|Logical Context|Bitwise Context|
+|Operator|Example|Compilation|
 |---|---|---|
-|`&`|Short-circuiting AND|Bitwise AND|
-|\||Short-circuiting OR|Bitwise OR|
-|`^`|XOR|Bitwise XOR
-|`!`|Logical NOT
-|`~`||Bitwise NOT|
+|`and`|`x and y`|`x & y` (C-style)|
+|`or`|`x or y`|x \| y|
+|`not`|`not x`|`!x`|
+
+Compiler distinguishes logical vs. bitwise based on operand types:
+
+```evento
+if (x > 0) and (y < 10)   // Logical (short-circuit)
+let mask = 0xFF & gpio[0] // Bitwise
+```
+
+### Bitwise Operators (Non-short-circuiting)
+
+|Operator|Example|Hardware Use Case|
+|---|---|---|
+|`&`|`flags & 0x1`|Masking GPIO registers|
+|\||config \| `0x80`|Setting control bits|
+|`^`|`mask ^ 0xFF`|Toggle bits|
+|`~`|`~status`|Invert all bits|
 
 _(For hardware registers, machine numbers, and flags)_
 
 ```evento
-let gpio_state = (gpio[0] & 0x1) != 0;  // Extract pin 0 state
+let gpio_state = bool (gpio[0] & 0x1)  // Extract pin 0 state and get Bool
+```
+```evento
+// Safe bitmask operation
+fn is_flag_set(reg: u32, bit: u8) -> bool {
+  (reg & (1 << bit)) != 0  // Explicit comparison
+}
 ```
