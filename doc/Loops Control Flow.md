@@ -3,5 +3,5 @@
 |Operator|Example|Notes|
 |---|---|---|
 |`break`|`if x { break; }`|Exit innermost loop|
-|`break label`|`break topLoop;`|Exit N nested loops (rare)|
+|`break expr`|`break Error(Timeout);`|Exit with return expression|
 |`continue`|`if x { continue; }`|Skip to next iteration|
