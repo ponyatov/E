@@ -50,9 +50,9 @@
 
 ## **Evento Language Specification**
 
-### **1. Language Overview**
+### **1. [[E/Language Overview]]**
 
-- Design goals (embedded, distributed, real-time)
+- [[Design goals]] (embedded, distributed, real-time)
 - Core paradigms (actor model, functional, ownership)
 - Target platforms (bare-metal, embedded Linux)
 
