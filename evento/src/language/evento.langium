@@ -1,12 +1,12 @@
 grammar Evento
 
-entry Program:
+entry Module:
     SHEBANG?
     (defs+=Def)*;
 //     ( words+=ID | numbers+=Num | strs+=STR | stmt+=Stmt | actors+=Actor )*;
 
 Def:
-    ConstDef|LetDef|MutDef;
+    (ConstDef|LetDef|MutDef|FnDef) ';';
 
 ConstDef:
     'const' id=ID '=' Expr;
@@ -16,6 +16,9 @@ LetDef:
 
 MutDef:
     'mut' id=ID '=' Expr;
+
+FnDef:
+    'extern'? 'fn' name=ID '(';
 
 Expr:
     (n=Int|f=Float|s=STR|b=BOOL|s=SYM);

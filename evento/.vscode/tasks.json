@@ -7,7 +7,7 @@
             "label": "langium:build",
             "command": "npm run langium:generate && npm run build",
             "type": "shell",
-            "group": {"kind": "build","isDefault": true},
+            "group": {"kind": "build","isDefault": false},
             "icon": {"color": "terminal.ansiGreen","id": "server-process"}
         },
         {
@@ -22,7 +22,7 @@
             "label": "python:run",
             "command": "python3 ../src/evento/evento.py ../lib/evento.e",
             "type": "shell",
-            "group": {"kind": "build","isDefault": true},
+            "group": {"kind": "build","isDefault": false},
             "icon": {"color": "terminal.ansiMagenta","id": "python"},
             "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false}
         },
