@@ -72,7 +72,10 @@
                     "Evento",
                     "evento"
                 ],
-                "extensions": [".e",".evt",".evento"],
+                "extensions": [
+                    ".e",
+                    ".i"
+                ],
                 "configuration": "./language-configuration.json"
             }
         ],
