@@ -19,4 +19,6 @@ const AVOGADRO = 6.02214076e23;
 
 mut compile = false;
 
+const Sym = #Bol;
+
 let numbers = [-01 +0230 0xDeadBeef 0o750 0b1101];

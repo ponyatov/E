@@ -1,10 +1,8 @@
 # `bool`
 
-```evento
+```langium
 terminal BOOL returns boolean: ('true'|'false');
 ```
-
-- `true'bool`, `false'bool`
 
 ## implicit conversion
 
