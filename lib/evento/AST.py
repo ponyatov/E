@@ -7,6 +7,9 @@ class AST:
         self.nest = []
         self.attr = {}
 
+    def compile(self):
+        self.hpp(); self.cpp()
+
     def __mul__(self, o):
         assert isinstance(o, AST)
         self.value = o.val(); return self
@@ -46,12 +49,16 @@ class AST:
 
 class Primitive(AST):
     def eval(self, ctx={}): return self
+    def compile(self): return self.val()
 
 class Int(Primitive): pass
+
 class Float(Primitive):
     def abs(self): return math.fabs(self.value)
 
-class Str(Primitive): pass
+class Str(Primitive):
+    def compile(self): return f'"{self.val()}"'
+
 class Sym(Primitive): pass
 class Id(Primitive): pass
 
