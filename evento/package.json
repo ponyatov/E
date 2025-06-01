@@ -22,7 +22,8 @@
         "dev": "vite",
         "dev:debug": "vite --debug --force",
         "serve": "npm run dev",
-        "test": "vitest run"
+        "test": "vitest run",
+        "vsix": "vsce package"
     },
     "dependencies": {
         "langium": "~3.5.0",
