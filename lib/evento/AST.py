@@ -4,6 +4,10 @@ class AST:
         self.nest = []
         self.attr = {}
 
+    def __mul__(self, o):
+        assert isinstance(o, AST)
+        self.value = o.val(); return self
+
     def __setitem__(self, idx, o):
         assert isinstance(idx, str)
         assert isinstance(o, AST)
@@ -35,7 +39,10 @@ class AST:
             ret += i.dump(depth + 1)
         return ret
 
-class Primitive(AST): pass
+    def eval(self, ctx={}): raise TypeError(self)
+
+class Primitive(AST):
+    def eval(self, ctx={}): return self
 
 class Int(Primitive): pass
 
@@ -49,7 +56,11 @@ class Keyword(AST):
     def __init__(self, V=None):
         super().__init__(V if V else '')
 
-class Const(Keyword): pass
+class Const(Keyword):
+    def eval(self, ctx):
+        ctx[self.val()] = self[0].eval(ctx)
+        return ctx
+
 class Let(Keyword): pass
 class Mut(Keyword): pass
 
