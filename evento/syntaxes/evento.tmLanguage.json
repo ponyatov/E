@@ -1,52 +1,94 @@
 {
-  "name": "evento",
-  "scopeName": "source.evento",
-  "fileTypes": [
-    ".e",
-    ".i"
-  ],
-  "patterns": [
-    {
-      "include": "#comments"
-    },
-    {
-      "name": "keyword.control.evento",
-      "match": "\\b(const|extern|fn|let|mut)\\b"
-    }
-  ],
-  "repository": {
-    "comments": {
-      "patterns": [
+    "name": "evento",
+    "scopeName": "source.evento",
+    "fileTypes": [
+        ".e",
+        ".i"
+    ],
+    "patterns": [
         {
-            "name": "constant.language.evento",
-            "match": "\\b(?i:true|false)\\b"
+            "include": "#comments"
         },
         {
-          "begin": "//",
-          "beginCaptures": {
-            "1": {
-              "name": "punctuation.whitespace.comment.leading.evento"
-            }
-          },
-          "end": "(?=$)",
-          "name": "comment.line.evento"
+            "include": "#numeric"
         },
         {
-          "name": "comment.block.evento",
-          "begin": "/\\*",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.evento"
-            }
-          },
-          "end": "\\*/",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.evento"
-            }
-          }
+            "name": "keyword.control.evento",
+            "match": "\\b(const|extern|fn|let|mut)\\b"
+        },
+        {
+            "name": "string.quoted.single.evento",
+            "begin": "'",
+            "end": "'"
+        },
+        {
+            "name": "string.quoted.double.evento",
+            "begin": "\"",
+            "end": "\""
         }
-      ]
+    ],
+    "repository": {
+        "numeric": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.integer.decimal.evento",
+                    "match": "\\b[+-]?[0-9][0-9_]*\\b",
+                    "comment": "Decimal integers"
+                },
+                {
+                    "name": "constant.numeric.integer.hex.evento",
+                    "match": "\\b0x[0-9a-fA-F][0-9a-fA-F_]*\\b",
+                    "comment": "Hexadecimal literals"
+                },
+                {
+                    "name": "constant.numeric.integer.octal.evento",
+                    "match": "\\b0o[0-7][0-7_]*\\b",
+                    "comment": "Octal literals"
+                },
+                {
+                    "name": "constant.numeric.integer.binary.evento",
+                    "match": "\\b0b[01][01_]*\\b",
+                    "comment": "Binary literals"
+                },
+                {
+                    "name": "constant.numeric.float.evento",
+                    "match": "\\b[+-]?([0-9]+\\.[0-9]+|\\.[0-9]+)([eE][+-]?[0-9]+)?\\b",
+                    "comment": "Floating point numbers"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "constant.language.evento",
+                    "match": "\\b(?i:true|false|[uif][0-9]+)\\b"
+                },
+                {
+                    "begin": "#!",
+                    "end": "(?=$)",
+                    "name": "comment.line.evento"
+                },
+                {
+                    "begin": "//",
+                    "end": "(?=$)",
+                    "name": "comment.line.evento"
+                },
+                {
+                    "name": "comment.block.evento",
+                    "begin": "/\\*",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.evento"
+                        }
+                    },
+                    "end": "\\*/",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.evento"
+                        }
+                    }
+                }
+            ]
+        }
     }
-  }
 }

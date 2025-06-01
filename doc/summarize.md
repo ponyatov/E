@@ -5,6 +5,9 @@
 > - for embedded systems ([[hw/microcontroller|microcontroller]]s)
 > - mixes Rust, Elixir and F#
 
+grammar: 
+VSCode syntax highlight: 
+
 ## **1. [[E/Language Overview]]**
 ## **2. [[E/Lexical Structure]]**
 ## **3. [[E/Data Types]]**
