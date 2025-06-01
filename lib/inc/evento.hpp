@@ -19,3 +19,4 @@ extern const int     LF         ;
 extern const int     TAB        ;
 extern const float   PI         ;
 extern const float   AVOGADRO   ;
+extern const char*   Sym        ;

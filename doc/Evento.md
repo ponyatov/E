@@ -1,14 +1,22 @@
 # Evento
+## programming language prototype
+
+> - for distributed programs 
+> - for embedded systems ([[hw/microcontroller|microcontroller]]s)
+> - mixes Rust, Elixir and F# most yummy features
 
 [[E/summarize]]
 
-add f16 16-bit floats
-
-for literals use `value'type` syntax
-
-allow F#-like functions and methods without parentheses
-
-deny direct access to object and actor fields, use field name for calling getter
+## **1. [[E/Language Overview]]**
+## **2. [[E/Lexical Structure]]**
+## **3. [[E/Data Types]]**
+## **4. [[E/Memory Model]]**
+## **5. [[E/Concurrency Model]]**
+## **6. [[E/Error Handling]]**
+## **7. [[E/Hardware Interaction]]**
+## **8. [[E/Compilation Model]]**
+## **9. [[E/Standard Library]]**
+## **10. [[E/Safety]] & Compliance**
 
 https://chat.deepseek.com/a/chat/s/a184a060-a1e8-43bc-ab61-c7e404c47e58
 

@@ -3,18 +3,25 @@
 
 > - for distributed programs 
 > - for embedded systems ([[hw/microcontroller|microcontroller]]s)
-> - mixes Rust, Elixir and F#
+> - mixes Rust, Elixir and F# most yummy features
 
-grammar: 
-VSCode syntax highlight: https://gitflic.ru/project/dponyatov/e/blob?file=evento%2Fsyntaxes%2Fevento.tmLanguage.json&branch=dponyatov
+read this files from given URLs:
+- language overview:
+	- [Design goals](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FDesign%20goals.md)
+	- [Core paradigms](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FCore%20paradigms.md)
+	- [Target platforms](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FTarget%20platforms.md)
+- Lexical Structure:
+	- [Comments](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FComments.md)
+	- Literals:
+		- [Integer](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FInteger.md)
+		- [Float](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FFloat.md)
+		- [Bool](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FBool.md)
+		- [String](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FString.md)
+		- [Symbol](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FSymbol.md)
 
-## **1. [[E/Language Overview]]**
-## **2. [[E/Lexical Structure]]**
-## **3. [[E/Data Types]]**
-## **4. [[E/Memory Model]]**
-## **5. [[E/Concurrency Model]]**
-## **6. [[E/Error Handling]]**
-## **7. [[E/Hardware Interaction]]**
-## **8. [[E/Compilation Model]]**
-## **9. [[E/Standard Library]]**
-## **10. [[E/Safety]] & Compliance**
+- grammar: 
+	- [Langium grammar](https://gitflic.ru/project/dponyatov/e/blob/raw?file=evento%2Fsrc%2Flanguage%2Fevento.langium)
+	- [PLY lexer](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Fevento%2Flexer.py)
+	- [PLY parser](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Fevento%2Fparser.py)
+
+- [VSCode syntax highlight](https://gitflic.ru/project/dponyatov/e/blob/raw?file=evento%2Fsyntaxes%2Fevento.tmLanguage.json)

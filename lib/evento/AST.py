@@ -62,7 +62,6 @@ class Float(Primitive):
 
 from Str import *
 
-class Sym(Primitive): pass
 class Id(Primitive): pass
 
 class Op(AST): pass

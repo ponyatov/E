@@ -16,6 +16,9 @@ def p_const(p):
 def p_expr_str(p):
     r' expr : STR '
     p[0] = p[1]
+def p_expr_sym(p):
+    r' expr : SYM '
+    p[0] = p[1]
 def p_expr_int(p):
     r' expr : INT '
     p[0] = p[1]

@@ -5,7 +5,9 @@ import cmake
 class Module(AST):
     def compile(self):
         super().compile()
-        cmake.lists(self['PROJECT'].val())
+        try: cname = self['PROJECT'].val()
+        except KeyError: cname = self.val()
+        cmake.lists(cname)
         cmake.preset()
         cmake.src()
 

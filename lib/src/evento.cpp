@@ -23,3 +23,4 @@ const int     LF          = 10;
 const int     TAB         = 9;
 const float   PI          = 3.1415926535;
 const float   AVOGADRO    = 6.02214076e+23;
+const char*   Sym         = "#Bol";
