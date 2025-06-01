@@ -56,8 +56,7 @@ class Int(Primitive): pass
 class Float(Primitive):
     def abs(self): return math.fabs(self.value)
 
-class Str(Primitive):
-    def compile(self): return f'"{self.val()}"'
+from Str import *
 
 class Sym(Primitive): pass
 class Id(Primitive): pass

@@ -1,4 +1,4 @@
-from AST import AST
+from AST import AST, Int, Str, Float
 
 import cmake
 
@@ -41,3 +41,12 @@ void arg(int argc, char* argv) {  //
 extern int main(int argc, char* argv[]);
 extern void arg(int argc, char* argv  );
 ''', file=hpp)
+            #
+            for k in self.attr:
+                v = self[k]
+                t = ''
+                arr = ''
+                if isinstance(v, Int): t = 'int'
+                if isinstance(v, Float): t = 'float'
+                if isinstance(v, Str): t = 'char*';# arr = '[]'
+                print(f'extern const {t:<7} {k+arr:<11};', file=hpp)
