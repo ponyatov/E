@@ -14,6 +14,11 @@ class Module(AST):
             print(f"#include <{self.val()}.hpp>", file=cpp)
             print(self.main(), file=cpp)
             print(self.arg(), file=cpp)
+            #
+            print('', file=cpp)
+            for k in self.attr:
+                v = self[k]
+                print(f'const {v.ctype():<7} {k+v.carr():<11} = {v.cpp()};', file=cpp)
 
     def main(self):
         return r'''
@@ -44,9 +49,5 @@ extern void arg(int argc, char* argv  );
             #
             for k in self.attr:
                 v = self[k]
-                t = ''
-                arr = ''
-                if isinstance(v, Int): t = 'int'
-                if isinstance(v, Float): t = 'float'
-                if isinstance(v, Str): t = 'char*';# arr = '[]'
-                print(f'extern const {t:<7} {k+arr:<11};', file=hpp)
+                print(
+                    f'extern const {v.ctype():<7} {k+v.carr():<11};', file=hpp)

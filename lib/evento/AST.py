@@ -49,12 +49,16 @@ class AST:
 
 class Primitive(AST):
     def eval(self, ctx={}): return self
-    def compile(self): return self.val()
+    def cpp(self): return self.val()
+    def hpp(self): return f'extern {self.ctype()} {self.val()};'
+    def carr(self): return ''
 
-class Int(Primitive): pass
+class Int(Primitive):
+    def ctype(self): return 'int'
 
 class Float(Primitive):
     def abs(self): return math.fabs(self.value)
+    def ctype(self): return 'float'
 
 from Str import *
 
