@@ -15,4 +15,3 @@ for byte in buffer {
   crc = crc.update byte;
 }
 ```
-
