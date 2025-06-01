@@ -1,3 +1,6 @@
+import math
+
+
 class AST:
     def __init__(self, V):
         self.value = V
@@ -45,6 +48,8 @@ class Primitive(AST):
     def eval(self, ctx={}): return self
 
 class Int(Primitive): pass
+class Float(Primitive):
+    def abs(self): return math.fabs(self.value)
 
 class Str(Primitive): pass
 class Sym(Primitive): pass
@@ -64,4 +69,39 @@ class Const(Keyword):
 class Let(Keyword): pass
 class Mut(Keyword): pass
 
-class Module(AST): pass
+from Module import *
+
+class Type(AST):
+    def eval(self, ctx):
+        return self
+
+class TInt(Type):
+    def eval(self, ctx):
+        t = self.value
+        v = self[0]; assert isinstance(v, Int)
+        match t[0]:
+            case 'u':
+                match t[1:]:
+                    case '8': assert v.value <= 0xFF
+                    case _: raise TypeError(self)
+            case 'i':
+                match t[1:]:
+                    case '8': assert v.value <= 127
+                    case _: raise TypeError(self)
+            case _:
+                raise TypeError(self)
+        return v
+
+class TFloat(Type):
+    def eval(self, ctx):
+        t = self.value
+        v = self[0]; assert isinstance(v, Float)
+        match t[0]:
+            case 'f':
+                match t[1:]:
+                    case '16': assert v.abs() < 65504.0
+                    case '32': assert v.abs() < 3.4028235e38
+                    case '64': pass
+                    case _: raise TypeError(self)
+            case _: raise TypeError(self)
+        return v

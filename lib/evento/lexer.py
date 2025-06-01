@@ -3,7 +3,8 @@ from AST import *
 import ply.lex as lex
 
 tokens = [
-    'INT', 'FLOAT', 'ID', 'SYM', 'STR', 'TICK',
+    'INT', 'FLOAT', 'ID', 'SYM', 'STR',
+    'TICK', 'TYPE',
     'CONST', 'LET', 'MUT', 'EQ',
 ]
 
@@ -39,19 +40,26 @@ def t_STR(t):
     r'"[^"]*"|\'[^\']*\''
     t.value = Str(t.value[1:-1]); return t
 
-# def t_FLOAT(t):
-#     r'[+\-]?[0-9]+\.[0-9]+([eE][0-9]+)?'
-#     t.value = float(t.value); return t
+def t_FLOAT(t):
+    r'[+\-]?[0-9]+\.[0-9]+([eE][0-9]+)?'
+    t.value = Float(float(t.value)); return t
+
+def t_TYPE_int(t):
+    r'[iu](8|16|32|64)'
+    t.type = 'TYPE'; t.value = TInt(t.value); return t
+def t_TYPE_float(t):
+    r'f(16|32|64)'
+    t.type = 'TYPE'; t.value = TFloat(t.value); return t
 
 def t_INT_hex(t):
-    r'0x[0-0a-fA-F]+'
-    t.type = 'INT'; t.value = int(t.value[2:], 0x10); return t
+    r'0x[0-9a-fA-F]+'
+    t.type = 'INT'; t.value = Int(int(t.value[2:], 0x10)); return t
 # def t_INT_oct(t):
 #     r'0o[0-7]+'
 #     t.type = 'INT'; t.value = int(t.value[2:], 0x08); return t
 def t_INT_bin(t):
     r'0b[01]+'
-    t.type = 'INT'; t.value = int(t.value[2:], 0x02); return t
+    t.type = 'INT'; t.value = Int(int(t.value[2:], 0x02)); return t
 # def t_INT(t):
 #     r'[+\-]?[0-9]+'
 #     t.type = 'INT'; t.value = int(t.value, 0x0A); return t

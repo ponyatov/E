@@ -25,6 +25,10 @@
     "explorer.autoReveal": false,
     "git.enabled": false,
     "terminal.integrated.copyOnSelection": true,
+    "editor.formatOnSave"      :  false,
+
+    // terminal
+    "SerialTerminal.serial port.configurations": ["115200n1"],
 
     // JavaScript
     "prettier.configPath"         : ".prettierrc",
@@ -38,13 +42,45 @@
 
     // C++
     "[c]": {
-        "editor.defaultFormatter" : "xaver.clang-format",
-        "editor.formatOnSave"     :  false
+        "editor.defaultFormatter" : "xaver.clang-format"
     },
     "[cpp]": {
-        "editor.defaultFormatter" : "xaver.clang-format",
-        "editor.formatOnSave"     :  false
+        "editor.defaultFormatter" : "xaver.clang-format"
     },
     // "C_Cpp.intelliSenseEngine": "Tag Parser",
     // "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+
+    // CMake
+    "cmake.sourceDirectory" : "${workspaceFolder}",
+    "cmake.buildDirectory"  : "${workspaceFolder}/tmp/${workspaceFolderBasename}",
+    "cmake.generator"       : "Unix Makefiles",
+    "cmake.parallelJobs"    :  2,
+    "cmake.useCMakePresets" : "always",
+    "cmake.ignoreCMakeListsMissing" : false,
+    "cmake.buildBeforeRun"  :  true,
+    "cmake.saveBeforeBuild" :  true,
+    "cmake.debugConfig"     : {
+        "cwd" :   "${workspaceFolder}",
+        "args": [ "lib/${workspaceFolderBasename}.ini" ] },
+    "cmake.allowCommentsInPresetsFile" : true,
+
+    // Python
+    "python.defaultInterpreterPath":  "python3",
+    "autopep8.path"                : ["autopep8"],
+    "autopep8.args"                : ["--ignore","E26,E302,E305,E401,E402,E701,E702"],
+    "python.analysis.extraPaths"   : ["${workspaceFolder}/evento"],
+    "[python]": {
+        "editor.defaultFormatter"  : "ms-python.autopep8"
+    },
+
+    // MinGW/MSYS2
+    "terminal.integrated.defaultProfile.windows": "UCRT64",
+    "terminal.integrated.profiles.windows": {
+      "UCRT64": {
+        "path": "C:\\msys64\\usr\\bin\\bash.exe",
+        "args": ["--login","-i"],
+        "env": {
+          "MSYSTEM": "UCRT64",
+          "CHERE_INVOKING": "1",
+        }}},
 }

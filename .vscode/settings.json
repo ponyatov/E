@@ -32,9 +32,10 @@
     "explorer.autoReveal": false,
     "git.enabled": false,
     "terminal.integrated.copyOnSelection": true,
+    "editor.formatOnSave"      :  false,
 
     // terminal
-    "SerialTerminal.serial port.configurations": ["115200n1","9600n1"],
+    "SerialTerminal.serial port.configurations": ["115200n1"],
 
     // JavaScript
     "prettier.configPath"         : ".prettierrc",
@@ -60,12 +61,10 @@
 
     // C++
     "[c]": {
-        "editor.defaultFormatter" : "xaver.clang-format",
-        "editor.formatOnSave"     :  false
+        "editor.defaultFormatter" : "xaver.clang-format"
     },
     "[cpp]": {
-        "editor.defaultFormatter" : "xaver.clang-format",
-        "editor.formatOnSave"     :  false
+        "editor.defaultFormatter" : "xaver.clang-format"
     },
     // "C_Cpp.intelliSenseEngine": "Tag Parser",
     // "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
