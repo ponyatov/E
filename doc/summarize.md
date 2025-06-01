@@ -6,7 +6,7 @@
 > - mixes Rust, Elixir and F#
 
 grammar: 
-VSCode syntax highlight: 
+VSCode syntax highlight: https://gitflic.ru/project/dponyatov/e/blob?file=evento%2Fsyntaxes%2Fevento.tmLanguage.json&branch=dponyatov
 
 ## **1. [[E/Language Overview]]**
 ## **2. [[E/Lexical Structure]]**

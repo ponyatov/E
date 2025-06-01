@@ -15,7 +15,7 @@ const CR = 0x0D`u8;
 const LF = 0x0A`u8;
 const TAB = 0x09`u8;
 const PI = 3.1415926535;
-const AVOGADRO = 6.02214076e23;
+const AVOGADRO = 6.02214076e23`f16;
 
 let dialect = 'FORTH';
 mut compile = false;

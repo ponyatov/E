@@ -13,21 +13,58 @@
             "include": "#numeric"
         },
         {
+            "include": "#types"
+        },
+        {
+            "include": "#string"
+        },
+        {
             "name": "keyword.control.evento",
-            "match": "\\b(const|extern|fn|let|mut)\\b"
-        },
-        {
-            "name": "string.quoted.single.evento",
-            "begin": "'",
-            "end": "'"
-        },
-        {
-            "name": "string.quoted.double.evento",
-            "begin": "\"",
-            "end": "\""
+            "match": "\\b(const|extern|fn|let|mut)\\b",
+            "comment": "Evento keywords"
         }
     ],
     "repository": {
+        "types": {
+            "patterns": [
+                {
+                    "name": "constant.language.boolean.evento",
+                    "match": "\\b(true|false)\\b",
+                    "comment": "Boolean literals"
+                },
+                {
+                    "name": "constant.language.symbol.evento",
+                    "match": "\\#[a-zA-Z_][a-zA-Z0-9_]*\\b",
+                    "comment": "Symbol literals"
+                },
+                {
+                    "name": "storage.type.numeric.evento",
+                    "match": "`[ui](8|16|32|64|[0-9]+)\\b",
+                    "comment": "Integer type suffixes"
+                },
+                {
+                    "name": "storage.type.float.evento",
+                    "match": "`f(16|32|64)\\b",
+                    "comment": "Float type suffixes"
+                }
+            ]
+        },
+        "string": {
+            "patterns": [
+                {
+                    "name": "string.quoted.single.evento",
+                    "begin": "'",
+                    "end": "'",
+                    "comment": "single-quoted string"
+                },
+                {
+                    "name": "string.quoted.double.evento",
+                    "begin": "\"",
+                    "end": "\"",
+                    "comment": "double-quoted string"
+                }
+            ]
+        },
         "numeric": {
             "patterns": [
                 {
@@ -60,21 +97,20 @@
         "comments": {
             "patterns": [
                 {
-                    "name": "constant.language.evento",
-                    "match": "\\b(?i:true|false|[uif][0-9]+)\\b"
-                },
-                {
                     "begin": "#!",
                     "end": "(?=$)",
-                    "name": "comment.line.evento"
+                    "name": "comment.line.evento",
+                    "comment": "shebang script header"
                 },
                 {
+                    "name": "comment.line.evento",
+                    "comment": "Line comments",
                     "begin": "//",
-                    "end": "(?=$)",
-                    "name": "comment.line.evento"
+                    "end": "(?=$)"
                 },
                 {
                     "name": "comment.block.evento",
+                    "comment": "Block comments",
                     "begin": "/\\*",
                     "beginCaptures": {
                         "0": {
