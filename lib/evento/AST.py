@@ -7,6 +7,7 @@ class AST:
         self.nest = []
         self.attr = {}
         self.priv = True
+        self.parent = None
 
     def compile(self):
         self.hpp(); self.cpp()
@@ -27,6 +28,7 @@ class AST:
 
     def __floordiv__(self, o):
         assert isinstance(o, AST)
+        o.parent = self
         self.nest.append(o); return self
 
     def __repr__(self): return self.head()
