@@ -44,6 +44,9 @@ def p_expr_int(p):
 def p_expr_float(p):
     r' expr : FLOAT '
     p[0] = p[1]
+def p_expr_bool(p):
+    r' expr : BOOL '
+    p[0] = p[1]
 
 def p_expr_type(p):
     r' expr : expr TICK TYPE '

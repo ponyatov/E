@@ -18,7 +18,7 @@ const PI       = 3.1415926535;
 const AVOGADRO = 6.02214076e23`f32;
 
 let dialect = 'FORTH';
-// mut compile = false;
+mut compile = false;
 
 const Sym = #Bol;
 

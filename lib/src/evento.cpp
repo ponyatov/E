@@ -24,4 +24,5 @@ static const int TAB = 9;
 static const float PI = 3.1415926535;
 static const float AVOGADRO = 6.02214076e+23;
 static const char dialect[] = "FORTH";
+static  bool compile = false;
 static const char* Sym = "#Bol";

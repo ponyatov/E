@@ -20,4 +20,5 @@ extern const char VERSION[];
 // const float PI;
 // const float AVOGADRO;
 // const char dialect[];
+//  bool compile;
 // const char* Sym;

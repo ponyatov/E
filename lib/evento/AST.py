@@ -58,6 +58,10 @@ class Primitive(AST):
     def hpp(self): return f'{"static" if self.priv else "extern"} {self.ctype()} {self.val()};'
     def carr(self): return ''
 
+class Bool(Primitive):
+    def ctype(self): return 'bool'
+    def cpp(self): return 'true' if self.value else 'false'
+
 class Int(Primitive):
     def ctype(self): return 'int'
 

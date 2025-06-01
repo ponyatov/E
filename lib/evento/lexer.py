@@ -3,7 +3,7 @@ from AST import *
 import ply.lex as lex
 
 tokens = [
-    'INT', 'FLOAT', 'ID', 'SYM', 'STR',
+    'INT', 'FLOAT', 'ID', 'SYM', 'STR', 'BOOL',
     'TICK', 'TYPE',
     'CONST', 'LET', 'MUT', 'EQ',
     'PUB'
@@ -39,6 +39,14 @@ def t_LET(t):
 def t_MUT(t):
     r'mut'
     t.value = Mut(); return t
+
+def t_BOOL(t):
+    r'true|false'
+    if t.value == 'true':
+        t.value = Bool(True)
+    else:
+        t.value = Bool(False)
+    return t
 
 def t_STR(t):
     r'"[^"]*"|\'[^\']*\''
