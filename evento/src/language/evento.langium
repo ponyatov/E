@@ -6,7 +6,7 @@ entry Module:
 ;
 
 Def:
-    (ConstDef|LetDef|MutDef|FnDef) ';';
+    'pub'? (ConstDef|LetDef|MutDef|FnDef) ';';
 
 ConstDef:
     'const' id=ID '=' Expr;

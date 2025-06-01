@@ -6,6 +6,7 @@ class AST:
         self.value = V
         self.nest = []
         self.attr = {}
+        self.priv = True
 
     def compile(self):
         self.hpp(); self.cpp()
@@ -34,7 +35,7 @@ class AST:
     def val(self): return f'{self.value}'
 
     def head(self, prefix=''):
-        return f'{prefix}<{self.tag()}:{self.val()}>'
+        return f'{prefix}<{self.tag()}:{self.val()}> {"" if self.priv else "^"}'
 
     def dump(self, depth=0, prefix=''):
         def pad(depth): return '\n' + '\t' * depth
@@ -47,10 +48,12 @@ class AST:
 
     def eval(self, ctx={}): raise TypeError(self)
 
+    def pub(self): self.priv = False; return self
+
 class Primitive(AST):
     def eval(self, ctx={}): return self
     def cpp(self): return self.val()
-    def hpp(self): return f'extern {self.ctype()} {self.val()};'
+    def hpp(self): return f'{"static" if self.priv else "extern"} {self.ctype()} {self.val()};'
     def carr(self): return ''
 
 class Int(Primitive):
@@ -70,21 +73,20 @@ class Keyword(AST):
     def __init__(self, V=None):
         super().__init__(V if V else '')
 
-class Const(Keyword):
-    def eval(self, ctx):
-        ctx[self.val()] = self[0].eval(ctx)
-        return ctx
-
-class Let(Keyword): pass
-class Mut(Keyword): pass
+from Var import *
 
 from Module import *
 
 class Type(AST):
     def eval(self, ctx):
         return self
+    def hpp(self): return self[0].hpp()
+    def cpp(self): return self[0].cpp()
+    def carr(self): return ''
 
 class TInt(Type):
+    def ctype(self): return 'int'
+
     def eval(self, ctx):
         t = self.value
         v = self[0]; assert isinstance(v, Int)
@@ -102,6 +104,7 @@ class TInt(Type):
         return v
 
 class TFloat(Type):
+    def ctype(self): return 'float'
     def eval(self, ctx):
         t = self.value
         v = self[0]; assert isinstance(v, Float)

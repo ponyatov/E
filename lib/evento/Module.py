@@ -20,7 +20,10 @@ class Module(AST):
             print('', file=cpp)
             for k in self.attr:
                 v = self[k]
-                print(f'const {v.ctype():<7} {k+v.carr():<11} = {v.cpp()};', file=cpp)
+                print(v.cpp(),file=cpp)
+                # p = 'static ' if v.priv else ''
+                # print(
+                #     f'{p}const {v.ctype()} {k+v.carr()} = {v.cpp()};', file=cpp)
 
     def main(self):
         return r'''
@@ -46,10 +49,11 @@ void arg(int argc, char* argv) {  //
 #include <assert.h>''', file=hpp)
             print('''
 extern int main(int argc, char* argv[]);
-extern void arg(int argc, char* argv  );
+extern void arg(int argc, char* argv);
 ''', file=hpp)
             #
             for k in self.attr:
                 v = self[k]
-                print(
-                    f'extern const {v.ctype():<7} {k+v.carr():<11};', file=hpp)
+                print(v.hpp(),file=hpp)
+                # print(
+                #         f'{"//" if v.priv else "extern"} const {v.ctype()} {k+v.carr()};', file=hpp)

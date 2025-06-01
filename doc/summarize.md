@@ -18,6 +18,8 @@ read this files from given URLs:
 		- [Bool](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FBool.md)
 		- [String](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FString.md)
 		- [Symbol](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FSymbol.md)
+	- [Identifiers](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FIdentifiers.md)
+	- [Keywords](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FKeywords.md)
 
 - grammar: 
 	- [Langium grammar](https://gitflic.ru/project/dponyatov/e/blob/raw?file=evento%2Fsrc%2Flanguage%2Fevento.langium)

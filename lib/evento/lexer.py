@@ -6,6 +6,7 @@ tokens = [
     'INT', 'FLOAT', 'ID', 'SYM', 'STR',
     'TICK', 'TYPE',
     'CONST', 'LET', 'MUT', 'EQ',
+    'PUB'
 ]
 
 t_ignore = '[ \t\r]'
@@ -25,6 +26,9 @@ def t_TICK(t):
     r'`'
     t.value = Op(t.value); return t
 
+def t_PUB(t):
+    r'pub'
+    return t
 def t_CONST(t):
     r'const'
     t.value = Const(); return t

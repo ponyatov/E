@@ -7,9 +7,6 @@
     ],
     "patterns": [
         {
-            "include": "#comments"
-        },
-        {
             "include": "#numeric"
         },
         {
@@ -19,9 +16,11 @@
             "include": "#string"
         },
         {
+            "include": "#comments"
+        },
+        {
             "name": "keyword.control.evento",
-            "match": "\\b(const|extern|fn|let|mut)\\b",
-            "comment": "Evento keywords"
+            "match": "\\b(const|extern|fn|let|mut|pub)\\b"
         }
     ],
     "repository": {

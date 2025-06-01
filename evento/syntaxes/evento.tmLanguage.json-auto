@@ -11,7 +11,7 @@
     },
     {
       "name": "keyword.control.evento",
-      "match": "\\b(const|extern|fn|let|mut)\\b"
+      "match": "\\b(const|extern|fn|let|mut|pub)\\b"
     }
   ],
   "repository": {
