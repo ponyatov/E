@@ -1,9 +1,10 @@
+from AST import *
+
 import ply.lex as lex
 
 tokens = [
-    'INT', 'FLOAT', 'ID', 'STR', 'TICK',
-    'CONST', 'EQ',
-    # 'LET', 'MUT', 'CLASS', 'ACTOR'
+    'INT', 'FLOAT', 'ID', 'SYM', 'STR', 'TICK',
+    'CONST', 'LET', 'MUT', 'EQ',
 ]
 
 t_ignore = '[ \t\r]'
@@ -16,16 +17,27 @@ def t_newline(t):
     r'[\n]+'
     t.lineno += len(t.value)
 
-t_EQ = '='
-t_TICK = '`'
+def t_EQ(t):
+    r'='
+    t.value = Op(t.value); return t
+def t_TICK(t):
+    r'`'
+    t.value = Op(t.value); return t
 
-t_CONST = 'const'
-t_LET = 'let'
-t_MUT = 'mut'
+def t_CONST(t):
+    r'const'
+    t.value = Const(); return t
+
+def t_LET(t):
+    r'let'
+    t.value = Let(); return t
+def t_MUT(t):
+    r'mut'
+    t.value = Mut(); return t
 
 def t_STR(t):
     r'"[^"]*"|\'[^\']*\''
-    t.value = t.value[1:-1]; return t
+    t.value = Str(t.value[1:-1]); return t
 
 # def t_FLOAT(t):
 #     r'[+\-]?[0-9]+\.[0-9]+([eE][0-9]+)?'
@@ -44,9 +56,12 @@ def t_INT_bin(t):
 #     r'[+\-]?[0-9]+'
 #     t.type = 'INT'; t.value = int(t.value, 0x0A); return t
 
+def t_SYM(t):
+    r'\#[_a-zA-Z][_a-zA-Z0-9]*'
+    t.value = Sym(t.value); return t
 def t_ID(t):
     r'[_a-zA-Z][_a-zA-Z0-9]*'
-    return t
+    t.value = Id(t.value); return t
 
 def t_ANY_error(t): raise SyntaxError(t)
 

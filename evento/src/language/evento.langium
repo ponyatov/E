@@ -28,7 +28,7 @@ Int:
 Float:
     val=FLOAT ('`' typ=TFloat)?;
 Bool:
-    val=BOOL ('`' typ=TBool)?;
+    val=BOOL;
 
 TInt:
     typ=(I8|I16|I32|I64|U8|U16|U32|U64);
@@ -47,10 +47,6 @@ TFloat: typ=(F16|F32|F64);
 terminal F16: 'f16';
 terminal F32: 'f32';
 terminal F64: 'f64';
-
-TBool: typ = (BOOL_);
-
-terminal BOOL_: 'boot';
 
 terminal FLOAT returns number: /[+\-]?[0-9]+\.[0-9]+([eE][+\-]?[0-9]+)?/ ;
 terminal HEX returns number: /0x[0-9a-fA-F]+/ ;
