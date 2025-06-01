@@ -1,8 +1,9 @@
 grammar Evento
 
 entry Module:
-    SHEBANG?
-    (defs+=Def)*;
+    (shebang=SHEBANG)?
+    (defs+=Def)*
+;
 //     ( words+=ID | numbers+=Num | strs+=STR | stmt+=Stmt | actors+=Actor )*;
 
 Def:
@@ -40,7 +41,7 @@ terminal HEX   returns number: /0x[0-9a-fA-F]+/  Intuffix?;
 terminal OCT   returns number: /0o[0-7]+/        Intuffix?;
 terminal BIN   returns number: /0b[01]+/         Intuffix?;
 terminal INT   returns number: /[+\-]?[0-9]+/    Intuffix?;
-terminal STR                 : /"[^"]*"|'[^']*'/          ;
+terminal STR                 : /"[^"]*?"|'[^']*?'/        ;
 terminal BOOL returns boolean: ('true'|'false')           ;
 terminal ID                  : /[_a-zA-Z][_a-zA-Z0-9]*/   ;
 terminal SYM                 : '#' ID                     ;
