@@ -12,10 +12,23 @@ class Module(AST):
     def cpp(self):
         with open(f'src/{self.val()}.cpp', 'w') as cpp:
             print(f"#include <{self.val()}.hpp>", file=cpp)
-            print('''
-int main(int argc, char* argv[]) {}
-void arg(int argc, char* argv  ) {}
-''', file=cpp)
+            print(self.main(), file=cpp)
+            print(self.arg(), file=cpp)
+
+    def main(self):
+        return r'''
+int main(int argc, char* argv[]) {
+    arg(0, argv[0]);
+    for (int i = 1; i < argc; i++) {  //
+        arg(i, argv[i]);
+    }
+}'''
+
+    def arg(self):
+        return r'''
+void arg(int argc, char* argv) {  //
+    fprintf(stderr, "arg[%i] = <%s>\n", argc, argv);
+}'''
 
     def hpp(self):
         with open(f'inc/{self.val()}.hpp', 'w') as hpp:
