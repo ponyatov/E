@@ -5,7 +5,7 @@
         "grammar": "src/language/evento.langium",
         "fileExtensions": [".e",".i"],
         "textMate": {
-            "out": "syntaxes/evento.tmLanguage.json"
+            "out": "syntaxes/evento.tmLanguage.json-auto"
         },
         "monarch": {
             "out": "src/syntaxes/evento.monarch.ts"

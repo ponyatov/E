@@ -1,0 +1,48 @@
+{
+  "name": "evento",
+  "scopeName": "source.evento",
+  "fileTypes": [
+    ".e",
+    ".i"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.evento",
+      "match": "\\b(const|extern|fn|let|mut)\\b"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.evento"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.evento"
+        },
+        {
+          "name": "comment.block.evento",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.evento"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.evento"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
