@@ -29,5 +29,5 @@ read this files from given URLs:
 - sample code
 	- [Evento](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Flib%2Fevento.e)
 	- compiled target code in C (C++):
-		- [header]()
-		- [source code]()
+		- [header](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Finc%2Fevento.hpp)
+		- [source code](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Fsrc%2Fevento.cpp)
