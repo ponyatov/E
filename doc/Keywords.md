@@ -2,16 +2,17 @@
 
 ## Core
 
-|Keyword|Purpose|Inspired By|
+|Keyword|Usage Example|Notes|
 |---|---|---|
-|`const`|Compile-time constant|Rust/C|
-|`let`|Variable binding (default)|Rust/F#|
-|`mut`|Mutable variable/parameter|Rust|
-|`pub`|Public visibility (default: module private)|Rust|
-|`actor`|Define a concurrent entity|Elixir/Erlang|
-|`on`|Actor action (message selector)|Elixir/Erlang|
-|`spawn`|Create a new actor instance|Rust (threads)|
-|`fn`|Function definition|Rust|
+|`const`|`const BL = 0x20`|Compile-time constant|
+|`let`|`let endline = '\n'`|Variable binding (default)|
+|`mut`|``mut compile`bool = false``|Mutable variable/parameter|
+|`pub`||Public visibility (default: module private)|
+|`actor`| `actor Main { on reset {} }` |Define a concurrent entity|
+|`on`| `on sleep {}` |Actor action (message selector)|
+|`spawn`||Create a new actor instance|
+|`fn`||Function/method definition|
+|`type`|`type Port = u16;`|Type alias
 
 ## Control Flow
 
@@ -36,8 +37,9 @@ Instead of classic inheritance, use **composition + traits** (zero-cost abstra
 - Embedded-safe (no vtables unless needed)
 - It’s a better fit for both distributed systems (actors scale better) and microcontrollers (avoid dynamic dispatch).
 
-||
+|Keyword|Usage Example|Notes|
 |-|-|-|-
+|`enum`|`enum Status { Active Low HiZ }`
 |`struct`|
 |`trait`|
 |`impl`|
