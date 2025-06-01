@@ -25,3 +25,9 @@ read this files from given URLs:
 	- [PLY parser](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Fevento%2Fparser.py)
 
 - [VSCode syntax highlight](https://gitflic.ru/project/dponyatov/e/blob/raw?file=evento%2Fsyntaxes%2Fevento.tmLanguage.json)
+
+- sample code
+	- [Evento](https://gitflic.ru/project/dponyatov/e/blob/raw?file=lib%2Flib%2Fevento.e)
+	- compiled target code in C (C++):
+		- [header]()
+		- [source code]()
