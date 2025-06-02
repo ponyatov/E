@@ -1,4 +1,4 @@
-# Evento
+# [[Evento]]
 ## programming language prototype
 
 > - for distributed programs 
@@ -20,6 +20,11 @@ read this files from given URLs:
 		- [Symbol](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FSymbol.md)
 	- [Identifiers](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FIdentifiers.md)
 	- [Keywords](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FKeywords.md)
+- Data Types
+	- [[E/Primitives|Primitives]]
+		- [Integer](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FInteger.md)
+		- [Float](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FFloat.md)
+		- [Bool](https://gitflic.ru/project/dponyatov/e/blob/raw?file=doc%2FBool.md)
 
 - grammar: 
 	- [Langium grammar](https://gitflic.ru/project/dponyatov/e/blob/raw?file=evento%2Fsrc%2Flanguage%2Fevento.langium)
