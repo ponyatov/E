@@ -3,6 +3,10 @@
         "stkb.rewrap",
         "ms-vscode.makefile-tools",
         "IBM.output-colorizer",
+        // GPT
+        "AmazonWebServices.aws-toolkit-vscode",
+        "aleksandardev.vscode-sequence-diagrams",
+        "jebbs.plantuml",
         // formatters
         "xaver.clang-format",
         "foxundermoon.shell-format",
