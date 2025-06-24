@@ -6,17 +6,25 @@ let AUTHOR = "Dmitry Ponyatov"
 let EMAIL = "dponyatov@gmail.com"
 let LICENSE = "MIT"
 let YEAR = 2025
-let ABOUT = "
+
+let ABOUT =
+    "\
 - for distributed programs
-- on embedded systems (microcontrollers)
+- on embedded systems (microcontrollers)\
 "
 
-let README = $"# `{APP}
+open System.IO
+
+let README =
+    File.WriteAllText(
+        "README.md",
+        $"# `{APP}`
 ## {TITLE}
 
 (c) {AUTHOR} <<{EMAIL}>> {YEAR} {LICENSE}
 
-{ABOUT}
+github: https://github.com/ponyatov/{APP}
 
-github: 
+{ABOUT}
 "
+    )
