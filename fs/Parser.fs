@@ -9,12 +9,12 @@ type ParseResult<'a> =
     | Success of 'a
     | Failure of string
 
-let parseA (str: string) =
+let pchar (c: char) (str: string) =
     match str with
-    | "" -> Failure "empty"
-    | _ when str.StartsWith 'A' -> Success("A", str.[1..])
+    | "" -> Failure str
+    | _ when str.StartsWith c -> Success(c, str.[1..])
     | _ -> Failure str
 
-"" |> parseA
-"AB" |> parseA
-"BC" |> parseA
+"" |> pchar 'A'
+"AB" |> pchar 'A'
+"BC" |> pchar 'A'
