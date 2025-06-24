@@ -5,8 +5,9 @@
         "IBM.output-colorizer",
         // GPT
         "AmazonWebServices.aws-toolkit-vscode",
-        "aleksandardev.vscode-sequence-diagrams",
         "jebbs.plantuml",
+        "bierner.markdown-mermaid",
+        // "aleksandardev.vscode-sequence-diagrams",
         // formatters
         "xaver.clang-format",
         "foxundermoon.shell-format",
@@ -24,7 +25,6 @@
         // parser
         "daohong-emilio.yash",
         "rreverser.ragel",
-        "serghei-iakovlev.language-lemon",
         // embedded
         "basdp.language-gas-x86",
         "dan-c-underwood.arm",
@@ -37,6 +37,10 @@
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
+        // F#
+        "ionide.ionide-fsharp",
+        "redhat.vscode-xml",
+        "mnxn.fsharp-fsl-fsy",
         // Langium
         "langium.langium-vscode",
         "vitest.explorer",

@@ -48,7 +48,8 @@
             "dependsOn"      : "CMake: build",
             "command"        : "openocd -f hw/${command:cmake.activeConfigurePresetName}/${command:cmake.activeConfigurePresetName}.ocd",
             "problemMatcher" : [],
-            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true}
+            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true},
+            "group"          : {"kind": "build", "isDefault": false }
         },
         {
             "label"          : "openocd: firmware",
@@ -94,6 +95,22 @@
             "presentation"   : {"focus": true},
             "problemMatcher" : [],
             "group"          : {"kind": "build","isDefault": true},
+        },
+        {
+            "label"          : "F#: fsi",
+            "type"           : "shell",
+            "command"        : "dotnet fsi",
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent"},
+            "group"          : {"kind": "build","isDefault": true}
+        },
+        {
+            "label"          : "F#: build",
+            "type"           : "shell",
+            "command"        : "dotnet build",
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent"},
+            "group"          : {"kind": "build","isDefault": true}
         },
     ]
 }
