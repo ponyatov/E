@@ -12,3 +12,4 @@ include mk/doc.mk
 include mk/ts.mk
 include mk/install.mk
 include mk/merge.mk
+include mk/ai.mk

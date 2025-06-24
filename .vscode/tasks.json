@@ -18,7 +18,7 @@
         {
             "label"          : "git: whoami",
             "type"           : "shell",
-            "command"        : "make `whoami`",
+            "command"        : "make whoami",
             "problemMatcher" : []
         },
         {
@@ -33,6 +33,14 @@
             "command"        : "git checkout .vscode/settings.json",
             "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true},
             "problemMatcher" : []
+        },
+        {
+            "label"          : "AI: context",
+            "type"           : "shell",
+            "command"        : "make ai",
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true},
+            "group"          : {"kind": "build", "isDefault": true}
         },
         {
             "label"          : "openocd: debug",
