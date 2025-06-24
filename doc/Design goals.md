@@ -1,14 +1,20 @@
 # Design goals
 
 programming language
-- for distributed programs 
 - for embedded systems ([[hw/microcontroller|microcontroller]]s)
+- for IIoT at any of:
+	- end devices
+	- IoT gateways
+	- hardware and cloud servers (IoT backend platforms)
+	- user desktops
+	- mobile phones & terminals
+- for distributed programs 
 
 1. Distributed & Event-Driven Development
 
-	- Erlang-style **actor model** with green thread processes.
-	- **Message-passing** (using shared memory for local messages).
-	- Built-in **pub/sub** and **RPC** for distributed systems.
+	- **actor model** with green thread processes
+	- async **Message-passing** (using shared memory for local messages)
+	- Built-in **pub/sub** and **RPC** for distributed systems
 
 2. Memory-Safe & Hard RealTime
 	- **Sub-microsecond** context switches
@@ -20,14 +26,15 @@ programming language
 	- **DMA-safe abstractions** (compiler-verified pointer lifetimes)
 
 3. **Portability via native C Transpilation**
+
 	- **Source-to-source translation to human-readable ANSI C** (no FFI hell).
 	- Works with **any C/C++ toolchain** (GCC, Clang, IAR, Keil).
-	- targets for **bare-metal** cross-compile (ARM , RISC-V, embedded Linux)
+	- mostly targets for **bare-metal** cross-compile (ARM , RISC-V, embedded Linux)
 	- transpiler without IR layers (generates C code for target selected by project config and compiler options)
-	- **GDB-compatible C output** (match source line numbers)
-	- MISRA-C and ISO 26262/SIL4 compliant output
+	- **GDB-compatible C output** (match source line numbers and code structure)
+	- [[MISRA]]-C and [[ISO/26262]]/[[SIL#4]] compliant output
 
-4. Hardware as First-Class Citizens
+4. Cross-Compilation for Hardware as First-Class Citizen
 	- **Cross-Compile to Bare Metal**
 		- Tier 1:
 			- **ARM Cortex-M0/M4** (STM32, GD32)
@@ -61,3 +68,4 @@ programming language
 	- direct interaction with Ethernet, WiFi and Bluetooth (raw packets and cross-mesh forwarding)
 	- generic IP stack with optional `lwip` integration
 	- **CRDTs for shared state** (conflict-free replicated data types)
+	- tools to Web frontend interfacing

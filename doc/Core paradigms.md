@@ -1,10 +1,10 @@
-# Core paradigms
+# Core Paradigms
 
 ## **1. Actor Model (Erlang/Elixir Inspiration)**
 
 - **Isolated Processes**
 	- Each actor maintains private stack, heap, and resources
-	- Per-process memory allocation and garbage collection
+	- Per-process memory allocation (and optional garbage collection)
 - **Message Passing**:
 	- local: using shared memory and message-typed pointers
 ```evento
@@ -40,12 +40,9 @@ mut x = [0u8; 1024];  // Exclusive ownership
 let y = &mut x;       // Mutable borrow
 ```
     
-- **Static Lifetimes** for hardware resources:
-```evento
-fn use_i2c i2c` &'device mut I2C -> Result<()> { ... }
-```
-
-#### **3. Functional Pipelines (F# Inspiration)**
+- **Static Lifetimes**
+	- for hardware resources
+	- for preallocated memory regions
 
 - **Immutable-by-Default**:
 ```evento
@@ -53,11 +50,8 @@ let x = 5;    // Immutable
 mut y = 10;   // Mutable
 ```    
 
-- paren-less functions
-	- with Unified Call Syntax allowed
-	- function polymorphism with Elixir-like guards
+## **3. Pattern Matching**:
 
-- **Pattern Matching**:
 ```
 match packet
 | $temp t    if t > 60 => #forced_shutdown |> send! system
@@ -65,10 +59,12 @@ match packet
 | _                    => ignore()
 ```
 
-- Named pub/sub Channels
-```evento
-channel log  // referenced by #log
-```
+## **4. Async Messaging and Functional Pipes**
+
+- paren-less functions (F# Inspiration)
+	- Unified Call Syntax allowed
+	- functional polymorphism with Elixir-like guards
+
 
 - **Pipe Operator**:
 ```evento
@@ -77,3 +73,10 @@ channel log  // referenced by #log
       |> map (convert_units #volts)
       |> #log
 ```
+- Named pub/sub Channels
+```evento
+channel log  // referenced by #log
+```
+
+
+[[syntax/Tree-sitter]]

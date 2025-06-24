@@ -1,5 +1,6 @@
 # [[Evento]]
 ## programming language prototype
+### for embedded & distributed systems
 
 > - for distributed programs 
 > - for embedded systems ([[hw/microcontroller|microcontroller]]s)
