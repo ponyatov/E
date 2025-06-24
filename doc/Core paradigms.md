@@ -17,7 +17,7 @@ sensor read |> to_celsius |> send!(logger)
 
 ```evento
 actor Sensor {
-  temp`f32 = 0.0
+  temp:f32 = 0.0
 
   on update { temp = i2c[TERMOMETER] |> to_celsius }
 
@@ -77,6 +77,3 @@ match packet
 ```evento
 channel log  // referenced by #log
 ```
-
-
-[[syntax/Tree-sitter]]

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- <OutputType>Exe</OutputType> -->
+    <OutputType>Library</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Evento</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="fs/Evento.fs" />
+    <Compile Include="fs/AST.fs" />
+    <Compile Include="fs/Project.fs" />
+    <Compile Include="fs/CMake.fs" />
+  </ItemGroup>
+</Project>

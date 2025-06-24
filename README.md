@@ -1,5 +1,5 @@
-# Evento
-## programming language prototype
+# `Evento`
+## embedded programming language prototype
 
 - for distributed programs
 - on embedded systems (microcontrollers)
