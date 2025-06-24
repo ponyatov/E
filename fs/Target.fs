@@ -38,14 +38,59 @@ type HW =
     | IskraJS
     | ESP of ESP
 
+open System.IO
+
+/// generate `hw/` subdirs
+let hw_ () =
+    Directory.CreateDirectory($"hw/src")
+    Directory.CreateDirectory($"hw/inc")
+
+    File.WriteAllText(
+        "hw/inc/hw.hpp",
+        "
+/// @defgroup hw hw
+
+/// @defgroup x86 x86
+/// @ingroup hw
+
+/// @defgroup rpi rpi
+/// @ingroup hw
+
+/// @defgroup stm32 stm32
+/// @ingroup hw
+
+/// @defgroup esp esp
+/// @ingroup hw
+"
+    )
+
+let hw (from: HW) =
+    let d =
+        match from with
+        | X86 x ->
+            match x with
+            | PC -> "pc"
+            | QEMU386 -> "qemu386"
+        | _ -> failwith $"{from}"
+
+    Directory.CreateDirectory($"hw/{d}/src") |> ignore
+    Directory.CreateDirectory($"hw/{d}/inc") |> ignore
+    File.WriteAllText($"hw/{d}/inc/{d}.hpp", "") |> ignore
+    File.WriteAllText($"hw/{d}/src/{d}.cpp", "") |> ignore
+    File.WriteAllText($"hw/{d}/{d}.mk", "") |> ignore
+    File.WriteAllText($"hw/{d}/{d}.cmake", "") |> ignore
+
+hw (X86 PC)
+
 type STM32 =
-    | STM32F030F6P6
-    | STM32F103C8T6
-    | stm32f429ZIT6
+    | F030F6P6
+    | F103C8T6
+    | F429ZIT6
 
 type CPU =
     | I5
     | STM32 of STM32
+    | LX106
 
 type CortexM =
     | CortexM3
@@ -55,6 +100,7 @@ type ARCH =
     | X86_64
     | I386
     | CortexM of CortexM
+    | Xtensa
 
 type OS =
     | Linux
@@ -63,6 +109,6 @@ type OS =
 
 type Target =
     | HW of HW
-    | CPU of string
-    | ARCH of string
+    | CPU of CPU
+    | ARCH of ARCH
     | OS of OS
