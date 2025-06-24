@@ -13,7 +13,7 @@ let pchar (c: char) =
     fun (str: string) ->
         match str with
         | "" -> Failure str
-        | _ when str.StartsWith c -> Success(c, str.[1..])
+        | s when s.[0] = c -> Success(c, str.[1..])
         | _ -> Failure str
 
 let pA = pchar 'A'
