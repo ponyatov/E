@@ -5,11 +5,15 @@
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/
 
-let parseA (str: string) : bool * string =
+type ParseResult<'a> =
+    | Success of 'a
+    | Failure of string
+
+let parseA (str: string) =
     match str with
-    | "" -> (false, "")
-    | _ when str.StartsWith 'A' -> (true, str.[1..])
-    | _ -> (false, str)
+    | "" -> Failure "empty"
+    | _ when str.StartsWith 'A' -> Success("A", str.[1..])
+    | _ -> Failure str
 
 "" |> parseA
 "AB" |> parseA
