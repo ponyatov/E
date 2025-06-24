@@ -9,12 +9,14 @@ type ParseResult<'a> =
     | Success of 'a
     | Failure of string
 
-let pchar (c: char) (str: string) =
-    match str with
-    | "" -> Failure str
-    | _ when str.StartsWith c -> Success(c, str.[1..])
-    | _ -> Failure str
+let pchar (c: char) =
+    fun (str: string) ->
+        match str with
+        | "" -> Failure str
+        | _ when str.StartsWith c -> Success(c, str.[1..])
+        | _ -> Failure str
 
-"" |> pchar 'A'
-"AB" |> pchar 'A'
-"BC" |> pchar 'A'
+let pA = pchar 'A'
+"" |> pA
+"AB" |> pA
+"BC" |> pA
