@@ -1,4 +1,4 @@
-# `Evento`
+# `Evento` 0.0.1
 ## embedded programming language prototype
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2025 MIT

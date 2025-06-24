@@ -1,10 +1,11 @@
+
 [package]
-name        = "evento"
-version     = "0.0.1"
-description = "programming language prototype"
-authors     = ["Dmitry Ponyatov <dponyatov@gmail.com>","DeepSeek"]
-license     = "MIT"
-edition     = "2024"
+name        =  "Evento"
+version     =  "0.0.1"
+description =  "embedded programming language prototype"
+authors     = ["Dmitry Ponyatov <dponyatov@gmail.com>"]
+license     =  "MIT"
+edition     =  "2025"
 
 [dependencies]
 
@@ -16,15 +17,18 @@ debug = true
 
 [features]
 # hw
-pc       = ["i5"]
-pillF103 = ["stm32f103"]
+pc            = ["i5"]
+pillf103      = ["stm32f103c8t6"]
+f429disco     = ["stm32f429zit6"]
 # cpu
-i5        = ["x86_64"]
-stm32f103 = ["cortexM4"]
+i5            = ["x86_64"]
+stm32f103c8t6 = ["cortexM4"]
+stm32f429zit6 = ["cortexM4"]
 # arch
-x86_64   = ["linux"]
-cortexM  = ["bare"]
-cortexM4 = ["cortexM"]
+x86_64        = ["linux"]
+cortexM       = ["bare"]
+cortexM3      = ["cortexM"]
+cortexM4      = ["cortexM"]
 # os
-linux = []
-bare  = []
+linux         = []
+bare          = []
