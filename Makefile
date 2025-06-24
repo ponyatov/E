@@ -9,6 +9,7 @@ include mk/src.mk
 # include mk/rule.mk
 # include mk/doc.mk
 # include mk/ts.mk
-# include mk/install.mk
+include mk/rust.mk
+include mk/install.mk
 # include mk/merge.mk
 include mk/ai.mk
