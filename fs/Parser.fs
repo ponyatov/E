@@ -9,12 +9,14 @@ type ParseResult<'a> =
     | Success of 'a
     | Failure of string
 
+type Parser<'T> = Parser of (string -> ParseResult<'T * string>)
+
 let pchar (c: char) =
-    fun (str: string) ->
+    Parser(fun (str: string) ->
         match str with
         | "" -> Failure str
         | s when s.[0] = c -> Success(c, str.[1..])
-        | _ -> Failure str
+        | _ -> Failure str)
 
 let pA = pchar 'A'
 "" |> pA
