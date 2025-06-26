@@ -42,6 +42,11 @@ run A ""
 "BC" |> run A
 "ABC" |> run A
 
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#combining-two-parsers-in-sequence
+let B = pchar 'B'
+
+A >> B
+
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/
