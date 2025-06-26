@@ -4,6 +4,7 @@
 *.o
 *.exe
 *.log
+/obj/
 /target/
 /node_modules/
 /out/

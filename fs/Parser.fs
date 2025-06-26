@@ -1,9 +1,6 @@
 //! parser combinators
 
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/
-// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
-// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
-// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/
 
 /// generic return type every parser function returns
 type ParseResult<'a> =
@@ -27,3 +24,7 @@ pA ""
 "" |> pA
 "AB" |> pA
 "BC" |> pA
+
+// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
+// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
+// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/
