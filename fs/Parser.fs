@@ -23,16 +23,7 @@ let pchar (c: char) =
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
 let A = pchar 'A'
 
-#r "nuget: Expecto"
-open Expecto
-
-test "A simple test" {
-    let subject = "Hello World"
-    Expect.equal subject "Hello World" "Should match"
-}
-|> runTestsWithCLIArgs [] [||]
-
-/// as now we have Parser's not functions, we need unwrapping runner:
+/// as now we have Parser's not a functions, we need unwrapping runner:
 let run parser input =
     let (Parser p) = parser
     p input
@@ -58,6 +49,7 @@ let next p1 p2 =
 /// infix version
 let (.>>.) = next
 
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-andthen
 let AB = A .>>. B
 run AB ""
 run AB "BC"
