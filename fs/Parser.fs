@@ -32,11 +32,15 @@ test "A simple test" {
 }
 |> runTestsWithCLIArgs [] [||]
 
-pA ""
-test "empty string"
-"" |> A
-"AB" |> pA
-"BC" |> pA
+/// as now we have Parser's not functions, we need unwrapping runner:
+let run parser input =
+    let (Parser p) = parser
+    p input
+
+run A ""
+"" |> run A
+"BC" |> run A
+"ABC" |> run A
 
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
