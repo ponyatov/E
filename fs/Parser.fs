@@ -14,11 +14,11 @@ type Parser<'T> = Parser of (string -> ParseResult<'T * string>)
 
 /// parse a single given char
 let pchar (c: char) =
-    Parser(fun str ->
-        match str with
-        | "" -> Failure str
-        | s when s.[0] = c -> Success(c, str.[1..])
-        | _ -> Failure str)
+    Parser(fun input ->
+        match input with
+        | "" -> Failure input
+        | s when s.[0] = c -> Success(c, input.[1..])
+        | _ -> Failure input)
 
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
 let A = pchar 'A'
@@ -38,26 +38,30 @@ let run parser input =
     p input
 
 run A ""
-"" |> run A
-"BC" |> run A
-"ABC" |> run A
+run A "BC"
+run A "ABC"
 
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#combining-two-parsers-in-sequence
 let B = pchar 'B'
 
 /// A >> B
 let next p1 p2 =
-    fun input ->
+    Parser(fun input ->
         // run parser 1 with input
         match run p1 input with
         | Failure err -> Failure err
         | Success(value1, rest1) ->
             match run p2 rest1 with
             | Failure err -> Failure err
-            | Success(value2, rest2) -> Success((value1, value2), rest2)
+            | Success(value2, rest2) -> Success((value1, value2), rest2))
 
 /// infix version
 let (.>>.) = next
+
+let AB = A .>>. B
+run AB ""
+run AB "BC"
+run AB "ABC"
 
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
