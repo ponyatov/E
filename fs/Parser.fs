@@ -21,16 +21,20 @@ let pchar (c: char) =
         | _ -> Failure str)
 
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
-let pA = pchar 'A'
+let A = pchar 'A'
 
-#r "nuget: Expecto, 10.2.3"
+#r "nuget: Expecto"
 open Expecto
 
-testCase "Addition" <| fun _ ->
-    Expect.equal (1+1) 2 "1+1=2"
+test "A simple test" {
+    let subject = "Hello World"
+    Expect.equal subject "Hello World" "Should match"
+}
+|> runTestsWithCLIArgs [] [||]
 
 pA ""
-"" |> pA
+test "empty string"
+"" |> A
 "AB" |> pA
 "BC" |> pA
 
