@@ -17,7 +17,7 @@
         "coolbear.systemd-unit-file",
         // misc
         "usernamehw.errorlens",
-        // "hbenl.vscode-test-explorer",
+        "hbenl.vscode-test-explorer",
         // C++
         "ms-vscode.cpptools",
         "jeff-hykin.better-cpp-syntax",

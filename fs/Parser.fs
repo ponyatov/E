@@ -20,11 +20,15 @@ let pchar (c: char) =
         | s when s.[0] = c -> Success(c, str.[1..])
         | _ -> Failure str)
 
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
+let pA = pchar 'A'
+
 #r "nuget: Expecto, 10.2.3"
 open Expecto
 
-/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
-let pA = pchar 'A'
+testCase "Addition" <| fun _ ->
+    Expect.equal (1+1) 2 "1+1=2"
+
 pA ""
 "" |> pA
 "AB" |> pA
