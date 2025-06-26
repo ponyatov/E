@@ -3,15 +3,16 @@
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/
 
 /// generic return type every parser function returns
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#returning-a-successfailure
 type ParseResult<'a> =
     | Success of 'a
     | Failure of string
 
 /// common type for any parser function
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#encapsulating-the-parsing-function-in-a-type
 type Parser<'T> = Parser of (string -> ParseResult<'T * string>)
 
 /// parse a single given char
-/// @returns 
 let pchar (c: char) =
     Parser(fun str ->
         match str with
@@ -19,6 +20,9 @@ let pchar (c: char) =
         | s when s.[0] = c -> Success(c, str.[1..])
         | _ -> Failure str)
 
+open Expecto
+
+/// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
 let pA = pchar 'A'
 pA ""
 "" |> pA
