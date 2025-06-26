@@ -20,6 +20,7 @@ let pchar (c: char) =
         | s when s.[0] = c -> Success(c, str.[1..])
         | _ -> Failure str)
 
+#r "nuget: Expecto, 10.2.3"
 open Expecto
 
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#testing-the-wrapped-function
