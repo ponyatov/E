@@ -45,7 +45,25 @@ run A ""
 /// https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/#combining-two-parsers-in-sequence
 let B = pchar 'B'
 
-A >> B
+/// A >> B
+let next p1 p2 =
+    fun input ->
+        // run parser 1 with input
+        let result1 = run p1 input
+
+        match result1 with
+        | Failure err -> Failure err // return error
+        | Success(value1, remaining1) ->
+            let result2 = run p2 remaining1
+
+            match result2 with
+            | Failure err -> Failure err
+            | Success(val2, rem2) ->
+                let combined = (value1, val2)
+                Success(combined, rem2)
+
+/// infix version
+let (.>>.) = next
 
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/
