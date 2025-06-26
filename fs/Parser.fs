@@ -49,18 +49,12 @@ let B = pchar 'B'
 let next p1 p2 =
     fun input ->
         // run parser 1 with input
-        let result1 = run p1 input
-
-        match result1 with
-        | Failure err -> Failure err // return error
-        | Success(value1, remaining1) ->
-            let result2 = run p2 remaining1
-
-            match result2 with
+        match run p1 input with
+        | Failure err -> Failure err
+        | Success(value1, rest1) ->
+            match run p2 rest1 with
             | Failure err -> Failure err
-            | Success(val2, rem2) ->
-                let combined = (value1, val2)
-                Success(combined, rem2)
+            | Success(value2, rest2) -> Success((value1, value2), rest2)
 
 /// infix version
 let (.>>.) = next
