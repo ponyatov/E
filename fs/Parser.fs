@@ -38,7 +38,6 @@ let B = pchar 'B'
 /// A >> B
 let next p1 p2 =
     Parser(fun input ->
-        // run parser 1 with input
         match run p1 input with
         | Failure err -> Failure err
         | Success(value1, rest1) ->
