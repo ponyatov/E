@@ -1,0 +1,14 @@
+let APP = "E"
+let VERSION = "0.0.1"
+let TITLE = "embedded programming language prototype"
+let AUTHOR = "Dmitry Ponyatov"
+let EMAIL = "dponyatov@gmail.com"
+let YEAR = 2025
+let LICENSE = "MIT"
+
+let ABOUT = "
+- smart vehicles, industrial automation & IIoT
+- targets microcontrollers & embedded Linux
+- heterogenous distributed systems
+- wireless sensor networks
+"
