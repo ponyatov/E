@@ -21,6 +21,22 @@ let TARGET = 'wasm32-browser-js'
 E.rebuild TARGET
 ```
 
+The point is not that you would want to do something in REPL. The point is that there are no artificial limitations, and you have a full range of the development system’s capabilities is accessible from the repl.
+
+Proper support for [[interactive programming]] means that the language and its runtime have positive features that support changing your program _while it runs_.
+
+## Some samples
+
+- Define a function, `foo`, that calls some other function, `bar`, that is not yet defined. Now call `foo`. What happens?
+
+Obviously, the call to `foo` breaks, because `bar` is not defined. But what happens when it breaks? What happens next?
+
+Most languages repls just prints an error message and returns to its prompt. In worst cases, it just crashes.
+
+In a right-done REPL, the break in `foo` drops you into a **breakloop** or [[interactive debugger]], and asks what you want to do next to fix a problem.
+
 ## [[compiler/cross-compiler|cross-compiler]] issues
 
 As [[E/E|E]] is a [[cross-compile first]] language, you always have a deal with both [[E/HOST|HOST]] and [[E/TARGET|TARGET]] system simultaneously, so we need a way to differ what side should run the entered code, and how this code can be [[E/Iterative Compilation|iteratively compiled]], and maybe sent to remote hardware (over [[gdb]]/[[OpenOCD]]/etc).
+
+## [[compiler as a library]]
