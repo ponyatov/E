@@ -1,3 +1,3 @@
 #!/usr/bin/env e
-
+// Script code follows...
 log 'Hello World!'

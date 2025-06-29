@@ -5,6 +5,6 @@
 `lib/hello.e`:
 ```E
 #!/usr/bin/env e
-
+// Script code follows...
 log 'Hello World!'
 ```
