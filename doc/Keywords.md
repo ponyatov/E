@@ -1,9 +1,12 @@
 # Keywords
 
 - Reserved words with special meaning in the language
-- Cannot be used as [[E/Identifiers|Identifiers]]
+- all are lowercased (and case-sensitive)
+- cannot be used as [[E/Identifiers|Identifiers]]
+- cannot be redefined or shadowed
 
 ## [[E/Variable|Variable]]
+
 - [[E/let|let]] - declares an immutable variable
 - [[E/mut|mut]] - declares a mutable variable
 - [[E/const|const]] - declares a compile-time constant
@@ -40,7 +43,26 @@
 
 ## [[E/Types|Types]]
 
-- [[E/struct]] - define a structure
-- [[E/enum]] - define an enumeration
-- [[E/type]] - type alias
-- [[E/impl]] - implement functionality
+- [[E/struct|struct]] - define a structure
+- [[E/enum|enum]] - define an enumeration
+- [[E/type|type]] - type alias
+- [[E/impl|impl]] - implement [[E/trait|trait]] functionality
+
+## [[E/Concurrency|Concurrency]]
+
+- [[E/spawn|spawn]] - create new thread (process)
+- [[E/atomic|atomic]] - atomic operation
+- [[E/lock|lock]] - mutual exclusion
+- [[E/channel|channel]] - inter-thread communication
+
+## [[E/Modules|Modules]]
+
+- [[E/module|module]] - define module namespace
+- [[E/import|import]] - import module
+- [[E/export|export]] - make item publicly accessible
+
+## [[E/Memory Management]]
+
+- [[E/new|new]] - heap allocation
+- [[E/drop|drop]] - explicit deallocation
+- [[E/move|move]] - transfer ownership
