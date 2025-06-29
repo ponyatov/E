@@ -12,12 +12,12 @@
 	#'Hello\0'  // byte-sized string with optional C endline
 	```
 - [[E/int|int]] integer number
+	- underscores can be used in any positions to split digit groups
 	```E
 	42          // decimal
 	0x2A        // hexadecimal
 	0o750       // octal
 	0b101010    // binary
-	0b_1010_10  // underscore can be used in any positions
 	```
 - [[E/float|float]] floating-point number
 	```E
