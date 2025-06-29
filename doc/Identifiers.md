@@ -1,6 +1,9 @@
 # Identifiers
 
-- Rules for naming variables, functions, types, and other entities
-- Case-sensitive names (e.g., `myVar` ≠ `myvar`)
-- Must begin with a letter or underscore, followed by letters, digits, or underscores
-- Examples: `counter`, `MAX_VALUE`, `_internal_data`
+> Rules for naming variables, functions, types, and other entities
+
+- regexp: `[_a-zA-Z][_a-zA-Z0-9]*`
+	- must begin with a letter or underscore
+	- optionally followed by letters, digits, or underscores
+- limited to ASCII range for portability
+- case-sensitive (e.g., `myVar` != `myvar`)
