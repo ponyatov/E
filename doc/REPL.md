@@ -37,8 +37,21 @@ In a right-done REPL, the break in `foo` drops you into a **[[breakloop]]** o
 
 ![[breakloop]]
 
+Moreover, because the entire language and development system are available, unrestricted, in the [[breakloop]], you can define the missing function `bar`, resume `foo`, and get a sensible result.
+
+In fact, there’s a style of programming, well known in Lisp and Smalltalk circles, in which you define a toplevel function with calls to other functions that don’t yet exist, and then define those functions as you go in the resulting breakloops. It’s a fast way to implement a procedure when you already know how it should work.
+
+- Now change the definition of the type. What happens?
+
+Does your language runtime notice that the definition of the type has changed? Does it realize that the existing instances have a new definition? When something touches one of them, does it automatically reinitialize it to conform to the new definition, or, if it doesn’t know how to do that, does it start a breakloop and ask you what to do about it? If the answers is “no,” then you’re missing a crucial element of repl-driven development.
+
+
+
 ## [[compiler/cross-compiler|cross-compiler]] issues
 
 As [[E/E|E]] is a [[cross-compile first]] language, you always have a deal with both [[E/HOST|HOST]] and [[E/TARGET|TARGET]] system simultaneously, so we need a way to differ what side should run the entered code, and how this code can be [[E/Iterative Compilation|iteratively compiled]], and maybe sent to remote hardware (over [[gdb]]/[[OpenOCD]]/etc).
 
 ## [[compiler as a library]]
+
+## 
+> Remember: the point is to support programming _interactively_. You don’t want to have to kill your program and rebuild it from scratch just because you changed a definition. That’s silly; adding and changing definitions is most of what you do! If your development environment is going to support interactive development, then it had better know how to keep your program running when you change some definitions.
