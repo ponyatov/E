@@ -13,7 +13,13 @@ The REPL-oriented language and runtime system that are designed from the ground 
 - you’re going to develop programs by starting the language engine and talking to it, teaching it how to be your program _interactively_, by changing it _while it runs_.
 - there are no any IDE, editors, side panels, that's only the CLI console you put you code fragments in, and give commands to compile, run, read output, maybe manipulate files, run OS commands and process their output.
 
-Yes, almost every modern language with a repl can do some things in the repl. But, Being able to do _some_ things in the repl does not make a language engine into a repl-driven programming environment. 
+Yes, almost every modern language with a repl can do some things in the repl. But, Being able to do _some_ things in the repl does not make a language engine into a repl-driven programming environment. What distinguishes old-fashioned Lisp and Smalltalk environments is that you can do _everything_ in the REPL.
+
+For example, you can ask the current version of [[E/E|E]] to rebuild itself from scratch for some specific [[E/TARGET|TARGET]] with your own changes done into a language, with this command:
+```E
+let TARGET = 'wasm32-browser-js'
+E.rebuild TARGET
+```
 
 ## [[compiler/cross-compiler|cross-compiler]] issues
 
