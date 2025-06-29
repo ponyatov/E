@@ -18,3 +18,4 @@ github: https://github.com/ponyatov/E
 ## [[E/Data Types]]
 ## [[E/Semantics]]
 ## [[E/Functions]]
+## [[E/Code Organization]]
