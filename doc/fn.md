@@ -1,2 +1,1 @@
-# fn
-## [[E/Functions|Functions]] definition
+![[E/Function Definition|Function Definition]]

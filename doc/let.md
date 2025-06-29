@@ -1,3 +1,1 @@
-# let
-## [[immutable]] variable / reference
-
+![[E/Variable|Variable]]

@@ -1,2 +1,1 @@
-# mut
-## mutable variable / reference
+![[E/Variable|Variable]]
