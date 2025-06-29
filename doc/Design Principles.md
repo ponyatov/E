@@ -10,7 +10,9 @@
 	- Erlang/[[Elixir]]:
 		- decompose data structures and raw binary data down to bit fields
 		- compose binary packages with syntax patterns for bitfield composition
-- [[E/Type System|Type System]] with [[algebraic types]]
+- [[E/Type System|Type System]]
+	- Rust/F#:
+		- [[algebraic types]]
 - [[First-Class Functions]]
 	- Python/JS/[[Fsh|F#]]/Rust:
 		- full-sized [[lang/functional programming|functional programming]] support
@@ -23,3 +25,8 @@
 		- typed [[Channels]]
 	- [[Nim/Nim|Nim]]:
 		- optional [[Real-Time Garbage Collection]]
+- [[Why Pythons Tabbed Syntax Is Considered Harmful]]
+	- Python/F#: 
+		- [[tabbed syntax]] forces to write structured code
+	- Rust/F#:
+		- [[E/autoformat|autoformat]]
