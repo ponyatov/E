@@ -21,7 +21,7 @@ github: https://github.com/ponyatov/E
 ## [[E/Memory Model]]
 ## [[E/Concurrency]]
 ## [[E/Code Organization]]
+## [[E/Interoperability]]
 ## [[E/Standard Library]]
 ## [[E/Platform Support]]
-## [[E/Interoperability]]
 ## [[E/Reference Implementation]]
