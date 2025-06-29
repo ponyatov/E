@@ -763,15 +763,6 @@ let pc () =
     File.WriteAllText("hw/pc/inc/pc.hpp","/// @defgroup pc pc\n/// #ingroup x86 x86\n")
     File.WriteAllText("hw/pc/src/pc.cpp","#include \"pc.hpp\"\n")
 
-let pc () =
-    Directory.CreateDirectory("hw/pc")
-    File.WriteAllText("hw/pc/pc.mk","CPU = i5\n")
-    File.WriteAllText("hw/pc/pc.cmake","")
-    Directory.CreateDirectory("hw/pc/inc")
-    Directory.CreateDirectory("hw/pc/src")
-    File.WriteAllText("hw/pc/inc/pc.hpp","/// @defgroup pc pc\n/// #ingroup x86 x86\n")
-    File.WriteAllText("hw/pc/src/pc.cpp","#include \"hw/pc.hpp\"\n")
-
 let pillf103 () =
     Directory.CreateDirectory("hw/pillf103")
     File.WriteAllText("hw/pillf103/pillf103.mk","CPU = stm32f103c8t6\n")
@@ -885,7 +876,7 @@ let linux () =
     Directory.CreateDirectory("os/linux/inc")
     Directory.CreateDirectory("os/linux/src")
     File.WriteAllText("os/linux/inc/linux.hpp","/// @defgroup linux linux\n/// @ingroup os os\n")
-    File.WriteAllText("os/linux/src/linux.cpp","#include \"os/linux.hpp\"\n")
+    File.WriteAllText("os/linux/src/linux.cpp","#include \"linux.hpp\"\n")
 
 let none () = 
 
