@@ -1,0 +1,9 @@
+[package]
+name        =  "e"
+version     =  "0.0.1"
+description =  "embedded programming language prototype"
+authors     = ["Dmitry Ponyatov <dponyatov@gmail.com>"]
+license     =  "MIT"
+edition     =  "2024"
+
+[dependencies]

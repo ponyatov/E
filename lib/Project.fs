@@ -322,4 +322,30 @@ node_modules/
 !.gitignore
 ")
 
-let dirs () = vscode doc lib inc src tmp giti
+let cargo () =
+    let app = APP.ToLower()
+    File.WriteAllText("Cargo.toml", $"[package]
+name        =  \"{app}\"
+version     =  \"{VERSION}\"
+description =  \"{TITLE}\"
+authors     = [\"{AUTHOR} <{EMAIL}>\"]
+license     =  \"{LICENSE}\"
+edition     =  \"2024\"
+
+[dependencies]
+")
+
+let src () =
+    Directory.CreateDirectory("lib")
+    File.WriteAllText($"lib/.gitignore", "")
+    Directory.CreateDirectory("inc")
+    File.WriteAllText($"inc/.gitignore", "")
+    Directory.CreateDirectory("src")
+    File.WriteAllText($"src/.gitignore", "")
+
+let rust () =
+    cargo
+    File.WriteAllText($"src/main.rs", "fn main() {}\n")
+    File.WriteAllText($"src/lib.rs", "")
+
+let dirs () = vscode doc src tmp giti rust
