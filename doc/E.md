@@ -12,6 +12,7 @@ github: https://github.com/ponyatov/E
 
 ### [[Purpose]]
 ### [[Design Principles]]
+### [[Feature adoption from other languages]]
 ### [[E/Overview|Overview]]
 ## [[E/Lexical Structure]]
 ## [[E/Syntax]]
