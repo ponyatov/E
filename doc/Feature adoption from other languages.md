@@ -39,3 +39,6 @@
 	- Python:
 		- multiple [[oop/inheritance|inheritance]]
 		- [[lang/operator overloading|operator overloading]]
+- [[lang/FFI|FFI]]
+	- Rust:
+		- native interop with any C/C++ code, API and any libraries
