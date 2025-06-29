@@ -751,4 +751,71 @@ let cmake() =
     install
     toolchain
 
-let dirs () = vscode doc src tmp giti rust cpp cmake
+let pc () =
+    Directory.CreateDirectory("hw/pc")
+    File.WriteAllText("hw/pc/pc.mk","CPU = i5\n")
+    File.WriteAllText("hw/pc/pc.cmake","")
+    Directory.CreateDirectory("hw/pc/inc")
+    Directory.CreateDirectory("hw/pc/src")
+    File.WriteAllText("hw/pc/inc/pc.hpp","/// @defgroup pc pc\n/// #ingroup x86 x86\n")
+    File.WriteAllText("hw/pc/src/pc.cpp","#include \"pc.hpp\"\n")
+
+let pc () =
+    Directory.CreateDirectory("hw/pc")
+    File.WriteAllText("hw/pc/pc.mk","CPU = i5\n")
+    File.WriteAllText("hw/pc/pc.cmake","")
+    Directory.CreateDirectory("hw/pc/inc")
+    Directory.CreateDirectory("hw/pc/src")
+    File.WriteAllText("hw/pc/inc/pc.hpp","/// @defgroup pc pc\n/// #ingroup x86 x86\n")
+    File.WriteAllText("hw/pc/src/pc.cpp","#include \"pc.hpp\"\n")
+
+let pillf103 () =
+    Directory.CreateDirectory("hw/pillf103")
+    File.WriteAllText("hw/pillf103/pillf103.mk","CPU = stm32f103c8t6\n")
+    File.WriteAllText("hw/pillf103/pillf103.cmake","")
+    Directory.CreateDirectory("hw/pillf103/inc")
+    Directory.CreateDirectory("hw/pillf103/src")
+    File.WriteAllText("hw/pillf103/inc/pillf103.hpp","/// @defgroup pillf103 pillf103\n/// #ingroup cortex cortex\n")
+    File.WriteAllText("hw/pillf103/src/pillf103.cpp","#include \"pillf103.hpp\"\n")
+
+let f429disco () =
+    Directory.CreateDirectory("hw/f429disco")
+    File.WriteAllText("hw/f429disco/f429disco.mk","CPU = stm32f429zit6\n")
+    File.WriteAllText("hw/f429disco/f429disco.cmake","")
+    Directory.CreateDirectory("hw/f429disco/inc")
+    Directory.CreateDirectory("hw/f429disco/src")
+    File.WriteAllText("hw/f429disco/inc/f429disco.hpp","/// @defgroup f429disco f429disco\n/// #ingroup cortex cortex\n")
+    File.WriteAllText("hw/f429disco/src/f429disco.cpp","#include \"f429disco.hpp\"\n")
+
+let hw () =
+    Directory.CreateDirectory("hw")
+    Directory.CreateDirectory("hw/inc")
+    Directory.CreateDirectory("hw/src")
+    File.WriteAllText("hw/inc/hw.hpp","""/// @defgroup hw hw
+/// @defgroup x86 x86 @ingroup hw
+/// @defgroup rpi rpi @ingroup hw"
+/// @defgroup esp rpi @ingroup hw"
+/// @defgroup cortex cortex @ingroup hw""")
+    File.WriteAllText("hw/src/hw.cpp","")
+    pc pillf103 f429disco
+    
+let cpu () =
+    Directory.CreateDirectory("hw")
+
+    
+let arch () =
+    Directory.CreateDirectory("hw")
+
+    
+let os () =
+    Directory.CreateDirectory("hw")
+
+    
+
+let cross () = 
+    hw
+    cpu
+    arch
+    os
+
+let dirs () = vscode doc src tmp giti rust cpp cmake cross
