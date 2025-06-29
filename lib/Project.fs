@@ -829,9 +829,24 @@ let hw () =
     File.WriteAllText("hw/src/hw.cpp","")
     pc pillf103 f429disco iskra esp8266 esp32
     
-let cpu () =
-    Directory.CreateDirectory("hw")
+let i5 () =
+    Directory.CreateDirectory("cpu/i5")
+    Directory.CreateDirectory("cpu/i5/inc")
+    Directory.CreateDirectory("cpu/i5/src")
+    File.WriteAllText("cpu/i5/i5.mk","ARCH = x86_64\n")
+    File.WriteAllText("cpu/i5/i5.cmake","")
 
+let cpu () =
+    Directory.CreateDirectory("cpu")
+    Directory.CreateDirectory("cpu/inc")
+    Directory.CreateDirectory("cpu/src")
+    File.WriteAllText("cpu/inc/cpu.hpp","""/// @defgroup cpu cpu
+/// @defgroup x32 x32 @ingroup cpu
+/// @defgroup x64 x64 @ingroup cpu
+/// @defgroup stm32 stm32 @ingroup cpu
+""")
+    File.WriteAllText("cpu/src/cpu.cpp","")
+    i5
     
 let arch () =
     Directory.CreateDirectory("hw")
