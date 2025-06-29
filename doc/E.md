@@ -15,3 +15,6 @@ github: https://github.com/ponyatov/E
 ### [[E/Overview|Overview]]
 ## [[E/Lexical Structure]]
 ## [[E/Syntax]]
+## [[E/Data Types]]
+## [[E/Semantics]]
+## [[E/Functions]]
