@@ -423,8 +423,38 @@ let CMakePresets () =
 }
 """)
 
+let clean () =
+    File.WriteAllText($"cmake/clean.cmake", "")
+let version () =
+    File.WriteAllText($"cmake/version.cmake", "")
+let cmsrc () =
+    File.WriteAllText($"cmake/src.cmake", "")
+let cross () =
+    File.WriteAllText($"cmake/cross.cmake", "")
+let syntax () =
+    File.WriteAllText($"cmake/syntax.cmake", "")
+
+let install () =
+    File.WriteAllText($"cmake/install.cmake", "")
+
+let x86 = 
+    File.WriteAllText($"cmake/x86_64-linux-gnu.cmake", "")
+    
+let toolchain () =
+    File.WriteAllText($"cmake/any_toolchain.cmake", "")
+    x86
+
 let cmake() =
+    Directory.CreateDirectory("cmake")
+    File.WriteAllText($"cmake/.gitignore", "")
     CMakeLists
     CMakePresets
+    clean
+    version
+    cmsrc
+    cross
+    syntax
+    install
+    toolchain
 
 let dirs () = vscode doc src tmp giti rust cpp cmake
