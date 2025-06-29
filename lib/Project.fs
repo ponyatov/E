@@ -787,6 +787,33 @@ let f429disco () =
     File.WriteAllText("hw/f429disco/inc/f429disco.hpp","/// @defgroup f429disco f429disco\n/// #ingroup cortex cortex\n")
     File.WriteAllText("hw/f429disco/src/f429disco.cpp","#include \"f429disco.hpp\"\n")
 
+let iskra () =
+    Directory.CreateDirectory("hw/iskra")
+    File.WriteAllText("hw/iskra/iskra.mk","CPU = stm32f405rgt6\n")
+    File.WriteAllText("hw/iskra/iskra.cmake","")
+    Directory.CreateDirectory("hw/iskra/inc")
+    Directory.CreateDirectory("hw/iskra/src")
+    File.WriteAllText("hw/iskra/inc/iskra.hpp","/// @defgroup iskra iskra\n/// #ingroup cortex cortex\n")
+    File.WriteAllText("hw/iskra/src/iskra.cpp","#include \"iskra.hpp\"\n")
+
+let esp8266 () =
+    Directory.CreateDirectory("hw/esp8266")
+    File.WriteAllText("hw/esp8266/esp8266.mk","CPU = lx106\n")
+    File.WriteAllText("hw/esp8266/esp8266.cmake","")
+    Directory.CreateDirectory("hw/esp8266/inc")
+    Directory.CreateDirectory("hw/esp8266/src")
+    File.WriteAllText("hw/esp8266/inc/esp8266.hpp","/// @defgroup esp8266 esp8266\n/// #ingroup esp esp\n")
+    File.WriteAllText("hw/esp8266/src/esp8266.cpp","#include \"esp8266.hpp\"\n")
+
+let esp32 () =
+    Directory.CreateDirectory("hw/esp32")
+    File.WriteAllText("hw/esp32/esp32.mk","CPU = lx106\n")
+    File.WriteAllText("hw/esp32/esp32.cmake","")
+    Directory.CreateDirectory("hw/esp32/inc")
+    Directory.CreateDirectory("hw/esp32/src")
+    File.WriteAllText("hw/esp32/inc/esp32.hpp","/// @defgroup esp32 esp32\n/// #ingroup esp esp\n")
+    File.WriteAllText("hw/esp32/src/esp32.cpp","#include \"esp32.hpp\"\n")
+
 let hw () =
     Directory.CreateDirectory("hw")
     Directory.CreateDirectory("hw/inc")
@@ -797,7 +824,7 @@ let hw () =
 /// @defgroup esp rpi @ingroup hw"
 /// @defgroup cortex cortex @ingroup hw""")
     File.WriteAllText("hw/src/hw.cpp","")
-    pc pillf103 f429disco
+    pc pillf103 f429disco iskra esp8266 esp32
     
 let cpu () =
     Directory.CreateDirectory("hw")
