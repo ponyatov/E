@@ -847,9 +847,34 @@ let cpu () =
 """)
     File.WriteAllText("cpu/src/cpu.cpp","")
     i5
-    
+
+let x86_64 () =
+    Directory.CreateDirectory("arch/x86_64")
+    Directory.CreateDirectory("arch/x86_64/inc")
+    Directory.CreateDirectory("arch/x86_64/src")
+    File.WriteAllText("arch/x86_64/inc/x86_64.hpp","/// @defgroup x86_64 x86_64\n/// @ingroup arch\n")
+    File.WriteAllText("arch/x86_64/src/x86_64.cpp","")
+
+let i386 () =
+
+let aarch64 () =
+
+let cortexM () =
+
+let cortexM3 () =
+
+let cortexM4 () =
+
+let xtensa () =
+
+
 let arch () =
-    Directory.CreateDirectory("hw")
+    Directory.CreateDirectory("arch")
+    Directory.CreateDirectory("arch/inc")
+    Directory.CreateDirectory("arch/src")
+    File.WriteAllText("arch/inc/arch.hpp","/// @defgroup arch arch\n")
+    File.WriteAllText("arch/src/arch.cpp","")
+    x86_64 i386 aarch64 cortexM cortexM3 cortexM4 xtensa
 
 let linux () = 
     Directory.CreateDirectory("os/linux")
