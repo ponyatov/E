@@ -45,8 +45,6 @@ In fact, there’s a style of programming, well known in Lisp and Smalltalk circ
 
 Does your language runtime notice that the definition of the type has changed? Does it realize that the existing instances have a new definition? When something touches one of them, does it automatically reinitialize it to conform to the new definition, or, if it doesn’t know how to do that, does it start a breakloop and ask you what to do about it? If the answers is “no,” then you’re missing a crucial element of repl-driven development.
 
-
-
 ## [[compiler/cross-compiler|cross-compiler]] issues
 
 As [[E/E|E]] is a [[cross-compile first]] language, you always have a deal with both [[E/HOST|HOST]] and [[E/TARGET|TARGET]] system simultaneously, so we need a way to differ what side should run the entered code, and how this code can be [[E/Iterative Compilation|iteratively compiled]], and maybe sent to remote hardware (over [[gdb]]/[[OpenOCD]]/etc).
