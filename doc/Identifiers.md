@@ -7,3 +7,8 @@
 	- optionally followed by letters, digits, or underscores
 - limited to ASCII range for portability
 - case-sensitive (e.g., `myVar` != `myvar`)
+- not conflicts with [[E/E|E]] language reserved keywords
+- unstrictly preferred:
+	- [[E/const|const]]: all uppercase, screaming snake case
+	- [[E/let|let]]/[[E/mut|mut]]: all lowercase, snake-case
+	- type names: first uppercase latter, camel-case
