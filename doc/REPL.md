@@ -33,7 +33,9 @@ Obviously, the call to `foo` breaks, because `bar` is not defined. But what 
 
 Most languages repls just prints an error message and returns to its prompt. In worst cases, it just crashes.
 
-In a right-done REPL, the break in `foo` drops you into a **breakloop** or [[interactive debugger]], and asks what you want to do next to fix a problem.
+In a right-done REPL, the break in `foo` drops you into a **[[breakloop]]** or [[interactive debugger]], and asks what you want to do next to fix a problem.
+
+![[breakloop]]
 
 ## [[compiler/cross-compiler|cross-compiler]] issues
 
