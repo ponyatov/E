@@ -17,6 +17,10 @@
 - [[First-Class Functions]]
 	- Python/JS/[[Fsh|F#]]/Rust:
 		- full-sized [[lang/functional programming|functional programming]] support
+	- F#:
+		- paren-less syntax
+	- Nim:
+		- [[UFCS|Unified function call syntax]]
 - variables using `let`/`mut` with default [[immutability]]
 	- Rust:
 		- `let` immutable by default
