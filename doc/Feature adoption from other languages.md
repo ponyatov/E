@@ -42,3 +42,11 @@
 - [[lang/FFI|FFI]]
 	- Rust:
 		- native interop with any C/C++ code, API and any libraries
+- [[E/REPL|REPL]]-Driven Development
+	- Haskell/F#:
+		- interactive console is the primary place of work
+		- also can be used as a shell for regular files manipulations
+	- Python:
+		- fast running scripts with [[shebang]]
+	- Smalltalk/Julia:
+		- [[lang/iterative compilation|iterative compilation]] & host-side [[compiler/JIT|JIT]]
