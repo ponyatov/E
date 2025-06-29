@@ -424,24 +424,111 @@ let CMakePresets () =
 """)
 
 let clean () =
-    File.WriteAllText($"cmake/clean.cmake", "")
+    File.WriteAllText($"cmake/clean.cmake",
+"""# project clean-up (remove generated & temp files)
+
+file(GLOB BINS
+    ${CMAKE_INSTALL_PREFIX}/${CMAKE_PROJECT_NAME}_${HW}_${BRANCH}*
+        ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}_${HW}_${BRANCH}*)
+
+set_property (
+    TARGET ${CMAKE_PROJECT_NAME}
+    APPEND PROPERTY ADDITIONAL_CLEAN_FILES ${BINS} ${ELF} ${DFU})
+""")
+
 let version () =
-    File.WriteAllText($"cmake/version.cmake", "")
+    File.WriteAllText($"cmake/version.cmake",
+"""# binary files naming by version & git branch/hash
+
+execute_process(
+    OUTPUT_VARIABLE REL
+    COMMAND git rev-parse --short=4 HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+execute_process(
+    OUTPUT_VARIABLE BRANCH
+    COMMAND git rev-parse --abbrev-ref HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+execute_process(
+    OUTPUT_VARIABLE NOW
+    COMMAND date +%y%m%d # _%H%M
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+set(BIN_OUTPUT_NAME "${CMAKE_PROJECT_NAME}_${HW}_${BRANCH}_${NOW}")
+""")
+
 let cmsrc () =
-    File.WriteAllText($"cmake/src.cmake", "")
+    File.WriteAllText($"cmake/src.cmake",
+"""# scan project for source code files
+
+file(GLOB LD
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    hw/${HW}/*.ld
+)
+
+file(GLOB S
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    hw/${HW}/*.s
+)
+
+file(GLOB C
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    src/*.c*
+    # cross
+      hw/src/*.c*   hw/${HW}/src/*.c*
+     cpu/src/*.c*  cpu/${CPU}/src/*.c*
+    arch/src/*.c* arch/${ARCH}/src/*.c*
+      os/src/*.c*   os/${OS}/src/*.c*
+)
+
+file(GLOB H
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    inc/*.h*
+    # cross
+      hw/inc/*.h*   hw/${HW}/inc/*.h*
+     cpu/inc/*.h*  cpu/${CPU}/inc/*.h*
+    arch/inc/*.h* arch/${ARCH}/inc/*.h*
+      os/inc/*.h*   os/${OS}/inc/*.h*
+)
+
+file(GLOB INC
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    ${CMAKE_BINARY_DIR}
+    inc
+    # cross
+      hw/inc   hw/${HW}/inc
+     cpu/inc  cpu/${CPU}/inc
+    arch/inc arch/${ARCH}/inc
+      os/inc   os/${OS}/inc
+)
+include_directories(${INC})
+""")
+
 let cross () =
-    File.WriteAllText($"cmake/cross.cmake", "")
+    File.WriteAllText($"cmake/cross.cmake",
+"""""")
 let syntax () =
-    File.WriteAllText($"cmake/syntax.cmake", "")
+    File.WriteAllText($"cmake/syntax.cmake",
+"""""")
 
 let install () =
-    File.WriteAllText($"cmake/install.cmake", "")
+    File.WriteAllText($"cmake/install.cmake",
+"""""")
 
 let x86 = 
-    File.WriteAllText($"cmake/x86_64-linux-gnu.cmake", "")
+    File.WriteAllText($"cmake/x86_64-linux-gnu.cmake",
+"""""")
     
 let toolchain () =
-    File.WriteAllText($"cmake/any_toolchain.cmake", "")
+    File.WriteAllText($"cmake/any_toolchain.cmake",
+"""""")
     x86
 
 let cmake() =
