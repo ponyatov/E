@@ -1,0 +1,2 @@
+# [[Atomics]]
+## [[E/Synchronization|Synchronization]]
