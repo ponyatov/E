@@ -679,8 +679,8 @@ add_compile_definitions()
 add_compile_options()
 add_link_options()
 """)
-    
-let toolchain () =
+
+let any_toolchain() =
     File.WriteAllText($"cmake/any_toolchain.cmake",
 """set(CMAKE_C_STANDARD   17)
 set(CMAKE_CXX_STANDARD 17)
@@ -736,6 +736,9 @@ set(CMAKE_EXECUTABLE_SUFFIX_ASM ${CMAKE_EXECUTABLE_SUFFIX})
 set(CMAKE_EXECUTABLE_SUFFIX_C   ${CMAKE_EXECUTABLE_SUFFIX})
 set(CMAKE_EXECUTABLE_SUFFIX_CXX ${CMAKE_EXECUTABLE_SUFFIX})
 """)
+        
+let toolchain () =
+    any_toolchain
     x86
 
 let cmake() =
@@ -767,7 +770,7 @@ let pc () =
     Directory.CreateDirectory("hw/pc/inc")
     Directory.CreateDirectory("hw/pc/src")
     File.WriteAllText("hw/pc/inc/pc.hpp","/// @defgroup pc pc\n/// #ingroup x86 x86\n")
-    File.WriteAllText("hw/pc/src/pc.cpp","#include \"pc.hpp\"\n")
+    File.WriteAllText("hw/pc/src/pc.cpp","#include \"hw/pc.hpp\"\n")
 
 let pillf103 () =
     Directory.CreateDirectory("hw/pillf103")
@@ -776,7 +779,7 @@ let pillf103 () =
     Directory.CreateDirectory("hw/pillf103/inc")
     Directory.CreateDirectory("hw/pillf103/src")
     File.WriteAllText("hw/pillf103/inc/pillf103.hpp","/// @defgroup pillf103 pillf103\n/// #ingroup cortex cortex\n")
-    File.WriteAllText("hw/pillf103/src/pillf103.cpp","#include \"pillf103.hpp\"\n")
+    File.WriteAllText("hw/pillf103/src/pillf103.cpp","#include \"hw/pillf103.hpp\"\n")
 
 let f429disco () =
     Directory.CreateDirectory("hw/f429disco")
@@ -785,7 +788,7 @@ let f429disco () =
     Directory.CreateDirectory("hw/f429disco/inc")
     Directory.CreateDirectory("hw/f429disco/src")
     File.WriteAllText("hw/f429disco/inc/f429disco.hpp","/// @defgroup f429disco f429disco\n/// #ingroup cortex cortex\n")
-    File.WriteAllText("hw/f429disco/src/f429disco.cpp","#include \"f429disco.hpp\"\n")
+    File.WriteAllText("hw/f429disco/src/f429disco.cpp","#include \"hw/f429disco.hpp\"\n")
 
 let iskra () =
     Directory.CreateDirectory("hw/iskra")
@@ -794,7 +797,7 @@ let iskra () =
     Directory.CreateDirectory("hw/iskra/inc")
     Directory.CreateDirectory("hw/iskra/src")
     File.WriteAllText("hw/iskra/inc/iskra.hpp","/// @defgroup iskra iskra\n/// #ingroup cortex cortex\n")
-    File.WriteAllText("hw/iskra/src/iskra.cpp","#include \"iskra.hpp\"\n")
+    File.WriteAllText("hw/iskra/src/iskra.cpp","#include \"hw/iskra.hpp\"\n")
 
 let esp8266 () =
     Directory.CreateDirectory("hw/esp8266")
@@ -803,7 +806,7 @@ let esp8266 () =
     Directory.CreateDirectory("hw/esp8266/inc")
     Directory.CreateDirectory("hw/esp8266/src")
     File.WriteAllText("hw/esp8266/inc/esp8266.hpp","/// @defgroup esp8266 esp8266\n/// #ingroup esp esp\n")
-    File.WriteAllText("hw/esp8266/src/esp8266.cpp","#include \"esp8266.hpp\"\n")
+    File.WriteAllText("hw/esp8266/src/esp8266.cpp","#include \"hw/esp8266.hpp\"\n")
 
 let esp32 () =
     Directory.CreateDirectory("hw/esp32")
@@ -812,7 +815,7 @@ let esp32 () =
     Directory.CreateDirectory("hw/esp32/inc")
     Directory.CreateDirectory("hw/esp32/src")
     File.WriteAllText("hw/esp32/inc/esp32.hpp","/// @defgroup esp32 esp32\n/// #ingroup esp esp\n")
-    File.WriteAllText("hw/esp32/src/esp32.cpp","#include \"esp32.hpp\"\n")
+    File.WriteAllText("hw/esp32/src/esp32.cpp","#include \"hw/esp32.hpp\"\n")
 
 let hw () =
     Directory.CreateDirectory("hw")
@@ -833,11 +836,28 @@ let cpu () =
 let arch () =
     Directory.CreateDirectory("hw")
 
+let linux () = 
+    Directory.CreateDirectory("os/linux")
+    File.WriteAllText("os/linux/linux.mk","")
+    File.WriteAllText("os/linux/linux.cmake","")
+    Directory.CreateDirectory("os/linux/inc")
+    Directory.CreateDirectory("os/linux/src")
+    File.WriteAllText("os/linux/inc/linux.hpp","/// @defgroup linux linux\n/// @ingroup os os\n")
+    File.WriteAllText("os/linux/src/linux.cpp","#include \"os/linux.hpp\"\n")
+
+let none () = 
+
+let freertos () = 
+
+let win32 () = 
     
 let os () =
-    Directory.CreateDirectory("hw")
-
-    
+    Directory.CreateDirectory("os")
+    Directory.CreateDirectory("os/inc")
+    Directory.CreateDirectory("os/src")
+    File.WriteAllText("os/inc/os.hpp","""/// @defgroup os os\n""")
+    File.WriteAllText("os/src/os.cpp","")
+    linux none freertos win32
 
 let cross () = 
     hw
