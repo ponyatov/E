@@ -30,3 +30,8 @@ Python-like **indentation-based syntax** (often called "[[tabbed syntax]]") is
 - **Reduces Visual Clutter:** No braces or `end` keywords mean less syntactic noise.
 - **Readability matters**, and indentation enforces it.
 
+## Best Practices to Avoid Issues
+
+- **Use spaces exclusively** (follow PEP-like recommends with 4 spaces).
+- Configure your editor to **convert tabs to spaces**.
+- Use linting and [[E/autoformat|autoformat]] tools to enforce consistent indentation.
