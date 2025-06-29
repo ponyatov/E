@@ -907,3 +907,29 @@ code meld doxygen clang-format
 g++ cmake gdb gdb-multiarch
 python3 python3-autopep8 python3-venv python3-ply
 """)
+
+let vsext () =
+    Directory.CreateDirectory("vscode")
+    File.WriteAllText("vscode/package.json",
+    """{
+    "name": "e",
+    "displayName": "Evento",
+    "description": "embedded programming language prototype",
+    "version": "0.0.1",
+    "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "typescript": "~5.8.3"
+    },
+    "engines": {
+        "vscode": "^1.67.0",
+        "node": ">=18.0.0"
+    }
+}
+""")
