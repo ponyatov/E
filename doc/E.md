@@ -9,3 +9,8 @@ github: https://github.com/ponyatov/E
 - targets [[hw/microcontroller|microcontroller]]s & [[Linux/embedded Linux|embedded Linux]]
 - heterogenous [[distrib/distributed|distributed]] systems
 - [[wireless sensor network]]s
+
+### [[Purpose]]
+### [[Design Principles]]
+### [[E/Overview|Overview]]
+## [[E/Lexical Structure]]
