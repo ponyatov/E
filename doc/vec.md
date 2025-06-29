@@ -1,0 +1,3 @@
+# `vec`
+## variable-size vector
+
