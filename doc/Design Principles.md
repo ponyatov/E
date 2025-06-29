@@ -30,3 +30,7 @@
 		- [[tabbed syntax]] forces to write structured code
 	- Rust/F#:
 		- [[E/autoformat|autoformat]]
+- class-based [[OOP]]
+	- Python:
+		- multiple [[oop/inheritance|inheritance]]
+		- [[lang/operator overloading|operator overloading]]
