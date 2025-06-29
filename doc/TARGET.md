@@ -7,7 +7,7 @@
 - [[i686-windows-mingw32]]
 	- retro/compat
 - [[i386-linux-uclibc]]
-	- [[PC104]] & retro
+	- [[PC104]] & retro PC (old notebooks)
 - [[Raspberry Pi]]-like single-board computers & mobile phones
 	- arm-linux-*
 	- aarch64-linux-*
