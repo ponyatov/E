@@ -183,6 +183,11 @@ let vscode () =
     tasks
     settings
 
+let doc () = 
+    Directory.CreateDirectory("doc")
+    File.WriteAllText($"doc/.gitignore", "html/\n!.gitignore\n")
+
+
 let giti() = 
     File.WriteAllText(".gitignore",
 "*~
