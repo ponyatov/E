@@ -850,6 +850,8 @@ let cpu () =
 
 let x86_64 () =
     Directory.CreateDirectory("arch/x86_64")
+    File.WriteAllText("arch/x86_64/x86_64.mk","OS ?= linux\n")
+    File.WriteAllText("arch/x86_64/x86_64.cmake","")
     Directory.CreateDirectory("arch/x86_64/inc")
     Directory.CreateDirectory("arch/x86_64/src")
     File.WriteAllText("arch/x86_64/inc/x86_64.hpp","/// @defgroup x86_64 x86_64\n/// @ingroup arch\n")
