@@ -30,3 +30,17 @@
 - [[E/fn|fn]] - function declaration
 - [[E/async]] [[E/await]] - asynchronous function
 - [[E/yield]] - generator function control
+
+## [[E/Error Handling|Error Handling]]
+
+- [[E/try|try]] - error handling block
+- [[E/catch|catch]] - error handler
+- [[E/throw|throw]] - raise exception
+- [[E/panic|panic]] - unrecoverable error
+
+## [[E/Types|Types]]
+
+- [[E/struct]] - define a structure
+- [[E/enum]] - define an enumeration
+- [[E/type]] - type alias
+- [[E/impl]] - implement functionality

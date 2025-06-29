@@ -1,4 +1,13 @@
 # Error Handling
 
-- [[E/Result|Result]] types & [[E/Pattern Match|Pattern Matching]]
-- [[E/Exception|Exception]]s, [[E/panic|panic]]s
+## [[E/Exception|Exception]]
+
+- [[E/try|try]] - error handling block
+- [[E/catch|catch]] - error handler
+- [[E/throw|throw]] - raise exception
+- [[E/panic|panic]] - unrecoverable error
+
+## [[E/Types|Types]]
+
+- [[E/Result|Result]]
+- [[E/Option|Option]]
