@@ -2,6 +2,17 @@
 
 > Syntax for single-line and multi-line comments
 
+- **Purpose**:
+    - Documentation (e.g., function headers, TODOs).
+	    - [[E/code documenting|code documenting]]
+	    - local comments not exports to documentation
+    - Debugging (temporarily disabling code).
+    - Metadata (shebang for scripts, etc).
+- **Whitespace Handling**:
+    - Indentation is **not significant** (unlike Python), avoiding issues with mixed tabs/spaces.
+- **Autoformatting**:
+    - The toolchain includes an [[E/autoformat|autoformatter]] to standardize comment placement and style.
+
 ![[shebang]]
 
 ## line comment
