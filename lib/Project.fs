@@ -899,3 +899,11 @@ let cross () =
     os
 
 let dirs () = vscode doc src tmp giti rust cpp cmake cross
+
+let apt() =
+    File.WriteAllText("apt.Debian",
+    """git make curl
+code meld doxygen clang-format
+g++ cmake gdb gdb-multiarch
+python3 python3-autopep8 python3-venv python3-ply
+""")
