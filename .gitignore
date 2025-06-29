@@ -1,0 +1,8 @@
+*~
+*.swp
+*.log
+/target/
+/obj/
+__pycache__/
+node_modules/
+!.gitignore

@@ -136,13 +136,42 @@ let extensions () =
         "redhat.vscode-xml",
         "mnxn.fsharp-fsl-fsy",
     ]
-}""")
+}
+""")
 
 let tasks () =
-    File.WriteAllText(".vscode/tasks.json", "{}")
+    File.WriteAllText(".vscode/tasks.json",
+"""{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label"          : "project: install",
+            "type"           : "shell",
+            "command"        : "make install",
+            "presentation"   : {"focus": true},
+            "problemMatcher" : []
+        },
+        {
+            "label"          : "project: update",
+            "type"           : "shell",
+            "command"        : "make update",
+            "presentation"   : {"focus": true},
+            "problemMatcher" : []
+        },
+        {
+            "label"          : "AI: context",
+            "type"           : "shell",
+            "command"        : "make ai",
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": true, "focus": true, "reveal": "silent", "close": false},
+            "group"          : {"kind": "build", "isDefault": true}
+        },
+    ]
+}
+""")
 
 let settings () =
-    File.WriteAllText(".vscode/settings.json", "{}")
+    File.WriteAllText(".vscode/settings.json", """{}""")
 
 let vscode () =
     let vs = ".vscode"
@@ -154,4 +183,16 @@ let vscode () =
     tasks
     settings
 
-let dirs () = vscode doc lib inc src tmp
+let giti() = 
+    File.WriteAllText(".gitignore",
+"*~
+*.swp
+*.log
+/target/
+/obj/
+__pycache__/
+node_modules/
+!.gitignore
+")
+
+let dirs () = vscode doc lib inc src tmp giti
