@@ -9,3 +9,6 @@ type PResult<'T> =
 
 /// generic parser
 type Parser<'T> = Parser of (string -> 'T * string)
+
+/// helper function to run typed combinators
+let run (Parser p) input = p input
