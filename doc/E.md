@@ -26,3 +26,4 @@ github: https://github.com/ponyatov/E
 ## [[E/Standard Library]]
 ## [[E/Platform Support]]
 ## [[E/Reference Implementation]]
+#### [[E/bib]]
