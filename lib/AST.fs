@@ -1,3 +1,6 @@
+//! E language syntax tree types
+module AST
+
 type Comment =
     | SheBang of string
     | LineComment of string

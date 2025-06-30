@@ -1,3 +1,10 @@
+//! project (re)generation scripts
+//! (generates many files required for:
+//! - project maintenance
+//! - on-host debug
+//! - cross-compile: CMake,..
+module Project
+
 let APP = "E"
 let VERSION = "0.0.1"
 let TITLE = "embedded programming language prototype"

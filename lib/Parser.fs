@@ -1,3 +1,9 @@
+//! parser combinators written from scratch
+//! - tabbed syntax parsing
+//! - more informative errors
+//! - able to parse context-sensitive subgrammars
+module Parser
+
 // https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/
 
 /// parser result
