@@ -45,3 +45,14 @@ and Expr =
 type AST =
     | Comment of Comment
     | Expr of Expr
+
+/// [sestoft]
+let rec eval (expr: Expr) : int =
+    match expr with
+    | Prim(Int n) -> n
+    | Prim(Float f) -> System.Convert.ToInt32(f)
+    | _ -> failwith $"{expr}"
+
+Prim(Int 123) |> eval // 123
+Prim(Float 12.34) |> eval // 12
+Prim(Float -3e+4) |> eval // -30000
