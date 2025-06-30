@@ -10,10 +10,10 @@ github: https://github.com/ponyatov/E
 - heterogenous [[distrib/distributed|distributed]] systems
 - [[wireless sensor network]]s
 
-### [[Purpose]]
-### [[Design Principles]]
-### [[Feature adoption from other languages]]
-### [[E/Overview|Overview]]
+### [[E/Purpose]]
+### [[E/Design Principles]]
+### [[E/Feature adoption from other languages]]
+### [[E/Overview]]
 ## [[E/Lexical Structure]]
 ## [[E/Syntax]]
 ## [[E/Data Types]]
