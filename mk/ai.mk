@@ -1,4 +1,4 @@
-.PHONY: ai
+.PHONY: ai tmp/$(APP).ai.md
 ai: tmp/$(APP).ai.md
-tmp/$(APP).ai.md: README.md doc/*.md lib/*.fs* lib/*.e $(MK)
-	cat README.md doc/*.md lib/*.fs* lib/*.e ~/metadoc/syntax/tabbed* > $@
+tmp/$(APP).ai.md:
+	cat README.md doc/*.md lib/*.fs* src/*.e ~/metadoc/syntax/tabbed* > $@

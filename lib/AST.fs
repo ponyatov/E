@@ -8,6 +8,9 @@ type Prim =
     | Int of int
     | Float of float
 
+let A = Int 123 // Int 123
+let B = Int 456 // Int 456
+
 /// operator
 type Op =
     | Add of Expr * Expr
