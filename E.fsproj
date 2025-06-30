@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="lib/AST.fs" />
+        <Compile Include="lib/Parser.fs" />
         <Compile Include="lib/Project.fs" />
     </ItemGroup>
 

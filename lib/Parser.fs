@@ -94,8 +94,17 @@ run uA "" // Fail ""
 run uA "A" // Succ ("", "")
 run uA "AB" // Succ ("", "B")
 
-/// parse AST::LineComment
-let pLineComment = pstr "//" >> uchar '\n'
+/// parse into AST::LineComment
+let pLineComment =
+    Parser(fun input ->
+        match run (pstr "//") input with // skip prefix
+        | Fail err -> Fail err
+        | Succ(_, rest1) ->
+            match run (uchar '\n') rest1 with
+            | Fail err -> Fail err
+            | Succ(comment, rest2) -> // wrap comment text
+                Succ(LineComment comment, rest2))
+
 run pLineComment "" // Fail ""
 run pLineComment "//" // Fail "" no end of line
 run pLineComment "//\nABC" // Succ (("//", ""), "ABC") empty comment
