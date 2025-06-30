@@ -73,3 +73,30 @@ run AB "" // Fail ""
 run AB "A" // Fail ""
 run AB "AB" // Succ (('A', 'B'), "")
 run AB "ABC" // Succ (('A', 'B'), "C")
+
+/// parse until given char found (treated as delimiter)
+let uchar (c: char) =
+    Parser(fun input ->
+        if input = "" then
+            Fail input // empty string
+        else
+            let index = input.IndexOf(c)
+
+            if index = -1 then
+                Fail input
+            else
+                let result = input.[0 .. index - 1] // Everything before the c
+                let rest = input.[index + 1 ..] // remaining input
+                Succ(result, rest))
+
+let uA = uchar 'A'
+run uA "" // Fail ""
+run uA "A" // Succ ("", "")
+run uA "AB" // Succ ("", "B")
+
+/// parse AST::LineComment
+let pLineComment = pstr "//" >> uchar '\n'
+run pLineComment "" // Fail ""
+run pLineComment "//" // Fail "" no end of line
+run pLineComment "//\nABC" // Succ (("//", ""), "ABC") empty comment
+run pLineComment "//AB\nC" // Succ (("//", "AB"), "C")
