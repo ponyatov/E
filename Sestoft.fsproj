@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <Compile Include="lib/Sestoft.fs" />
+        <Compile Include="lib/Test.fs" />
     </ItemGroup>
 
     <ItemGroup>
