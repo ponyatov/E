@@ -10,12 +10,20 @@ fn factorial n = n * factorial (n - 1)
 
 - with guards (Elixir influence):
 
-```E
-factorial 0 = 1
-factorial n when n > 0 = n * factorial (n - 1)
-factorial _ = error $"Negative input: {n}"
-```
-- [[E/String Interpolation]]
+	```E
+	factorial 0 = 1
+	factorial n when n > 0 = n * factorial (n - 1)
+	factorial n = error $"Negative input: {n}"
+	```
+	- see: [[E/String Interpolation]]
+
+- Multiple Arguments (Currying Preserved)
+	```E
+	pow x 0 = 1
+	pow x 1 = x
+	pow x n when n > 0 = x * pow x (n - 1)
+	pow _ _ = error "Invalid exponent"
+	```
 
 # [[function signature]] matching
 
