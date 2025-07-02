@@ -14,10 +14,12 @@
 |`+`|Addition|`5 + 3`|`8`|
 |`-`|Subtraction|`7 - 2`|`5`|
 |`*`|Multiplication|`4 * 6`|`24`|
-|`/`|Division|`10 / 3`|`3`*|
+|`/`|Division *|`10 / 3`|`3`|
 |`%`|Modulus/Remainder|`10 % 3`|`1`|
 
-* Note: Integer division truncates toward zero (like C, not like Python)
+* Note:
+	- [[E/int|int]]: integer division truncates toward zero (like C, not like Python)
+	- [[E/float|float]]: float-point division works as usual on most languages
 
 ## Inc-/Decrement
 
@@ -38,3 +40,12 @@
 |`/=`|Divide and assign|`x /= 2`|`x = x / 2`|
 |`%=`|Modulus and assign|`x %= 3`|`x = x % 3`|
 
+## Operator Precedence
+
+From highest to lowest precedence:
+
+1. `()` (parentheses)
+2. `++`, `--` (postfix), `+`, `-` (unary)
+3. `*`, `/`, `%`
+4. `+`, `-` (binary)
+5. `=`, `+=`, `-=`, `*=`, `/=`, `%=` (assignment)
