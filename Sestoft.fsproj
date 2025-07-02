@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>Sestoft</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="lib/Sestoft.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Expecto" Version="10.2.3" />
+    </ItemGroup>
+
+</Project>
