@@ -15,6 +15,7 @@ factorial 0 = 1
 factorial n when n > 0 = n * factorial (n - 1)
 factorial _ = error $"Negative input: {n}"
 ```
+- [[E/String Interpolation]]
 
 # [[function signature]] matching
 
