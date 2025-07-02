@@ -1,6 +1,8 @@
 # Functional Polymorphism
+## [[E/Function Definition|Function Definition]]
 
-- multiple function defintions starts with [[E/fn|fn]]
+- multiple [[E/Function Definition|Function Definition]]s has same name:
+
 ```E
 fn factorial 0 = 1
 fn factorial n = n * factorial (n - 1)
