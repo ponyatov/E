@@ -1,7 +1,6 @@
 // Programming Language Concepts for Software Developers
 // Peter Sestoft
 
-
 type Expr =
     | Int of int
     | BinOp of Op * Expr * Expr

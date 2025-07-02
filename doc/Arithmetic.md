@@ -1,5 +1,12 @@
 # Arithmetic
 
+## Unary
+
+|Operator|Description|Example|Result|
+|---|---|---|---|
+|`+`|Positive (no-op)|`+5`|`5`|
+|`-`|Negation|`-5`|`-5`|
+
 ## Infix
 
 |Operator|Description|Example|Result|
@@ -10,17 +17,24 @@
 |`/`|Division|`10 / 3`|`3`*|
 |`%`|Modulus/Remainder|`10 % 3`|`1`|
 
-## Unary
-### Prefix
+* Note: Integer division truncates toward zero (like C, not like Python)
 
-|Operator|Description|Example|Result|
+## Inc-/Decrement
+
+|Operator|Description|Example|Effect|
 |---|---|---|---|
-|`+`|Positive (no-op)|`+5`|`5`|
-|`-`|Negation|`-5`|`-5`|
+|`++`|Post-increment|`x++`|Returns x, then increments|
+|`++`|Pre-increment|`++x`|Increments, then returns x|
+|`--`|Post-decrement|`x--`|Returns x, then decrements|
+|`--`|Pre-decrement|`--x`|Decrements, then returns x|
 
-### Suffix
+## Compound
 
-|Operator|Description|Example|Result|
+|Operator|Description|Example|Equivalent To|
 |---|---|---|---|
-|`++`|Inxrement|`A++`|`A+1`|
-|`--`|Decrement|`A--`|`A-1`|
+|`+=`|Add and assign|`x += 3`|`x = x + 3`|
+|`-=`|Subtract and assign|`x -= 2`|`x = x - 2`|
+|`*=`|Multiply and assign|`x *= 4`|`x = x * 4`|
+|`/=`|Divide and assign|`x /= 2`|`x = x / 2`|
+|`%=`|Modulus and assign|`x %= 3`|`x = x % 3`|
+
