@@ -35,6 +35,7 @@
         // F#
         "ionide.ionide-fsharp",
         "redhat.vscode-xml",
+        "formulahendry.dotnet-test-explorer",
         "mnxn.fsharp-fsl-fsy",
     ]
 }
