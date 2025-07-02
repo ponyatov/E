@@ -1,11 +1,19 @@
 # Functional Polymorphism
 ## [[E/Function Definition|Function Definition]]
 
-- multiple [[E/Function Definition|Function Definition]]s has same name:
+- multiple [[E/Function Definition|Function Definition]]s has same name (Haskell influence):
 
 ```E
 fn factorial 0 = 1
 fn factorial n = n * factorial (n - 1)
+```
+
+- with guards (Elixir influence):
+
+```E
+factorial 0 = 1
+factorial n when n > 0 = n * factorial (n - 1)
+factorial _ = error $"Negative input: {n}"
 ```
 
 # [[function signature]] matching
