@@ -18,7 +18,7 @@ n = 123
 f = n as float   // Rust-like keyword calls type constructor
 ```
 
-If target type has multiple constructors, the [[Function signature matching]] is used to select constructor must be used for a cast.
+If target type has multiple constructors, the [[Functional Polymorphism]] is used to select constructor must be used for a cast.
 
 ## Code Safety
 

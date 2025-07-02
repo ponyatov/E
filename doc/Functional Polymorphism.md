@@ -1,4 +1,12 @@
-# Function signature matching
+# Functional Polymorphism
+
+- multiple function defintions starts with [[E/fn|fn]]
+```E
+fn factorial 0 = 1
+fn factorial n = n * factorial (n - 1)
+```
+
+# [[function signature]] matching
 
 [[E/E|E]]'s pattern matching capabilities extend deeply into function signatures, making it one of the language's most powerful features. This language feature is not so known, and available only in the [[Elixir]] language, and it's [[Erlang]] predecessor.
 
