@@ -18,4 +18,6 @@ let tests =
     ]
 
 // [<EntryPoint>]
-// let main argv = runTestsWithCLIArgs [] argv tests
+// let main argv =
+//     runTestsWithCLIArgs [] argv tests
+//     runTestsWithArgs defaultConfig argv tests
