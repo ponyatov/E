@@ -3,16 +3,22 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>Sestoft</RootNamespace>
+        <RootNamespace>S</RootNamespace>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <EnableExpectoTestingPlatformIntegration>true</EnableExpectoTestingPlatformIntegration>
+        <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Expecto" Version="10.2.3" />
+        <PackageReference Include="YoloDev.Expecto.TestSdk" Version="0.15.3" />
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Include="lib/Sestoft.fs" />
         <Compile Include="lib/Test.fs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Expecto" Version="10.2.3" />
     </ItemGroup>
 
 </Project>

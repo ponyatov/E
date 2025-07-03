@@ -85,6 +85,10 @@
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
     },
 
+    // // F#
+    // "dotnet-test-explorer.autoWatch": false,
+    // "dotnet-test-explorer.testProjectPath": "Sestoft.fsproj",
+
     // MinGW/MSYS2
     "terminal.integrated.defaultProfile.windows": "UCRT64",
     "terminal.integrated.profiles.windows": {
