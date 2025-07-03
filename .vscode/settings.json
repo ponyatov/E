@@ -87,7 +87,7 @@
 
     // // F#
     // "dotnet-test-explorer.autoWatch": false,
-    // "dotnet-test-explorer.testProjectPath": "Sestoft.fsproj",
+    "dotnet-test-explorer.testProjectPath": "Sestoft.fsproj",
 
     // MinGW/MSYS2
     "terminal.integrated.defaultProfile.windows": "UCRT64",
