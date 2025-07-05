@@ -34,7 +34,7 @@
         {
             "label"          : "py: Sestoft",
             "type"           : "shell",
-            "command"        : "python3 lib/Sestoft.py",
+            "command"        : "python3 lib/Sestoft.py src/hello.e",
             "problemMatcher" : [],
             "presentation"   : {"showReuseMessage": true, "focus": true, "reveal": "silent", "close": false},
             "group"          : {"kind": "build", "isDefault": true}
