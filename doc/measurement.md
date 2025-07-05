@@ -10,9 +10,13 @@ let speed = 20.0<m/s>      // 20 meters per second
 measure kg
 measure N = kg * m / s^2  // Newtons
 ```
-- Preserve unit safety in functions & expressions:
+- Preserve unit safety in functions
 ```E
 let add (x: float<'u>) (y: float<'u>) = x + y  // Ensures same units
+```
+- Automatically handles unit math:
+```E
+speed = 60<mile/hour> + 10<m/s>  // converts to common units (SI)
 ```
 
 ## time [[E/period|period]]
