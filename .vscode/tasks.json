@@ -31,5 +31,13 @@
             "presentation"   : {"showReuseMessage": true, "focus": true, "reveal": "silent", "close": false},
             "group"          : {"kind": "build", "isDefault": true}
         },
+        {
+            "label"          : "py: Sestoft",
+            "type"           : "shell",
+            "command"        : "python3 lib/Sestoft.py",
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": true, "focus": true, "reveal": "silent", "close": false},
+            "group"          : {"kind": "build", "isDefault": true}
+        },
     ]
 }
