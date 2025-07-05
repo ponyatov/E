@@ -38,11 +38,21 @@ class Object:
 
     def __floordiv__(self, that): self.nest.append(that); return self
 
+    def __getitem__(self, idx):
+        if type(idx) == int: return self.nest[idx]
+        if type(idx) == str: return self.slot[idx]
+        raise TypeError(type(idx), idx)
+
+    def eval(self, env): return self
+
 ## scalars & machine types
 class Primitive(Object): pass
 
+## abstract number
+class Num(Primitive): pass
+
 ## integer numbers
-class Int(Primitive):
+class Int(Num):
     def __init__(self, N): super().__init__(int(N))
 
 A = Int(123)
@@ -52,7 +62,7 @@ test_eq(B, '\nint:456')
 # test_raise(Int("azaza")}'=='int: 123')
 
 ## floating point numbers
-class Float(Primitive):
+class Float(Num):
     def __init__(self, F): super().__init__(float(V))
 
 class Container(Object): pass
@@ -63,6 +73,20 @@ class Queue(Container): pass
 
 ## executable data
 class Active(Container): pass
+
+## environment
+class Env(Container): pass
+
+## global env
+glob = Env('glob')
+test_eq(glob, '\nenv:glob')
+
+class Var(Primitive):
+    def eval(self, env): return env[self.val()]
+
+Pi = Var('pi')
+test_eq(Pi, '\nvar:pi')
+test_eq(Pi.eval(glob), '\nfloat:3.1415')
 
 ## operator
 class Op(Active): pass
