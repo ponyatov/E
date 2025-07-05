@@ -52,11 +52,13 @@ class Shape {
 class Circle : Shape {
 
 	radius: float
+	fill: color
 
 	// Constructor with base class initialization
-    fn _new id:int radius:float -> Self =
+    fn _new id:int radius:float fill:color=white -> Self =
 	    let self = super id     // Call base constructors
         self.radius = radius    // assign new field
+        self.fill = fill        // parameter with default value
         self                    // return constructed object
 
 	// Method override
@@ -73,7 +75,7 @@ class Circle : Shape {
 	- parameters selects appropriate constructors
 
 ```E
-let circle = Circle.new(1, 5.0)
-log circle.area()       // 78.53981633974483
-log circle.perimeter()  // 31.41592653589793
+let circle           = Circle id:1 5.0<mm>
+log circle.area      // 78.54<mm2>
+log circle.perimeter // 31.42<mm>
 ```
