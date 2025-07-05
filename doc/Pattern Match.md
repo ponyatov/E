@@ -12,7 +12,7 @@
 - [[E/when|guards]] selects match rules with matched values checking
 
 ```E
-match doSmth // variable, function call, or expression
+match doSmth with
 | Ok value  => log "Success: {value}"
 | Error err =>
 	thread::spawn failover_restart
