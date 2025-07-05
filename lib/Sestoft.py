@@ -9,7 +9,7 @@ import os, sys, re
 ## test equality
 def test_eq(a, b):
     if f'{a}' == f'{b}': pass
-    else: raise Exception(f'<{a}> != <{b}>')
+    else: raise Exception(f'{a}\n{b}')
 test_eq(1 == 1, 'True')
 
 ## test exception
@@ -130,5 +130,19 @@ class Div(BinOp):
 
 ApB = Add(A, B)
 test_eq(str(ApB), '\nadd:+\n\tint:123\n\tint:456')
+
+class Let(Op):
+    def __init__(self, lhs, rhs):
+        super().__init__('='); self // lhs // rhs
+
+    def eval(self, env):
+        lhs, rhs = self[0], self[1]
+        ret = rhs.eval(env)
+        env[lhs.val()] = ret; return ret
+
+elog = Let(Var('e'), Float(2.71))
+test_eq(elog, '\nlet:=\n\tvar:e\n\tfloat:2.71')
+test_eq(elog.eval(glob), '\nfloat:2.71')
+test_eq(glob['e'], '\nfloat:2.71')
 
 print(sys.argv)
