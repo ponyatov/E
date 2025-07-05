@@ -41,18 +41,20 @@ value <<= 3        // Multiply by 8
 value >>= 2        // Divide by 4
 ```
 
-## Special Cases
+## Multiple Assignment
 
-1. **Multiple Assignment** using destructuring pattern match
+- **destructuring assignment** for tuples and other patterns:
 
-	```E
-    let (x, y) = (10, 20)  // Destructuring assignment
-	```
+```E
+// Tuple destructuring
+let (x, y) = (10, 20)  // Destructuring assignment
+```
 
-2. **Swap Values**
+- **Swap Values**
 
-	```E
-	mut a = 5
-	mut b = 10
-	(a, b) = (b, a)  // Swap without temporary variable
-	```
+```E
+// Swap values without temp variable
+mut a = 5
+mut b = 10
+(a, b) = (b, a)  // a=10, b=5
+```
