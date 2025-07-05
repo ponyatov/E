@@ -27,6 +27,8 @@ class Object:
         self.nest = []
         ## associative: attributes
         self.slot = {}
+        ## nested scopes: search attributes in upper level
+        self.scope = []
 
     ## static constructor (wrapper)
     def new(pyobj):
@@ -39,8 +41,12 @@ class Object:
     def tag(self): return self.__class__.__name__.lower()
     def val(self): return f'{self.value}'
 
-    def head(self, depth=0,
-             prefix=''): return f'{prefix}{self.tag()}:{self.val()}'
+    def head(self, depth=0, prefix=''):
+        ret = f'{prefix}{self.tag()}:{self.val()}'
+        if self.scope:
+            ret += ' \\ '
+            for s in self.scope: ret += s.head(' ')
+        return ret
 
     def dump(self, depth=0, prefix=''):
         def tab(depth): return '\n' + '\t' * depth
@@ -58,7 +64,13 @@ class Object:
 
     def __getitem__(self, idx):
         if type(idx) == int: return self.nest[idx]
-        if type(idx) == str: return self.slot[idx]
+        if type(idx) == str:
+            try: return self.slot[idx] # in self scope
+            except KeyError:
+                for s in self.scope: # in uppers scopes
+                    try: return s[idx]
+                    except KeyError: pass # ignore not exists
+                raise KeyError # if not found in .scopes
         raise TypeError(type(idx), idx)
 
     def __setitem__(self, idx, that):
@@ -88,9 +100,15 @@ test_eq(B, '\nint:456')
 ## floating point numbers
 class Float(Number):
     def __init__(self, F): super().__init__(float(F))
+    def __float__(self): return self.value
 
-    def __add__(self, that):
-        return Float(self.value + that.__float__())
+    def __format__(self, format):
+        if not format: return self.dump()
+        if format == 'f': return f'{self.value:.2f}'
+        raise TypeError(type(format), format)
+
+    def __add__(self, that): return Float(self.value + that.__float__())
+    def __mul__(self, that): return Float(self.value * that.__float__())
 
 class Container(Object): pass
 class Vector(Container): pass
@@ -114,9 +132,9 @@ class Var(Primitive):
 pi = Var('pi')
 test_eq(pi, '\nvar:pi')
 # test_raise(pi.eval(glob), KeyError)
-glob['pi'] = Float(3.1415)
-test_eq(glob, '\nenv:glob\n\tpi = float:3.1415')
-test_eq(pi.eval(glob), '\nfloat:3.1415')
+glob['pi'] = Float(3.14)
+test_eq(glob, '\nenv:glob\n\tpi = float:3.14')
+test_eq(pi.eval(glob), '\nfloat:3.14')
 
 ## operator
 class Op(Active): pass
@@ -140,6 +158,7 @@ class Sub(BinOp):
 
 class Mul(BinOp):
     def __init__(self, A, B): super().__init__('*', A, B)
+    def eval(self, env): return self[0].eval(env) * self[1].eval(env)
 
 class Div(BinOp):
     def __init__(self, A, B): super().__init__('/', A, B)
@@ -151,23 +170,25 @@ test_eq(str(ApB), '\nadd:+\n\tint:123\n\tint:456')
 class Let(Op):
     def __init__(self, lhs, rhs, body):
         lhs = Object.new(lhs); assert isinstance(lhs, Var)
-        super().__init__('='); self // lhs // rhs // body
+        super().__init__('=')
+        self // Object.new(lhs) // Object.new(rhs) // body
 
     def eval(self, env):
         lhs, rhs, body = self[0], self[1], self[2]
         # new local environment
         local = Env(f'{self.__hash__():x}')
         # reference to parent env
-        local['par'] = env; print(local)
+        local.scope.append(env)
         # assign local variable
         local[lhs.val()] = rhs.eval(env)
         # compute body in local env
+        print(local)
         return body.eval(local)
 
 ## `let e = 2.71 in pi * (e + 1)`
 elog = Let('e', 2.71, Mul('pi', Add('e', 1)))
 test_eq(elog, '\nlet:=\n\tvar:e\n\tfloat:2.71\n\tmul:*\n\t\tvar:pi\n\t\tadd:+\n\t\t\tvar:e\n\t\t\tint:1')
-test_eq(elog.eval(glob), '\nfloat:3.71')
+test_eq(f'{elog.eval(glob):f}', '11.65')
 # test_raise(glob['e'], KeyError) # e in local env
 
 print(sys.argv)
