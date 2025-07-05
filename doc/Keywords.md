@@ -58,7 +58,7 @@
 ## [[E/Modules|Modules]]
 
 - [[E/module|module]] - define module namespace
-- [[E/import|import]] - import module
+- [[E/use|use]] - import module
 - [[E/export|export]] - make item publicly accessible
 
 ## [[E/Memory Management]]
