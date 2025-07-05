@@ -1,10 +1,16 @@
 #!/usr/bin/env Evento
 // ^^^^^^^^^^^^^^^^^^ optional shebang: first line only
 
+// module hello /* defined by file name & path */
+
+// doscrtings with ! relates to outer scope
 //! Sample Script code follows...
 /*! including language core tests */
 
-// module hello /* defined by file name & path */
+// line comment
+/* block comment */
+/// docstring
+/** doc block */
 
 /// variables starts with lower letter (low_camel_case)
 const WHO = "World"
