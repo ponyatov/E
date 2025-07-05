@@ -10,4 +10,11 @@
 ## [[E/Types|Types]]
 
 - [[E/Result|Result]]
+	- [[E/Ok|Ok]]
+	- [[E/Error|Error]]
 - [[E/Option|Option]]
+	- [[E/Some|Some]]
+	- [[E/None|None]]
+- `?` suffix operator at end of expression
+	- unpacks `Some(x)` and `Ok(x)` values
+	- raises [[E/Exception|Exceptions]] in case of `Error`/`None`

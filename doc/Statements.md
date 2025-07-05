@@ -6,5 +6,4 @@
 ## [[E/Scope]]
 ## [[E/Modules|Modules]]
 ## [[E/Control Flow|Control Flow]]
-- Control flow (if-else, loops, switches).
-- Function calls.
+## [[E/Error Handling|Error Handling]]
