@@ -28,6 +28,14 @@ class Object:
         ## associative: attributes
         self.slot = {}
 
+    ## static constructor (wrapper)
+    def new(pyobj):
+        if isinstance(pyobj, Object): return pyobj
+        if type(pyobj) == str: return Var(pyobj)
+        if type(pyobj) == int: return Int(pyobj)
+        if type(pyobj) == float: return Float(pyobj)
+        raise TypeError(type(pyobj), pyobj)
+
     def tag(self): return self.__class__.__name__.lower()
     def val(self): return f'{self.value}'
 
@@ -69,16 +77,20 @@ class Number(Primitive): pass
 ## integer numbers
 class Int(Number):
     def __init__(self, N): super().__init__(int(N))
+    def __float__(self): return float(self.value)
 
-A = Int(123)
+A = Int(123) # direct creation
 test_eq(A, '\nint:123')
-B = Int(456)
+B = Object.new(456) # create using wrapper
 test_eq(B, '\nint:456')
 # test_raise(Int("azaza")}'=='int: 123')
 
 ## floating point numbers
 class Float(Number):
     def __init__(self, F): super().__init__(float(F))
+
+    def __add__(self, that):
+        return Float(self.value + that.__float__())
 
 class Container(Object): pass
 class Vector(Container): pass
@@ -112,37 +124,50 @@ class Op(Active): pass
 ## unary operator (prefix)
 class PfxOp(Op):
     def __init__(self, V, A):
-        super().__init__(V); self // A
+        super().__init__(V); self // Object.new(A)
 
 ## binary operator
 class BinOp(Op):
     def __init__(self, V, A, B):
-        super().__init__(V); self // A // B
+        super().__init__(V); self // Object.new(A) // Object.new(B)
 
 class Add(BinOp):
     def __init__(self, A, B): super().__init__('+', A, B)
+    def eval(self, env): return self[0].eval(env) + self[1].eval(env)
+
 class Sub(BinOp):
     def __init__(self, A, B): super().__init__('-', A, B)
+
 class Mul(BinOp):
     def __init__(self, A, B): super().__init__('*', A, B)
+
 class Div(BinOp):
     def __init__(self, A, B): super().__init__('/', A, B)
 
 ApB = Add(A, B)
 test_eq(str(ApB), '\nadd:+\n\tint:123\n\tint:456')
 
+## let lhs = rhs in body
 class Let(Op):
-    def __init__(self, lhs, rhs):
-        super().__init__('='); self // lhs // rhs
+    def __init__(self, lhs, rhs, body):
+        lhs = Object.new(lhs); assert isinstance(lhs, Var)
+        super().__init__('='); self // lhs // rhs // body
 
     def eval(self, env):
-        lhs, rhs = self[0], self[1]
-        ret = rhs.eval(env)
-        env[lhs.val()] = ret; return ret
+        lhs, rhs, body = self[0], self[1], self[2]
+        # new local environment
+        local = Env(f'{self.__hash__():x}')
+        # reference to parent env
+        local['par'] = env; print(local)
+        # assign local variable
+        local[lhs.val()] = rhs.eval(env)
+        # compute body in local env
+        return body.eval(local)
 
-elog = Let(Var('e'), Float(2.71))
-test_eq(elog, '\nlet:=\n\tvar:e\n\tfloat:2.71')
-test_eq(elog.eval(glob), '\nfloat:2.71')
-test_eq(glob['e'], '\nfloat:2.71')
+## `let e = 2.71 in pi * (e + 1)`
+elog = Let('e', 2.71, Mul('pi', Add('e', 1)))
+test_eq(elog, '\nlet:=\n\tvar:e\n\tfloat:2.71\n\tmul:*\n\t\tvar:pi\n\t\tadd:+\n\t\t\tvar:e\n\t\t\tint:1')
+test_eq(elog.eval(glob), '\nfloat:3.71')
+# test_raise(glob['e'], KeyError) # e in local env
 
 print(sys.argv)
