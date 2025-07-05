@@ -1,2 +1,2 @@
 # Some
-## [[E/Option|Option]]
+![[E/Option|Option]]

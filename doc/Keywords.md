@@ -38,7 +38,7 @@
 
 - [[E/try|try]] - error handling block
 - [[E/catch|catch]] - error handler
-- [[E/throw|throw]] - raise exception
+- [[E/raise|raise]] - raise exception
 - [[E/panic|panic]] - unrecoverable error
 
 ## [[E/Types|Types]]

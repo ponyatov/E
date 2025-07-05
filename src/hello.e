@@ -16,8 +16,8 @@
 const WHO = "World"
 
 /// multi-line strings can be wrapped in '' and ""
-/// - $"" $'' raw strings, no escapes
-/// - @"" @'' format & string interpolation
+/// -  ""  '' default: format & string interpolation
+/// - $"" $'' raw strings without escapes etc (as is)
 
 let hello = $'Hello {who}!'
 

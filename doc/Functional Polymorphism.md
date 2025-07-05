@@ -13,7 +13,7 @@ fn factorial n = n * factorial (n - 1)
 	```E
 	factorial 0 = 1
 	factorial n when n > 0 = n * factorial (n - 1)
-	factorial n = error $"Negative input: {n}"
+	factorial n = error "Negative input: {n}"
 	```
 	- see: [[E/String Interpolation]]
 

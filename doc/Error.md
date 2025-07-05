@@ -1,2 +1,2 @@
 # Error
-## [[E/Result|Result]]
+![[E/Result|Result]]

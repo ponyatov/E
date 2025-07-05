@@ -2,7 +2,7 @@
 
 ```E
 let who = "World"
-$"Hello, {who}!"
+"Hello, {who}!"
 ```
 ```
 Hello, World

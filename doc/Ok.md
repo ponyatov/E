@@ -1,2 +1,2 @@
 # Ok
-## [[E/Result]]
+![[E/Result]]

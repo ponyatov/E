@@ -13,10 +13,10 @@
 
 ```E
 match doSmth // variable, function call, or expression
-| Ok value  => log $"Success: {value}"
+| Ok value  => log "Success: {value}"
 | Error err =>
 	thread::spawn failover_restart
-	log $"Failed: {err}"
+	log "Failed: {err}"
 ```
 - vertical bars makes code more readable
 - tabbed syntax removes syntax noise

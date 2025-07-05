@@ -5,6 +5,9 @@
 let distance = 5.0<m>      // 5 meters
 let speed = 20.0<m/s>      // 20 meters per second
 ```
+- shorts
+	- integer powers: `m2` for square meters
+	- `.` as multiplication sign: `kg.m/s2` for Newtons
 - Custom Units
 ```E
 measure kg
