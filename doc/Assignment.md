@@ -43,7 +43,7 @@ value >>= 2        // Divide by 4
 
 ## Multiple Assignment
 
-- **destructuring assignment** for tuples and other patterns:
+- **[[E/Destructuring|Destructuring]] assignment** for tuples and other patterns:
 
 ```E
 // Tuple destructuring
