@@ -33,3 +33,8 @@ fn add a b  {
 // lambda with implicit return (last expression in a code block)
 let multiply a b -> a * b // single expressions does not need {}
 ```
+
+## [[E/unsafe|unsafe]]
+## [[Atomics]]
+## [[E/Deallocation]]
+## [[Asynchronous functions]]
