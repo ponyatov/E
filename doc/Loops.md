@@ -26,8 +26,9 @@ Why Not Just `while true`?
 - [[#Infinite]] looping too common case that is good to have a special syntax
 - loops can be syntatically annotated:
 	- isohronous repeat time intervals without delays in a code
+		- able to bind to hardware timer
 	- RTOS scheduling priority
-	- as critical section with precision code points where to release a control
+	- marked as critical section with precision code points where to release a control
 
 ## Iteration
 
