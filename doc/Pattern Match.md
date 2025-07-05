@@ -12,9 +12,10 @@
 - [[E/when|guards]] selects match rules with matched values checking
 
 ```E
-match x with
-| Ok(value) => log $"Success: {value}"
-| Error(err) =>
+match doSmth // variable, function call, or expression
+| Ok value  => log $"Success: {value}"
+| Error err =>
+	thread::spawn failover_restart
 	log $"Failed: {err}"
 ```
 - vertical bars makes code more readable
