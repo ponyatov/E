@@ -10,12 +10,13 @@
 	- `.e` can have internal submodules
 	- defined by [[E/module|module]] keyword
 - directories forms module trees
+
+## Visibility
+
 - modules defined as files is public by default
 	- modules defined inside of code file prvate default
 - add module contents is private by default
 	- public elements must be explicitly exported with [[E/pub|pub]] keyword
-
-## Visibility
 
 ```E
 // Default is private to module

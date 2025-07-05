@@ -12,7 +12,12 @@ let x = 10
 log x           // prints 10
 ```
 
-## Module-Level Forward Declarations
+## Forward Declarations
+
+- forward declaration is optional
+	- [[E/E|E]] allows to use language elements before its declaration or implementation
+- there is no cross-module bounds for type extensions and [[E/trait|trait]] implementation
+	- core and primitive types also can be expanded
 
 ### 1. Function Prototypes
 
