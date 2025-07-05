@@ -3,62 +3,73 @@
 ## Object
 
 - root class for all objects (hidden inheritance)
+- destructor can be run manually with `delete` keyword
+- `&self` instance reference
+- `&Self` class name alias
 
 ```E
-class Object {
+class Object =
 
 	// default constructor
-	fn _new -> &Self = sizeof(Self) |> _alloc
+	fn __new -> &Self = sizeof(Self) |> _alloc
 
 	// default destructor
-	fn _del self:&Self = self |> _free
+	fn __delete &self = self |> _free
 
 	// default allocator
-	fn _alloc size:uint -> &Self = libc::alloc(size)? as &Self
+	fn __alloc size:uint -> &Self = libc::alloc(size)? as &Self
 
 	// default deallocator
-	fn _free self:&Self = libc::free(ptr)
-}
+	fn __free &self = libc::free(self)
 ```
 
 ## Class Definition
 
 ```E
 /// Base class for geometric shapes
-class Shape {
-    // Instance field (mutable)
+class Shape =
+
+	// Instance field (mutable)
     mut id: int
-    
-    // constructor
-    fn _new id:int -> Self = Self { id }
-    // destructor
-    fn _del = ()
-    
-    // Method
+
+	// constructor
+    fn __new id:int -> Self = Self { id }
+
+	// destructor
+    fn __delete = ()
+```
+- class definition can be expanded if full definition too large or in other module
+```E
+class Shape += // extend in other code fragment
+
+	// Method
     fn area -> float = 0.0  // Default implementation
-    
+
     // Abstract method (must be implemented by subclasses)
-    fn perimeter -> float = undef
-}
+    fn perimeter -> float
 ```
 
 ## Inheritance
 
 - all classes inherits from [[#Object]]
-- multiple inheritance
+- multiple inheritance (using mixins)
 - items overload in order of inheritance list
 
 ```E
-class Circle : Shape {
+class Colored =
+	fill: color = Color::WHITE  // field with default value
+	fn draw = log "Painting..."
+```
+```E
+class Circle : Shape,Colored =
 
 	radius: float
-	fill: color
 
 	// Constructor with base class initialization
-    fn _new id:int radius:float fill:color=white -> Self =
+    fn __new id:int radius:float fill:color=Colored::fill -> Self =
 	    let self = super id     // Call base constructors
         self.radius = radius    // assign new field
-        self.fill = fill        // parameter with default value
+        self.fill = fill        // in-mixed field with default color
         self                    // return constructed object
 
 	// Method override
@@ -66,7 +77,6 @@ class Circle : Shape {
 
 	// Implement abstract method
     fn perimeter -> float = 2 * Pi * self.radius
-}
 ```
 
 ## Instantiation and Usage
@@ -78,4 +88,16 @@ class Circle : Shape {
 let circle           = Circle id:1 5.0<mm>
 log circle.area      // 78.54<mm2>
 log circle.perimeter // 31.42<mm>
+```
+
+## Operator Overloading
+
+```E
+class Vector2D {
+    x: float ; y: float
+    
+    /// overload `+` operator
+    fn __add self other:&Self -> Self =
+        Vector2D x:(self.x + other.x) y:(self.y + other.y)
+}
 ```
